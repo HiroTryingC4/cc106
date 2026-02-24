@@ -33,6 +33,7 @@ const BookingCalendar = ({
     if (unitId) {
       fetchBookedDates();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [unitId, currentMonth]);
 
   const fetchBookedDates = async () => {
@@ -81,11 +82,8 @@ const BookingCalendar = ({
 
   const isDateInRange = (date) => {
     if (!selectedStartDate || !hoveredDate || selectedEndDate) return false;
-    const dateStr = date.toISOString().split('T')[0];
-    const startStr = selectedStartDate;
-    const hoverStr = hoveredDate.toISOString().split('T')[0];
     
-    const start = new Date(startStr);
+    const start = new Date(selectedStartDate);
     const end = hoveredDate;
     
     return date >= start && date <= end;

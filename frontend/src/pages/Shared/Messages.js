@@ -26,6 +26,7 @@ const Messages = () => {
     // Poll for new messages every 10 seconds
     const interval = setInterval(fetchConversations, 10000);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchConversations = async () => {

@@ -34,6 +34,7 @@ const HostVerification = () => {
       refreshUser();
     }, 10000);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchVerificationStatus = async () => {
