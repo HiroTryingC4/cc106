@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -11,17 +11,40 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-// Component to handle map clicks
+// Component to update map view when position changes
+function MapViewController({ center, zoom }) {
+  const map = useMap();
+  
+  useEffect(() => {
+    if (center) {
+      map.flyTo(center, zoom, {
+        duration: 1.5,
+        easeLinearity: 0.5
+      });
+    }
+  }, [center, zoom, map]);
+  
+  return null;
+}
+
+// Component to handle map clicks and marker dragging
 function LocationMarker({ position, setPosition, onLocationChange }) {
   const markerRef = useRef(null);
+  const map = useMap();
 
-  useMapEvents({
-    click(e) {
+  // Handle map clicks
+  useEffect(() => {
+    const handleClick = (e) => {
       const newPos = [e.latlng.lat, e.latlng.lng];
       setPosition(newPos);
       reverseGeocode(e.latlng.lat, e.latlng.lng, onLocationChange);
-    },
-  });
+    };
+
+    map.on('click', handleClick);
+    return () => {
+      map.off('click', handleClick);
+    };
+  }, [map, setPosition, onLocationChange]);
 
   const eventHandlers = {
     dragend() {
@@ -75,11 +98,13 @@ const searchLocation = async (query) => {
 
 const LocationPicker = ({ value, onChange, error }) => {
   // Default to Philippines center
-  const [position, setPosition] = useState([14.5995, 120.9842]);
+  const [position, setPosition] = useState(null);
+  const [mapCenter, setMapCenter] = useState([14.5995, 120.9842]);
+  const [mapZoom, setMapZoom] = useState(6);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
-  const [mapKey, setMapKey] = useState(0);
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     if (value) {
@@ -91,25 +116,32 @@ const LocationPicker = ({ value, onChange, error }) => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
 
+    setIsSearching(true);
     const results = await searchLocation(searchQuery);
     setSearchResults(results);
     setShowResults(true);
+    setIsSearching(false);
 
     if (results.length > 0) {
+      // Automatically select first result and show on map
       const firstResult = results[0];
       const newPos = [parseFloat(firstResult.lat), parseFloat(firstResult.lon)];
       setPosition(newPos);
-      setMapKey(prev => prev + 1); // Force map to re-center
+      setMapCenter(newPos);
+      setMapZoom(15); // Zoom in closer when searching
+      setSearchQuery(firstResult.display_name);
+      onChange(firstResult.display_name, firstResult.lat, firstResult.lon);
     }
   };
 
   const handleSelectResult = (result) => {
     const newPos = [parseFloat(result.lat), parseFloat(result.lon)];
     setPosition(newPos);
+    setMapCenter(newPos);
+    setMapZoom(15);
     setSearchQuery(result.display_name);
     onChange(result.display_name, result.lat, result.lon);
     setShowResults(false);
-    setMapKey(prev => prev + 1);
   };
 
   const handleLocationChange = (address, lat, lng) => {
@@ -130,26 +162,36 @@ const LocationPicker = ({ value, onChange, error }) => {
                 setSearchQuery(e.target.value);
                 setShowResults(false);
               }}
-              placeholder="Search for a location (e.g., Manila, Philippines)"
-              className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  handleSearch(e);
+                }
+              }}
+              placeholder="Search for a location (e.g., Quezon City, Manila)"
+              className={`w-full px-4 py-2 pr-10 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                 error ? 'border-red-500' : 'border-gray-300'
               }`}
             />
             <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-              🔍
+              {isSearching ? '⏳' : '🔍'}
             </div>
           </div>
           <button
             type="submit"
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            disabled={isSearching}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
-            Search
+            {isSearching ? 'Searching...' : 'Search'}
           </button>
         </form>
 
         {/* Search Results Dropdown */}
         {showResults && searchResults.length > 0 && (
           <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+            <div className="px-4 py-2 bg-gray-50 border-b border-gray-200 text-xs font-semibold text-gray-600">
+              Select a location to pin on map:
+            </div>
             {searchResults.map((result, index) => (
               <button
                 key={index}
@@ -165,27 +207,40 @@ const LocationPicker = ({ value, onChange, error }) => {
             ))}
           </div>
         )}
+
+        {/* No Results Message */}
+        {showResults && searchResults.length === 0 && !isSearching && (
+          <div className="absolute z-50 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg p-4">
+            <p className="text-sm text-gray-600">No locations found. Try a different search term.</p>
+          </div>
+        )}
       </div>
 
       {/* Instructions */}
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
         <p className="text-sm text-blue-800">
-          💡 <strong>How to use:</strong> Search for your location above, or click/drag the marker on the map to set the exact position.
+          💡 <strong>How to use:</strong>
         </p>
+        <ul className="text-xs text-blue-700 mt-1 ml-4 list-disc space-y-1">
+          <li>Search for your location above - it will appear on the map with a marker</li>
+          <li>Drag the marker to adjust the exact position</li>
+          <li>Or click anywhere on the map to place the marker</li>
+        </ul>
       </div>
 
       {/* Map */}
       <div className="border border-gray-300 rounded-lg overflow-hidden" style={{ height: '400px' }}>
         <MapContainer
-          key={mapKey}
-          center={position}
-          zoom={13}
+          center={mapCenter}
+          zoom={mapZoom}
           style={{ height: '100%', width: '100%' }}
+          scrollWheelZoom={true}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+          <MapViewController center={mapCenter} zoom={mapZoom} />
           <LocationMarker
             position={position}
             setPosition={setPosition}
@@ -195,13 +250,24 @@ const LocationPicker = ({ value, onChange, error }) => {
       </div>
 
       {/* Selected Location Display */}
-      {searchQuery && (
+      {position && searchQuery && (
         <div className="bg-green-50 border border-green-200 rounded-lg p-3">
           <p className="text-sm text-green-800">
-            <strong>Selected Location:</strong> {searchQuery}
+            <strong>✓ Selected Location:</strong> {searchQuery}
           </p>
           <p className="text-xs text-green-600 mt-1">
-            Coordinates: {position[0].toFixed(6)}, {position[1].toFixed(6)}
+            📍 Coordinates: {position[0].toFixed(6)}, {position[1].toFixed(6)}
+          </p>
+          <p className="text-xs text-green-600 mt-1 italic">
+            You can drag the marker to fine-tune the exact position
+          </p>
+        </div>
+      )}
+
+      {!position && (
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+          <p className="text-sm text-yellow-800">
+            ⚠️ No location selected yet. Search for a location or click on the map.
           </p>
         </div>
       )}
