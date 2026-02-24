@@ -122,9 +122,37 @@ const UnitForm = () => {
   const updateHourlyPricing = (index, field, value) => {
     setFormData(prev => ({
       ...prev,
-      hourlyPricing: prev.hourlyPricing.map((item, i) => 
-        i === index ? { ...item, [field]: value } : item
-      )
+      hourlyPricing: prev.hourlyPricing.map((item, i) => {
+        if (i !== index) return item;
+        
+        const updatedItem = { ...item, [field]: value };
+        
+        // Auto-calculate checkout time when check-in time or hours change (only for fixed time)
+        if (updatedItem.isFlexible === false && (field === 'checkInTime' || field === 'hours')) {
+          const checkInTime = field === 'checkInTime' ? value : item.checkInTime;
+          const hours = field === 'hours' ? value : item.hours;
+          
+          if (checkInTime && hours) {
+            // Parse check-in time
+            const [checkInHour, checkInMinute] = checkInTime.split(':').map(Number);
+            
+            // Calculate checkout time by adding hours
+            const checkInDate = new Date();
+            checkInDate.setHours(checkInHour, checkInMinute, 0, 0);
+            
+            const checkOutDate = new Date(checkInDate.getTime() + (parseInt(hours) * 60 * 60 * 1000));
+            
+            // Format checkout time as HH:MM
+            const checkOutHour = String(checkOutDate.getHours()).padStart(2, '0');
+            const checkOutMinute = String(checkOutDate.getMinutes()).padStart(2, '0');
+            const checkOutTime = `${checkOutHour}:${checkOutMinute}`;
+            
+            updatedItem.checkOutTime = checkOutTime;
+          }
+        }
+        
+        return updatedItem;
+      })
     }));
   };
 
