@@ -223,11 +223,40 @@ const Units = () => {
                         {unit.description}
                       </p>
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-2xl font-bold text-primary">
-                          ₱{unit.pricePerNight}
-                          <span className="text-sm text-gray-600 font-normal">/night</span>
-                        </span>
+                        <div>
+                          <span className="text-2xl font-bold text-primary">
+                            ₱{unit.pricePerNight}
+                            <span className="text-sm text-gray-600 font-normal">/night</span>
+                          </span>
+                          {unit.nightHours && (
+                            <div className="text-xs text-gray-500 mt-1">
+                              ({unit.nightHours} hours included)
+                            </div>
+                          )}
+                        </div>
                       </div>
+                      
+                      {/* Hourly Pricing Options */}
+                      {unit.hourlyPricing && unit.hourlyPricing.length > 0 && (
+                        <div className="mb-2 bg-purple-50 border border-purple-200 rounded-lg p-2">
+                          <div className="text-xs font-semibold text-purple-900 mb-1">⏰ Hourly Options:</div>
+                          <div className="flex flex-wrap gap-1">
+                            {unit.hourlyPricing.slice(0, 3).map((pricing, index) => (
+                              pricing.hours && pricing.price && (
+                                <span key={index} className="text-xs bg-white text-purple-700 px-2 py-1 rounded border border-purple-200">
+                                  {pricing.hours}h - ₱{pricing.price}
+                                </span>
+                              )
+                            ))}
+                            {unit.hourlyPricing.length > 3 && (
+                              <span className="text-xs text-purple-600 px-2 py-1">
+                                +{unit.hourlyPricing.length - 3} more
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                      
                       <div className="text-sm text-gray-600">
                         {unit.bedrooms} bed • {unit.bathrooms} bath • {unit.maxGuests} guests
                       </div>

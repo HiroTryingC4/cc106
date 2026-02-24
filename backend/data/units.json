@@ -9,6 +9,7 @@
     "bathrooms": 2,
     "maxGuests": 4,
     "pricePerNight": 150,
+    "nightHours": "22",
     "images": [
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800"
@@ -40,6 +41,7 @@
     "bathrooms": 1,
     "maxGuests": 2,
     "pricePerNight": 85,
+    "nightHours": "22",
     "images": [
       "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800"
     ],
@@ -67,6 +69,7 @@
     "bathrooms": 3,
     "maxGuests": 6,
     "pricePerNight": 220,
+    "nightHours": "22",
     "images": [
       "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800",
       "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800"
@@ -97,6 +100,7 @@
     "bathrooms": 1,
     "maxGuests": 4,
     "pricePerNight": 120,
+    "nightHours": "22",
     "images": [
       "https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=800"
     ],
@@ -127,6 +131,7 @@
     "bathrooms": 1,
     "maxGuests": 2,
     "pricePerNight": 95,
+    "nightHours": "22",
     "images": [
       "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800"
     ],
@@ -154,6 +159,7 @@
     "bathrooms": 3,
     "maxGuests": 8,
     "pricePerNight": 280,
+    "nightHours": "22",
     "images": [
       "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?w=800"
     ],
@@ -183,6 +189,7 @@
     "bathrooms": 2,
     "maxGuests": 6,
     "pricePerNight": 350,
+    "nightHours": "22",
     "images": [
       "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800"
     ],
@@ -213,6 +220,7 @@
     "bathrooms": 1,
     "maxGuests": 4,
     "pricePerNight": 110,
+    "nightHours": "22",
     "images": [
       "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800"
     ],
@@ -239,6 +247,7 @@
     "location": "TRIAL5@gmail.com",
     "description": "TRIAL5@gmail.com",
     "pricePerNight": 21321,
+    "nightHours": "22",
     "bedrooms": 1,
     "bathrooms": 1,
     "maxGuests": 2,
@@ -264,6 +273,7 @@
     "location": "Trees Residences Quezon City",
     "description": "asd",
     "pricePerNight": 150,
+    "nightHours": "22",
     "bedrooms": 2,
     "bathrooms": 1,
     "maxGuests": 2,
@@ -278,6 +288,194 @@
     "rating": 0,
     "reviews": 0,
     "available": true,
-    "createdAt": "2026-02-23T11:49:59.124Z"
+    "createdAt": "2026-02-23T11:49:59.124Z",
+    "extraGuestFee": 200,
+    "hourlyPricing": [],
+    "fixedCheckInTime": "14:00",
+    "fixedCheckOutTime": "12:00",
+    "updatedAt": "2026-02-24T07:32:39.138Z"
+  },
+  {
+    "id": "11",
+    "hostId": "13",
+    "name": "Riemar Ligad",
+    "type": "Apartment",
+    "location": "Trees Residences Quezon City",
+    "description": "asd",
+    "pricePerNight": 0,
+    "nightHours": "22",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Pool"
+    ],
+    "securityDeposit": 200,
+    "extraGuestFee": 200,
+    "houseRules": "asd",
+    "instantBooking": false,
+    "stayDuration": "flexible",
+    "hourlyPricing": [
+      {
+        "hours": "6",
+        "price": "666",
+        "checkInTime": "17:36",
+        "checkOutTime": "23:36",
+        "isFlexible": false
+      }
+    ],
+    "fixedCheckInTime": "14:00",
+    "fixedCheckOutTime": "12:00",
+    "images": [
+      "/uploads/units/unit-1771918620483-351771503.png"
+    ],
+    "rating": 0,
+    "reviews": 0,
+    "available": true,
+    "createdAt": "2026-02-24T07:37:00.350Z",
+    "moderationStatus": "approved"
+  },
+  {
+    "id": "12",
+    "hostId": "13",
+    "name": "TRIAL 1",
+    "type": "Apartment",
+    "location": "Saint James Street, Sacred Heart Village, Pasong Putik Proper, 5th District, Quezon City, Eastern Manila District, Metro Manila, 1118, Philippines",
+    "description": "asd",
+    "pricePerNight": 0,
+    "nightHours": "22",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi"
+    ],
+    "securityDeposit": 200,
+    "extraGuestFee": 200,
+    "houseRules": "asd",
+    "instantBooking": true,
+    "stayDuration": "flexible",
+    "hourlyPricing": [
+      {
+        "hours": "1",
+        "price": "222",
+        "checkInTime": "17:09",
+        "checkOutTime": "18:09",
+        "isFlexible": false
+      }
+    ],
+    "fixedCheckInTime": "14:00",
+    "fixedCheckOutTime": "12:00",
+    "images": [
+      "/uploads/units/unit-1771920603102-790067006.png"
+    ],
+    "rating": 0,
+    "reviews": 0,
+    "available": true,
+    "createdAt": "2026-02-24T08:10:03.041Z",
+    "moderationStatus": "approved"
+  },
+  {
+    "id": "13",
+    "hostId": "13",
+    "name": "TRIAL 2",
+    "type": "Apartment",
+    "location": "ACE Hardware, Quirino Highway, Pasong Putik Proper, 5th District, Quezon City, Eastern Manila District, Metro Manila, 1118, Philippines",
+    "description": "ASDASD",
+    "pricePerNight": 1500,
+    "nightHours": "22",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Pool",
+      "Dryer",
+      "Air Conditioning",
+      "Gym",
+      "Balcony",
+      "Pet Friendly",
+      "Kitchen"
+    ],
+    "securityDeposit": 200,
+    "extraGuestFee": 200,
+    "houseRules": "ASDASD",
+    "instantBooking": false,
+    "stayDuration": "flexible",
+    "hourlyPricing": [
+      {
+        "hours": "1",
+        "price": "11",
+        "checkInTime": "",
+        "checkOutTime": "",
+        "isFlexible": true
+      },
+      {
+        "hours": "2",
+        "price": "222",
+        "checkInTime": "",
+        "checkOutTime": "",
+        "isFlexible": true
+      }
+    ],
+    "fixedCheckInTime": "14:00",
+    "fixedCheckOutTime": "12:00",
+    "images": [
+      "/uploads/units/unit-1771921273539-119622297.png"
+    ],
+    "rating": 0,
+    "reviews": 0,
+    "available": true,
+    "createdAt": "2026-02-24T08:21:13.498Z",
+    "moderationStatus": "approved"
+  },
+  {
+    "id": "14",
+    "hostId": "13",
+    "name": "TRIAL UNIT 1",
+    "type": "Apartment",
+    "location": "Regalado Highway, Greater Lagro, 5th District, Quezon City, Eastern Manila District, Metro Manila, 1118, Philippines",
+    "description": "asdasdasd",
+    "pricePerNight": 1500,
+    "nightHours": "22",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "Pool",
+      "Dryer"
+    ],
+    "securityDeposit": 200,
+    "extraGuestFee": 200,
+    "houseRules": "asdasdasd",
+    "instantBooking": false,
+    "stayDuration": "flexible",
+    "hourlyPricing": [
+      {
+        "hours": "1",
+        "price": "111",
+        "checkInTime": "",
+        "checkOutTime": "",
+        "isFlexible": true
+      },
+      {
+        "hours": "2",
+        "price": "222",
+        "checkInTime": "",
+        "checkOutTime": "",
+        "isFlexible": true
+      }
+    ],
+    "fixedCheckInTime": "14:00",
+    "fixedCheckOutTime": "12:00",
+    "images": [
+      "/uploads/units/unit-1771921553466-112156.png"
+    ],
+    "rating": 0,
+    "reviews": 0,
+    "available": true,
+    "createdAt": "2026-02-24T08:25:53.431Z",
+    "moderationStatus": "approved"
   }
 ]

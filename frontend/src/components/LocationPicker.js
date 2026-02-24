@@ -114,8 +114,7 @@ const LocationPicker = ({ value, onChange, error }) => {
     }
   }, [value]);
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
+  const handleSearch = async () => {
     if (!searchQuery.trim()) return;
 
     setIsSearching(true);
@@ -163,7 +162,7 @@ const LocationPicker = ({ value, onChange, error }) => {
     <div className="space-y-3">
       {/* Search Bar */}
       <div className="relative">
-        <form onSubmit={handleSearch} className="flex gap-2">
+        <div className="flex gap-2">
           <div className="flex-1 relative">
             <input
               type="text"
@@ -175,7 +174,7 @@ const LocationPicker = ({ value, onChange, error }) => {
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   e.preventDefault();
-                  handleSearch(e);
+                  handleSearch();
                 }
               }}
               placeholder="Search for a location (e.g., Quezon City, Manila)"
@@ -188,13 +187,14 @@ const LocationPicker = ({ value, onChange, error }) => {
             </div>
           </div>
           <button
-            type="submit"
+            type="button"
+            onClick={handleSearch}
             disabled={isSearching}
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             {isSearching ? 'Searching...' : 'Search'}
           </button>
-        </form>
+        </div>
 
         {/* Search Results Dropdown */}
         {showResults && searchResults.length > 0 && (

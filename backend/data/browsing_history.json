@@ -2025,5 +2025,33 @@
       "Dryer"
     ],
     "viewedAt": "2026-02-23T12:21:17.651Z"
+  },
+  {
+    "id": "124",
+    "guestId": "3",
+    "unitId": "11",
+    "unitType": "Apartment",
+    "pricePerNight": 0,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Pool"
+    ],
+    "viewedAt": "2026-02-24T07:50:46.376Z"
+  },
+  {
+    "id": "125",
+    "guestId": "3",
+    "unitId": "11",
+    "unitType": "Apartment",
+    "pricePerNight": 0,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Pool"
+    ],
+    "viewedAt": "2026-02-24T07:50:46.443Z"
   }
 ]

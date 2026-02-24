@@ -37,6 +37,7 @@ const UnitForm = () => {
     longitude: null,
     description: '',
     pricePerNight: '',
+    nightHours: '22',
     bedrooms: '1',
     bathrooms: '1',
     maxGuests: '2',
@@ -79,6 +80,7 @@ const UnitForm = () => {
           longitude: data.unit.longitude || null,
           description: data.unit.description || '',
           pricePerNight: data.unit.pricePerNight,
+          nightHours: data.unit.nightHours || '22',
           bedrooms: data.unit.bedrooms,
           bathrooms: data.unit.bathrooms,
           maxGuests: data.unit.maxGuests,
@@ -421,6 +423,38 @@ const UnitForm = () => {
               {errors.location && (
                 <p className="text-red-500 text-sm mt-1">⚠️ Location is required</p>
               )}
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <Input
+                label="Price Per Night (₱)"
+                type="number"
+                value={formData.pricePerNight}
+                onChange={(e) => setFormData({ ...formData, pricePerNight: e.target.value })}
+                min="0"
+                placeholder="e.g., 1500"
+              />
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Hours Included
+                </label>
+                <select
+                  value={formData.nightHours}
+                  onChange={(e) => setFormData({ ...formData, nightHours: e.target.value })}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                >
+                  <option value="12">12 hours</option>
+                  <option value="22">22 hours</option>
+                  <option value="24">24 hours (Full day)</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="col-span-2">
+              <p className="text-xs text-gray-500 bg-blue-50 border border-blue-200 rounded p-3">
+                💡 <strong>Per Night Pricing:</strong> Set your overnight rate and how many hours it covers. Example: ₱1500 for 22 hours means guests get the unit from 2 PM to 12 PM next day.
+              </p>
             </div>
 
             <Input

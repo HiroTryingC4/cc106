@@ -25,6 +25,9 @@ router.get('/', (req, res) => {
       limit = 12
     } = req.query;
 
+    // Filter only available and approved units for public view
+    units = units.filter(u => u.available !== false && (u.moderationStatus === 'approved' || !u.moderationStatus));
+
     // Apply filters
     if (type && type !== 'all') {
       units = units.filter(u => u.type === type);

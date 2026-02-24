@@ -216,6 +216,11 @@ const UnitDetails = () => {
                       <div className="text-2xl mb-1">💰</div>
                       <div className="text-sm text-gray-600">Per Night</div>
                       <div className="font-semibold text-primary">₱{unit.pricePerNight}</div>
+                      {unit.nightHours && (
+                        <div className="text-xs text-gray-500 mt-1">
+                          ({unit.nightHours} hours)
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -263,17 +268,44 @@ const UnitDetails = () => {
                       <div className="flex items-start">
                         <div className="text-2xl mr-3">⏰</div>
                         <div className="flex-1">
-                          <div className="text-sm font-semibold text-purple-900 mb-2">Hourly Pricing Options</div>
-                          <div className="space-y-1">
+                          <div className="text-sm font-semibold text-purple-900 mb-3">Hourly Pricing Options</div>
+                          <div className="space-y-3">
                             {unit.hourlyPricing.map((pricing, index) => (
                               pricing.hours && pricing.price && (
-                                <div key={index} className="flex items-center justify-between text-sm text-purple-700">
-                                  <span>{pricing.hours} {pricing.hours === '1' ? 'hour' : 'hours'}</span>
-                                  <span className="font-semibold">₱{pricing.price}</span>
+                                <div key={index} className="bg-white rounded-lg p-3 border border-purple-200">
+                                  <div className="flex items-center justify-between mb-2">
+                                    <span className="font-semibold text-purple-900">
+                                      {pricing.hours} {pricing.hours === '1' ? 'hour' : 'hours'}
+                                    </span>
+                                    <span className="text-lg font-bold text-purple-700">₱{pricing.price}</span>
+                                  </div>
+                                  
+                                  {/* Time Type Badge */}
+                                  <div className="flex items-center gap-2 text-xs">
+                                    {pricing.isFlexible === false ? (
+                                      <>
+                                        <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded">
+                                          🕐 Fixed Time
+                                        </span>
+                                        {pricing.checkInTime && pricing.checkOutTime && (
+                                          <span className="text-gray-600">
+                                            {pricing.checkInTime} - {pricing.checkOutTime}
+                                          </span>
+                                        )}
+                                      </>
+                                    ) : (
+                                      <span className="bg-green-100 text-green-700 px-2 py-1 rounded">
+                                        ✨ Flexible Time
+                                      </span>
+                                    )}
+                                  </div>
                                 </div>
                               )
                             ))}
                           </div>
+                          <p className="text-xs text-purple-600 mt-3 italic">
+                            💡 Select your preferred option when booking
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -305,7 +337,9 @@ const UnitDetails = () => {
                       <div className="text-3xl font-bold text-primary">
                         ₱{unit.pricePerNight}
                       </div>
-                      <div className="text-sm text-gray-600">per night</div>
+                      <div className="text-sm text-gray-600">
+                        per night {unit.nightHours && `(${unit.nightHours} hours)`}
+                      </div>
                     </div>
                     <div className="flex gap-2">
                       <Button 

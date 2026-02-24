@@ -66,7 +66,7 @@ router.get('/:id', verifyToken, checkRole('host'), (req, res) => {
 // Create new unit
 router.post('/', verifyToken, checkRole('host'), checkVerified, (req, res) => {
   try {
-    const { name, type, location, description, pricePerNight, bedrooms, bathrooms, maxGuests, amenities, securityDeposit, houseRules, instantBooking, extraGuestFee, hourlyPricing, fixedCheckInTime, fixedCheckOutTime } = req.body;
+    const { name, type, location, description, pricePerNight, bedrooms, bathrooms, maxGuests, amenities, securityDeposit, houseRules, instantBooking, extraGuestFee, hourlyPricing, fixedCheckInTime, fixedCheckOutTime, nightHours, latitude, longitude } = req.body;
     
     if (!name || !type || !location) {
       return res.status(400).json({ success: false, message: 'Missing required fields' });
@@ -83,6 +83,7 @@ router.post('/', verifyToken, checkRole('host'), checkVerified, (req, res) => {
       location,
       description: description || '',
       pricePerNight: Number(pricePerNight) || 0,
+      nightHours: nightHours || '22',
       bedrooms: Number(bedrooms) || 1,
       bathrooms: Number(bathrooms) || 1,
       maxGuests: Number(maxGuests) || 2,
@@ -95,10 +96,13 @@ router.post('/', verifyToken, checkRole('host'), checkVerified, (req, res) => {
       hourlyPricing: hourlyPricing || [],
       fixedCheckInTime: fixedCheckInTime || '14:00',
       fixedCheckOutTime: fixedCheckOutTime || '12:00',
+      latitude: latitude || null,
+      longitude: longitude || null,
       images: [],
       rating: 0,
       reviews: 0,
       available: true,
+      moderationStatus: 'approved', // Auto-approve new units
       createdAt: new Date().toISOString()
     };
     
@@ -114,7 +118,7 @@ router.post('/', verifyToken, checkRole('host'), checkVerified, (req, res) => {
 // Update unit
 router.put('/:id', verifyToken, checkRole('host'), checkVerified, (req, res) => {
   try {
-    const { name, type, location, description, pricePerNight, bedrooms, bathrooms, maxGuests, amenities, securityDeposit, available, houseRules, instantBooking, extraGuestFee, hourlyPricing, fixedCheckInTime, fixedCheckOutTime } = req.body;
+    const { name, type, location, description, pricePerNight, bedrooms, bathrooms, maxGuests, amenities, securityDeposit, available, houseRules, instantBooking, extraGuestFee, hourlyPricing, fixedCheckInTime, fixedCheckOutTime, nightHours, latitude, longitude } = req.body;
     
     const unitsPath = path.join(__dirname, '../../data/units.json');
     const units = JSON.parse(fs.readFileSync(unitsPath, 'utf8'));
@@ -131,6 +135,7 @@ router.put('/:id', verifyToken, checkRole('host'), checkVerified, (req, res) => 
     if (location) unit.location = location;
     if (description !== undefined) unit.description = description;
     if (pricePerNight) unit.pricePerNight = Number(pricePerNight);
+    if (nightHours !== undefined) unit.nightHours = nightHours;
     if (bedrooms) unit.bedrooms = Number(bedrooms);
     if (bathrooms) unit.bathrooms = Number(bathrooms);
     if (maxGuests) unit.maxGuests = Number(maxGuests);
@@ -143,6 +148,8 @@ router.put('/:id', verifyToken, checkRole('host'), checkVerified, (req, res) => 
     if (hourlyPricing !== undefined) unit.hourlyPricing = hourlyPricing;
     if (fixedCheckInTime !== undefined) unit.fixedCheckInTime = fixedCheckInTime;
     if (fixedCheckOutTime !== undefined) unit.fixedCheckOutTime = fixedCheckOutTime;
+    if (latitude !== undefined) unit.latitude = latitude;
+    if (longitude !== undefined) unit.longitude = longitude;
     unit.updatedAt = new Date().toISOString();
     
     units[unitIndex] = unit;
