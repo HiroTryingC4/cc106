@@ -28,7 +28,7 @@ function MapViewController({ center, zoom }) {
 }
 
 // Component to handle map clicks and marker dragging
-function LocationMarker({ position, setPosition, onLocationChange }) {
+function LocationMarker({ position, setPosition, onLocationChange, onPositionChange }) {
   const markerRef = useRef(null);
   const map = useMap();
 
@@ -36,7 +36,7 @@ function LocationMarker({ position, setPosition, onLocationChange }) {
   useEffect(() => {
     const handleClick = (e) => {
       const newPos = [e.latlng.lat, e.latlng.lng];
-      setPosition(newPos);
+      onPositionChange(newPos);
       reverseGeocode(e.latlng.lat, e.latlng.lng, onLocationChange);
     };
 
@@ -44,14 +44,15 @@ function LocationMarker({ position, setPosition, onLocationChange }) {
     return () => {
       map.off('click', handleClick);
     };
-  }, [map, setPosition, onLocationChange]);
+  }, [map, onLocationChange, onPositionChange]);
 
   const eventHandlers = {
     dragend() {
       const marker = markerRef.current;
       if (marker != null) {
         const newPos = marker.getLatLng();
-        setPosition([newPos.lat, newPos.lng]);
+        const posArray = [newPos.lat, newPos.lng];
+        onPositionChange(posArray);
         reverseGeocode(newPos.lat, newPos.lng, onLocationChange);
       }
     },
@@ -105,6 +106,7 @@ const LocationPicker = ({ value, onChange, error }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
+  const [isLoadingAddress, setIsLoadingAddress] = useState(false);
 
   useEffect(() => {
     if (value) {
@@ -117,6 +119,7 @@ const LocationPicker = ({ value, onChange, error }) => {
     if (!searchQuery.trim()) return;
 
     setIsSearching(true);
+    setShowResults(false);
     const results = await searchLocation(searchQuery);
     setSearchResults(results);
     setShowResults(true);
@@ -144,9 +147,16 @@ const LocationPicker = ({ value, onChange, error }) => {
     setShowResults(false);
   };
 
-  const handleLocationChange = (address, lat, lng) => {
+  const handleLocationChange = async (address, lat, lng) => {
     setSearchQuery(address);
     onChange(address, lat, lng);
+    setIsLoadingAddress(false);
+  };
+
+  const handlePositionChange = (newPos) => {
+    setPosition(newPos);
+    setIsLoadingAddress(true);
+    setSearchQuery('Loading address...');
   };
 
   return (
@@ -245,12 +255,13 @@ const LocationPicker = ({ value, onChange, error }) => {
             position={position}
             setPosition={setPosition}
             onLocationChange={handleLocationChange}
+            onPositionChange={handlePositionChange}
           />
         </MapContainer>
       </div>
 
       {/* Selected Location Display */}
-      {position && searchQuery && (
+      {position && searchQuery && !isLoadingAddress && (
         <div className="bg-green-50 border border-green-200 rounded-lg p-3">
           <p className="text-sm text-green-800">
             <strong>✓ Selected Location:</strong> {searchQuery}
@@ -260,6 +271,19 @@ const LocationPicker = ({ value, onChange, error }) => {
           </p>
           <p className="text-xs text-green-600 mt-1 italic">
             You can drag the marker to fine-tune the exact position
+          </p>
+        </div>
+      )}
+
+      {/* Loading Address Indicator */}
+      {isLoadingAddress && position && (
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+          <p className="text-sm text-blue-800">
+            <span className="inline-block animate-spin mr-2">⏳</span>
+            <strong>Getting address...</strong>
+          </p>
+          <p className="text-xs text-blue-600 mt-1">
+            📍 Coordinates: {position[0].toFixed(6)}, {position[1].toFixed(6)}
           </p>
         </div>
       )}
