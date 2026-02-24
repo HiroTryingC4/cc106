@@ -5,6 +5,7 @@ import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import ImageUpload from '../../components/ImageUpload';
+import LocationPicker from '../../components/LocationPicker';
 import { useToast } from '../../components/Toast';
 import { useAuth } from '../../context/AuthContext';
 
@@ -32,6 +33,8 @@ const UnitForm = () => {
     name: '',
     type: 'Apartment',
     location: '',
+    latitude: null,
+    longitude: null,
     description: '',
     pricePerNight: '',
     bedrooms: '1',
@@ -72,6 +75,8 @@ const UnitForm = () => {
           name: data.unit.name,
           type: data.unit.type,
           location: data.unit.location,
+          latitude: data.unit.latitude || null,
+          longitude: data.unit.longitude || null,
           description: data.unit.description || '',
           pricePerNight: data.unit.pricePerNight,
           bedrooms: data.unit.bedrooms,
@@ -397,17 +402,21 @@ const UnitForm = () => {
             </div>
 
             <div>
-              <Input
-                label="Location *"
-                type="text"
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Location * 📍
+              </label>
+              <LocationPicker
                 value={formData.location}
-                onChange={(e) => {
-                  setFormData({ ...formData, location: e.target.value });
+                onChange={(address, lat, lng) => {
+                  setFormData({ 
+                    ...formData, 
+                    location: address,
+                    latitude: lat,
+                    longitude: lng
+                  });
                   setErrors({ ...errors, location: false });
                 }}
-                placeholder="e.g., Manila, Philippines"
-                required
-                className={errors.location ? 'border-red-500 ring-2 ring-red-200' : ''}
+                error={errors.location}
               />
               {errors.location && (
                 <p className="text-red-500 text-sm mt-1">⚠️ Location is required</p>
