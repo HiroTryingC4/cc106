@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "userId": "3",
+    "action": "booking_created",
+    "details": "Created booking #1 for Cozy Studio",
+    "timestamp": "2024-05-10T10:30:00.000Z"
+  },
+  {
+    "id": "2",
+    "userId": "2",
+    "action": "unit_created",
+    "details": "Created unit 'Cozy Studio'",
+    "timestamp": "2024-01-20T14:15:00.000Z"
+  },
+  {
+    "id": "3",
+    "userId": "3",
+    "action": "payment_completed",
+    "details": "Completed payment for booking #1",
+    "timestamp": "2024-05-10T11:00:00.000Z"
+  },
+  {
+    "id": "4",
+    "userId": "2",
+    "action": "booking_approved",
+    "details": "Approved booking #1",
+    "timestamp": "2024-05-10T12:00:00.000Z"
+  },
+  {
+    "id": "5",
+    "userId": "3",
+    "action": "review_submitted",
+    "details": "Submitted review for booking #3",
+    "timestamp": "2024-05-06T09:30:00.000Z"
+  }
+]

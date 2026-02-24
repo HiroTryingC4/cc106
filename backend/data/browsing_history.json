@@ -1,0 +1,2029 @@
+[
+  {
+    "id": "1",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-20T10:30:00.000Z"
+  },
+  {
+    "id": "2",
+    "guestId": "3",
+    "unitId": "2",
+    "unitType": "studio",
+    "pricePerNight": 85,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Workspace",
+      "Gym Access"
+    ],
+    "viewedAt": "2026-02-20T11:15:00.000Z"
+  },
+  {
+    "id": "3",
+    "guestId": "3",
+    "unitId": "3",
+    "unitType": "villa",
+    "pricePerNight": 250,
+    "bedrooms": 3,
+    "maxGuests": 6,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Pool",
+      "Garden",
+      "BBQ"
+    ],
+    "viewedAt": "2026-02-20T12:00:00.000Z"
+  },
+  {
+    "id": "4",
+    "guestId": "3",
+    "unitId": "4",
+    "unitType": "condo",
+    "pricePerNight": 120,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Gym Access"
+    ],
+    "viewedAt": "2026-02-20T13:30:00.000Z"
+  },
+  {
+    "id": "5",
+    "guestId": "3",
+    "unitId": "5",
+    "unitType": "condo",
+    "pricePerNight": 180,
+    "bedrooms": 2,
+    "maxGuests": 5,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "City View"
+    ],
+    "viewedAt": "2026-02-20T14:45:00.000Z"
+  },
+  {
+    "id": "6",
+    "guestId": "3",
+    "unitId": "6",
+    "unitType": "villa",
+    "pricePerNight": 300,
+    "bedrooms": 4,
+    "maxGuests": 8,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Pool",
+      "Garden",
+      "Hot Tub"
+    ],
+    "viewedAt": "2026-02-21T09:00:00.000Z"
+  },
+  {
+    "id": "7",
+    "guestId": "3",
+    "unitId": "7",
+    "unitType": "apartment",
+    "pricePerNight": 95,
+    "bedrooms": 1,
+    "maxGuests": 3,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking"
+    ],
+    "viewedAt": "2026-02-21T10:30:00.000Z"
+  },
+  {
+    "id": "8",
+    "guestId": "3",
+    "unitId": "8",
+    "unitType": "condo",
+    "pricePerNight": 160,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Pool",
+      "Beach Access",
+      "Balcony"
+    ],
+    "viewedAt": "2026-02-21T15:20:00.000Z"
+  },
+  {
+    "id": "9",
+    "guestId": "3",
+    "unitId": "2",
+    "unitType": "studio",
+    "pricePerNight": 85,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Workspace",
+      "Gym Access"
+    ],
+    "viewedAt": "2026-02-22T11:37:08.708Z"
+  },
+  {
+    "id": "10",
+    "guestId": "3",
+    "unitId": "2",
+    "unitType": "studio",
+    "pricePerNight": 85,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Workspace",
+      "Gym Access"
+    ],
+    "viewedAt": "2026-02-22T11:37:08.735Z"
+  },
+  {
+    "id": "11",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T11:50:52.640Z"
+  },
+  {
+    "id": "12",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T11:50:52.674Z"
+  },
+  {
+    "id": "13",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T11:53:19.843Z"
+  },
+  {
+    "id": "14",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T11:53:19.895Z"
+  },
+  {
+    "id": "15",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T11:54:16.735Z"
+  },
+  {
+    "id": "16",
+    "guestId": "3",
+    "unitId": "2",
+    "unitType": "studio",
+    "pricePerNight": 85,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Workspace",
+      "Gym Access"
+    ],
+    "viewedAt": "2026-02-22T12:03:30.757Z"
+  },
+  {
+    "id": "17",
+    "guestId": "3",
+    "unitId": "2",
+    "unitType": "studio",
+    "pricePerNight": 85,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Workspace",
+      "Gym Access"
+    ],
+    "viewedAt": "2026-02-22T12:03:30.786Z"
+  },
+  {
+    "id": "18",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T12:13:33.730Z"
+  },
+  {
+    "id": "19",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T12:13:33.766Z"
+  },
+  {
+    "id": "20",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T12:42:57.292Z"
+  },
+  {
+    "id": "21",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T12:42:57.319Z"
+  },
+  {
+    "id": "22",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T12:43:06.793Z"
+  },
+  {
+    "id": "23",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T12:43:06.827Z"
+  },
+  {
+    "id": "24",
+    "guestId": "3",
+    "unitId": "2",
+    "unitType": "studio",
+    "pricePerNight": 85,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Workspace",
+      "Gym Access"
+    ],
+    "viewedAt": "2026-02-22T13:04:14.410Z"
+  },
+  {
+    "id": "25",
+    "guestId": "3",
+    "unitId": "2",
+    "unitType": "studio",
+    "pricePerNight": 85,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Workspace",
+      "Gym Access"
+    ],
+    "viewedAt": "2026-02-22T13:04:14.431Z"
+  },
+  {
+    "id": "26",
+    "guestId": "3",
+    "unitId": "2",
+    "unitType": "studio",
+    "pricePerNight": 85,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Workspace",
+      "Gym Access"
+    ],
+    "viewedAt": "2026-02-22T13:05:25.722Z"
+  },
+  {
+    "id": "27",
+    "guestId": "3",
+    "unitId": "2",
+    "unitType": "studio",
+    "pricePerNight": 85,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Workspace",
+      "Gym Access"
+    ],
+    "viewedAt": "2026-02-22T13:05:25.767Z"
+  },
+  {
+    "id": "28",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T13:41:52.455Z"
+  },
+  {
+    "id": "29",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T13:41:52.476Z"
+  },
+  {
+    "id": "30",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T13:42:07.209Z"
+  },
+  {
+    "id": "31",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T13:42:37.192Z"
+  },
+  {
+    "id": "32",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T13:43:07.168Z"
+  },
+  {
+    "id": "33",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T13:43:37.189Z"
+  },
+  {
+    "id": "34",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T13:44:07.191Z"
+  },
+  {
+    "id": "35",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T13:44:37.177Z"
+  },
+  {
+    "id": "36",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T13:45:07.193Z"
+  },
+  {
+    "id": "37",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T13:46:00.170Z"
+  },
+  {
+    "id": "38",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T13:52:15.037Z"
+  },
+  {
+    "id": "39",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T13:52:15.059Z"
+  },
+  {
+    "id": "40",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T13:52:41.178Z"
+  },
+  {
+    "id": "41",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T13:53:11.174Z"
+  },
+  {
+    "id": "42",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T13:53:41.495Z"
+  },
+  {
+    "id": "43",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T13:54:11.234Z"
+  },
+  {
+    "id": "44",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T13:54:41.198Z"
+  },
+  {
+    "id": "45",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T13:55:11.229Z"
+  },
+  {
+    "id": "46",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T13:55:41.189Z"
+  },
+  {
+    "id": "47",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T14:04:10.622Z"
+  },
+  {
+    "id": "48",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T14:04:14.106Z"
+  },
+  {
+    "id": "49",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T14:04:14.160Z"
+  },
+  {
+    "id": "50",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T14:04:44.079Z"
+  },
+  {
+    "id": "51",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T14:05:14.424Z"
+  },
+  {
+    "id": "52",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T14:05:44.209Z"
+  },
+  {
+    "id": "53",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T14:06:14.244Z"
+  },
+  {
+    "id": "54",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T14:06:44.259Z"
+  },
+  {
+    "id": "55",
+    "guestId": "3",
+    "unitId": "9",
+    "unitType": "Apartment",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-02-22T14:07:14.190Z"
+  },
+  {
+    "id": "56",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:12:28.025Z"
+  },
+  {
+    "id": "57",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:12:28.056Z"
+  },
+  {
+    "id": "58",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:12:55.991Z"
+  },
+  {
+    "id": "59",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:16:01.975Z"
+  },
+  {
+    "id": "60",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:16:01.998Z"
+  },
+  {
+    "id": "61",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:16:28.177Z"
+  },
+  {
+    "id": "62",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:16:58.264Z"
+  },
+  {
+    "id": "63",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:17:28.199Z"
+  },
+  {
+    "id": "64",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:17:58.173Z"
+  },
+  {
+    "id": "65",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:18:15.201Z"
+  },
+  {
+    "id": "66",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:18:28.185Z"
+  },
+  {
+    "id": "67",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:18:30.196Z"
+  },
+  {
+    "id": "68",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:18:58.192Z"
+  },
+  {
+    "id": "69",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:19:28.194Z"
+  },
+  {
+    "id": "70",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:20:00.167Z"
+  },
+  {
+    "id": "71",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:21:00.172Z"
+  },
+  {
+    "id": "72",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:21:27.894Z"
+  },
+  {
+    "id": "73",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:21:58.189Z"
+  },
+  {
+    "id": "74",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:22:12.185Z"
+  },
+  {
+    "id": "75",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:22:28.181Z"
+  },
+  {
+    "id": "76",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:23:00.170Z"
+  },
+  {
+    "id": "77",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:23:27.909Z"
+  },
+  {
+    "id": "78",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:23:43.820Z"
+  },
+  {
+    "id": "79",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:23:57.920Z"
+  },
+  {
+    "id": "80",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:24:28.191Z"
+  },
+  {
+    "id": "81",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:24:57.193Z"
+  },
+  {
+    "id": "82",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:24:58.182Z"
+  },
+  {
+    "id": "83",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:25:28.169Z"
+  },
+  {
+    "id": "84",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:26:00.175Z"
+  },
+  {
+    "id": "85",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:27:00.167Z"
+  },
+  {
+    "id": "86",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:28:00.169Z"
+  },
+  {
+    "id": "87",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:29:00.162Z"
+  },
+  {
+    "id": "88",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:32:32.556Z"
+  },
+  {
+    "id": "89",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:32:57.905Z"
+  },
+  {
+    "id": "90",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:33:27.911Z"
+  },
+  {
+    "id": "91",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:33:58.163Z"
+  },
+  {
+    "id": "92",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:34:28.186Z"
+  },
+  {
+    "id": "93",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:35:00.171Z"
+  },
+  {
+    "id": "94",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:35:27.894Z"
+  },
+  {
+    "id": "95",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:35:58.185Z"
+  },
+  {
+    "id": "96",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:36:28.239Z"
+  },
+  {
+    "id": "97",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:37:00.177Z"
+  },
+  {
+    "id": "98",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:37:32.918Z"
+  },
+  {
+    "id": "99",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T15:37:57.908Z"
+  },
+  {
+    "id": "100",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T16:18:42.467Z"
+  },
+  {
+    "id": "101",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T16:18:42.509Z"
+  },
+  {
+    "id": "102",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T16:27:14.222Z"
+  },
+  {
+    "id": "103",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T16:27:14.285Z"
+  },
+  {
+    "id": "104",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T16:27:36.277Z"
+  },
+  {
+    "id": "105",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T16:36:14.624Z"
+  },
+  {
+    "id": "106",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T16:36:14.721Z"
+  },
+  {
+    "id": "107",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T16:36:34.051Z"
+  },
+  {
+    "id": "108",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T18:33:31.212Z"
+  },
+  {
+    "id": "109",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-22T18:33:31.258Z"
+  },
+  {
+    "id": "110",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-23T11:17:36.949Z"
+  },
+  {
+    "id": "111",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-23T11:17:36.974Z"
+  },
+  {
+    "id": "112",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-23T11:39:51.057Z"
+  },
+  {
+    "id": "113",
+    "guestId": "3",
+    "unitId": "1",
+    "unitType": "condo",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 4,
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "viewedAt": "2026-02-23T11:39:51.107Z"
+  },
+  {
+    "id": "114",
+    "guestId": "3",
+    "unitId": "10",
+    "unitType": "Apartment",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 2,
+    "amenities": [
+      "Pool",
+      "Dryer"
+    ],
+    "viewedAt": "2026-02-23T11:50:26.982Z"
+  },
+  {
+    "id": "115",
+    "guestId": "3",
+    "unitId": "10",
+    "unitType": "Apartment",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 2,
+    "amenities": [
+      "Pool",
+      "Dryer"
+    ],
+    "viewedAt": "2026-02-23T11:50:27.029Z"
+  },
+  {
+    "id": "116",
+    "guestId": "3",
+    "unitId": "10",
+    "unitType": "Apartment",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 2,
+    "amenities": [
+      "Pool",
+      "Dryer"
+    ],
+    "viewedAt": "2026-02-23T11:50:50.850Z"
+  },
+  {
+    "id": "117",
+    "guestId": "3",
+    "unitId": "10",
+    "unitType": "Apartment",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 2,
+    "amenities": [
+      "Pool",
+      "Dryer"
+    ],
+    "viewedAt": "2026-02-23T11:50:50.887Z"
+  },
+  {
+    "id": "118",
+    "guestId": "3",
+    "unitId": "10",
+    "unitType": "Apartment",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 2,
+    "amenities": [
+      "Pool",
+      "Dryer"
+    ],
+    "viewedAt": "2026-02-23T11:51:00.072Z"
+  },
+  {
+    "id": "119",
+    "guestId": "3",
+    "unitId": "10",
+    "unitType": "Apartment",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 2,
+    "amenities": [
+      "Pool",
+      "Dryer"
+    ],
+    "viewedAt": "2026-02-23T11:51:00.110Z"
+  },
+  {
+    "id": "120",
+    "guestId": "3",
+    "unitId": "10",
+    "unitType": "Apartment",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 2,
+    "amenities": [
+      "Pool",
+      "Dryer"
+    ],
+    "viewedAt": "2026-02-23T12:11:20.606Z"
+  },
+  {
+    "id": "121",
+    "guestId": "3",
+    "unitId": "10",
+    "unitType": "Apartment",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 2,
+    "amenities": [
+      "Pool",
+      "Dryer"
+    ],
+    "viewedAt": "2026-02-23T12:11:20.674Z"
+  },
+  {
+    "id": "122",
+    "guestId": "3",
+    "unitId": "10",
+    "unitType": "Apartment",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 2,
+    "amenities": [
+      "Pool",
+      "Dryer"
+    ],
+    "viewedAt": "2026-02-23T12:21:17.589Z"
+  },
+  {
+    "id": "123",
+    "guestId": "3",
+    "unitId": "10",
+    "unitType": "Apartment",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "maxGuests": 2,
+    "amenities": [
+      "Pool",
+      "Dryer"
+    ],
+    "viewedAt": "2026-02-23T12:21:17.651Z"
+  }
+]

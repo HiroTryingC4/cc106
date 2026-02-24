@@ -1,0 +1,283 @@
+[
+  {
+    "id": "1",
+    "hostId": "2",
+    "name": "Luxury Beachfront Condo",
+    "description": "Stunning 2-bedroom condo with ocean views, modern amenities, and direct beach access.",
+    "type": "condo",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "maxGuests": 4,
+    "pricePerNight": 150,
+    "images": [
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800"
+    ],
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Parking",
+      "Pool",
+      "Beach Access"
+    ],
+    "houseRules": "No smoking, No pets, Check-in after 3 PM, Check-out before 11 AM",
+    "instantBooking": true,
+    "address": "123 Ocean Drive, Miami Beach, FL",
+    "rating": 4.8,
+    "reviewCount": 45,
+    "status": "available",
+    "moderationStatus": "approved",
+    "available": true
+  },
+  {
+    "id": "2",
+    "hostId": "2",
+    "name": "Modern Downtown Studio",
+    "description": "Cozy studio apartment in the heart of downtown, perfect for business travelers.",
+    "type": "studio",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "maxGuests": 2,
+    "pricePerNight": 85,
+    "images": [
+      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800"
+    ],
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Workspace",
+      "Gym Access"
+    ],
+    "houseRules": "No smoking, Quiet hours 10 PM - 8 AM",
+    "instantBooking": false,
+    "address": "456 Main Street, Downtown, FL",
+    "rating": 4.5,
+    "reviewCount": 28,
+    "status": "available",
+    "moderationStatus": "pending"
+  },
+  {
+    "id": "3",
+    "hostId": "2",
+    "name": "Family-Friendly Villa",
+    "description": "Spacious 3-bedroom villa with private pool, perfect for families.",
+    "type": "villa",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "maxGuests": 6,
+    "pricePerNight": 220,
+    "images": [
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800"
+    ],
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Private Pool",
+      "BBQ",
+      "Parking"
+    ],
+    "houseRules": "Pets allowed with deposit, No parties",
+    "instantBooking": true,
+    "address": "789 Palm Avenue, Coral Gables, FL",
+    "rating": 4.9,
+    "reviewCount": 62,
+    "status": "available",
+    "moderationStatus": "approved"
+  },
+  {
+    "id": "4",
+    "hostId": "2",
+    "name": "Cozy Mountain Cabin",
+    "description": "Rustic cabin with mountain views, fireplace, and hiking trails nearby.",
+    "type": "cabin",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "maxGuests": 4,
+    "pricePerNight": 120,
+    "images": [
+      "https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=800"
+    ],
+    "amenities": [
+      "WiFi",
+      "Fireplace",
+      "Kitchen",
+      "Hiking Trails",
+      "Parking"
+    ],
+    "houseRules": "No smoking indoors, Pets allowed",
+    "instantBooking": false,
+    "address": "321 Mountain Road, Asheville, NC",
+    "rating": 4.7,
+    "reviewCount": 34,
+    "status": "available",
+    "moderationStatus": "approved",
+    "flagged": true,
+    "flagReason": "Suspicious pricing pattern detected"
+  },
+  {
+    "id": "5",
+    "hostId": "2",
+    "name": "Urban Loft Apartment",
+    "description": "Stylish loft with high ceilings and modern design in trendy neighborhood.",
+    "type": "apartment",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "maxGuests": 2,
+    "pricePerNight": 95,
+    "images": [
+      "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800"
+    ],
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Workspace",
+      "Rooftop Access"
+    ],
+    "houseRules": "No smoking, No pets",
+    "instantBooking": true,
+    "address": "555 Urban Street, Brooklyn, NY",
+    "rating": 4.6,
+    "reviewCount": 41,
+    "status": "available",
+    "moderationStatus": "approved"
+  },
+  {
+    "id": "6",
+    "hostId": "2",
+    "name": "Lakeside Retreat",
+    "description": "Peaceful lakefront property with dock, kayaks, and stunning sunset views.",
+    "type": "house",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "maxGuests": 8,
+    "pricePerNight": 280,
+    "images": [
+      "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?w=800"
+    ],
+    "amenities": [
+      "WiFi",
+      "Kitchen",
+      "Dock",
+      "Kayaks",
+      "Fire Pit",
+      "Parking"
+    ],
+    "houseRules": "No smoking, Pets allowed, Quiet hours after 10 PM",
+    "instantBooking": false,
+    "address": "999 Lake Road, Lake Tahoe, CA",
+    "rating": 4.9,
+    "reviewCount": 78,
+    "status": "available",
+    "moderationStatus": "pending"
+  },
+  {
+    "id": "7",
+    "hostId": "2",
+    "name": "City Center Penthouse",
+    "description": "Luxurious penthouse with panoramic city views and premium amenities.",
+    "type": "penthouse",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "maxGuests": 6,
+    "pricePerNight": 350,
+    "images": [
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800"
+    ],
+    "amenities": [
+      "WiFi",
+      "Air Conditioning",
+      "Kitchen",
+      "Balcony",
+      "Gym",
+      "Concierge"
+    ],
+    "houseRules": "No smoking, No pets, No parties",
+    "instantBooking": false,
+    "address": "100 Skyline Avenue, Manhattan, NY",
+    "rating": 4.8,
+    "reviewCount": 56,
+    "status": "available",
+    "moderationStatus": "rejected",
+    "rejectionReason": "Photos do not match property description"
+  },
+  {
+    "id": "8",
+    "hostId": "2",
+    "name": "Countryside Cottage",
+    "description": "Charming cottage surrounded by gardens and rolling hills.",
+    "type": "cottage",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "maxGuests": 4,
+    "pricePerNight": 110,
+    "images": [
+      "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800"
+    ],
+    "amenities": [
+      "WiFi",
+      "Kitchen",
+      "Garden",
+      "Fireplace",
+      "Parking"
+    ],
+    "houseRules": "No smoking, Pets allowed",
+    "instantBooking": true,
+    "address": "777 Country Lane, Vermont",
+    "rating": 4.7,
+    "reviewCount": 39,
+    "status": "available",
+    "moderationStatus": "approved"
+  },
+  {
+    "id": "9",
+    "hostId": "13",
+    "name": "TRIAL5@gmail.com",
+    "type": "Apartment",
+    "location": "TRIAL5@gmail.com",
+    "description": "TRIAL5@gmail.com",
+    "pricePerNight": 21321,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "securityDeposit": 200,
+    "houseRules": "TRIAL5@gmail.com",
+    "instantBooking": false,
+    "images": [],
+    "rating": 0,
+    "reviews": 0,
+    "available": true,
+    "createdAt": "2026-02-20T17:33:09.814Z",
+    "moderationStatus": "approved",
+    "approvedAt": "2026-02-20T18:56:41.949Z",
+    "approvedBy": "1",
+    "status": "available"
+  },
+  {
+    "id": "10",
+    "hostId": "13",
+    "name": "Barola",
+    "type": "Apartment",
+    "location": "Trees Residences Quezon City",
+    "description": "asd",
+    "pricePerNight": 150,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "maxGuests": 2,
+    "amenities": [
+      "Pool",
+      "Dryer"
+    ],
+    "securityDeposit": 200,
+    "houseRules": "asd",
+    "instantBooking": false,
+    "images": [],
+    "rating": 0,
+    "reviews": 0,
+    "available": true,
+    "createdAt": "2026-02-23T11:49:59.124Z"
+  }
+]

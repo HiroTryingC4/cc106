@@ -1,0 +1,163 @@
+[
+  {
+    "id": "1",
+    "hostId": "5",
+    "hostName": "undefined undefined",
+    "hostEmail": "host3@smartstay.com",
+    "documents": {
+      "businessName": "Rodriguez Property Management",
+      "businessAddress": "789 Sunset Boulevard, Los Angeles, CA 90028",
+      "businessType": "llc",
+      "idType": "passport",
+      "idNumber": "P87654321",
+      "taxId": "12-3456789",
+      "bankName": "Bank of America",
+      "bankAccount": "****9012",
+      "proofOfOwnership": "Property deed and LLC registration - Document ID: DOC-2024-003",
+      "additionalDocs": "Business license, Liability insurance, Property management certification"
+    },
+    "status": "approved",
+    "submittedAt": "2026-02-20T16:48:26.391Z",
+    "reviewedAt": "2026-02-20T16:48:43.406Z",
+    "reviewedBy": "1",
+    "rejectionReason": null
+  },
+  {
+    "id": "2",
+    "hostId": "4",
+    "hostName": "Emily Davis",
+    "hostEmail": "host2@smartstay.com",
+    "documents": {
+      "businessName": "Davis Vacation Rentals",
+      "businessAddress": "456 Beach Road, Miami, FL 33139",
+      "businessType": "individual",
+      "idType": "drivers_license",
+      "idNumber": "D1234567",
+      "taxId": "987-65-4321",
+      "bankName": "Chase Bank",
+      "bankAccount": "****5678",
+      "proofOfOwnership": "Property deed uploaded - Document ID: DOC-2024-001",
+      "additionalDocs": "Business permit, Insurance certificate"
+    },
+    "status": "pending",
+    "submittedAt": "2024-02-15T10:30:00.000Z",
+    "reviewedAt": null,
+    "reviewedBy": null,
+    "rejectionReason": null
+  },
+  {
+    "id": "3",
+    "hostId": "2",
+    "hostName": "undefined undefined",
+    "hostEmail": "host1@smartstay.com",
+    "documents": {
+      "businessName": "as",
+      "businessAddress": "d",
+      "businessType": "individual",
+      "idType": "passport",
+      "idNumber": "1231",
+      "taxId": "12312",
+      "bankAccount": "qwe",
+      "bankName": "wqe",
+      "proofOfOwnership": "sasda",
+      "additionalDocs": "asdas"
+    },
+    "status": "approved",
+    "submittedAt": "2026-02-20T16:44:17.708Z",
+    "reviewedAt": "2026-02-20T16:46:02.478Z",
+    "reviewedBy": "1",
+    "rejectionReason": null
+  },
+  {
+    "id": "4",
+    "hostId": "9",
+    "hostName": "undefined undefined",
+    "hostEmail": "qweqwdasdas@gmail",
+    "documents": {
+      "businessName": "q",
+      "businessAddress": "q",
+      "businessType": "individual",
+      "idType": "national_id",
+      "idNumber": "q",
+      "taxId": "q",
+      "bankAccount": "q",
+      "bankName": "q",
+      "proofOfOwnership": "q",
+      "additionalDocs": "q"
+    },
+    "status": "pending",
+    "submittedAt": "2026-02-20T16:54:52.393Z",
+    "reviewedAt": null,
+    "reviewedBy": null,
+    "rejectionReason": null
+  },
+  {
+    "id": "5",
+    "hostId": "11",
+    "hostName": "undefined undefined",
+    "hostEmail": "qweqwdAAAAAeqw@gmail",
+    "documents": {
+      "businessName": "TRIAL3",
+      "businessAddress": "TRIAL3",
+      "businessType": "individual",
+      "idType": "passport",
+      "idNumber": "2131231",
+      "taxId": "1231231",
+      "bankAccount": "TRIAL3",
+      "bankName": "TRIAL3",
+      "proofOfOwnership": "1ASDASDASD",
+      "additionalDocs": "ASDASDASDAS"
+    },
+    "status": "rejected",
+    "submittedAt": "2026-02-20T17:00:36.920Z",
+    "reviewedAt": "2026-02-22T16:42:03.925Z",
+    "reviewedBy": "1",
+    "rejectionReason": "ayaw ko sayo\n"
+  },
+  {
+    "id": "6",
+    "hostId": "12",
+    "hostName": "TRIAL4 TRIAL4",
+    "hostEmail": "TRIAL4@GMAIL.COM",
+    "documents": {
+      "businessName": "TRIAL4",
+      "businessAddress": "TRIAL4",
+      "businessType": "individual",
+      "idType": "passport",
+      "idNumber": "1231231",
+      "taxId": "123123",
+      "bankAccount": "TRIAL4",
+      "bankName": "TRIAL4",
+      "proofOfOwnership": "ASDASDASDASD",
+      "additionalDocs": "ASDASDA"
+    },
+    "status": "approved",
+    "submittedAt": "2026-02-20T17:03:25.639Z",
+    "reviewedAt": "2026-02-20T17:08:23.720Z",
+    "reviewedBy": "1",
+    "rejectionReason": null
+  },
+  {
+    "id": "7",
+    "hostId": "13",
+    "hostName": "TRIAL5 TRIAL5",
+    "hostEmail": "TRIAL5@gmail.com",
+    "documents": {
+      "businessName": "TRIAL5@gmail.com",
+      "businessAddress": "TRIAL5@gmail.com",
+      "businessType": "individual",
+      "idType": "passport",
+      "idNumber": "TRIAL5@gmail.com",
+      "taxId": "TRIAL5@gmail.com",
+      "bankAccount": "TRIAL5@gmail.com",
+      "bankName": "TRIAL5@gmail.com",
+      "proofOfOwnership": "TRIAL5@gmail.com",
+      "additionalDocs": "TRIAL5@gmail.com"
+    },
+    "status": "approved",
+    "submittedAt": "2026-02-20T17:18:39.059Z",
+    "reviewedAt": "2026-02-20T17:18:51.482Z",
+    "reviewedBy": "1",
+    "rejectionReason": null
+  }
+]

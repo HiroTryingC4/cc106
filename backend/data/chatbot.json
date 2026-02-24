@@ -1,0 +1,150 @@
+{
+  "faqs": [
+    {
+      "id": "1",
+      "question": "How do I book a unit?",
+      "answer": "To book a unit, browse available properties, select your desired unit, choose your check-in and check-out dates, and complete the booking process with payment.",
+      "keywords": ["book", "booking", "reserve", "reservation", "how to book"]
+    },
+    {
+      "id": "2",
+      "question": "What payment methods do you accept?",
+      "answer": "We accept payments via QR code. After booking, you'll receive a QR code to scan and complete your payment securely.",
+      "keywords": ["payment", "pay", "qr code", "payment method"]
+    },
+    {
+      "id": "3",
+      "question": "What is the cancellation policy?",
+      "answer": "You can cancel your booking up to 48 hours before check-in for a full refund. Cancellations within 48 hours are subject to a 50% fee.",
+      "keywords": ["cancel", "cancellation", "refund", "policy"]
+    },
+    {
+      "id": "4",
+      "question": "How do I check in?",
+      "answer": "Check-in instructions will be sent to your email 24 hours before your arrival. You'll receive the unit access code and any special instructions.",
+      "keywords": ["check in", "check-in", "arrival", "access code"]
+    },
+    {
+      "id": "5",
+      "question": "What about security deposits?",
+      "answer": "A security deposit is required for all bookings. It will be returned within 7 days after checkout if there are no damages or issues.",
+      "keywords": ["deposit", "security deposit", "refund deposit"]
+    },
+    {
+      "id": "6",
+      "question": "Can I modify my booking?",
+      "answer": "Yes, you can modify your booking dates from your dashboard. Changes are subject to availability and may affect the total price.",
+      "keywords": ["modify", "change", "edit booking", "update booking"]
+    },
+    {
+      "id": "7",
+      "question": "How do I become a host?",
+      "answer": "To become a host, register as a host on our platform, complete your profile, and list your property with photos and details. Our team will review and approve your listing.",
+      "keywords": ["host", "become host", "list property", "rent out"]
+    },
+    {
+      "id": "8",
+      "question": "How do I contact the host?",
+      "answer": "You can message the host directly through your booking details page. The host will receive your message and respond promptly.",
+      "keywords": ["contact", "message", "reach host", "talk to host"]
+    },
+    {
+      "id": "9",
+      "question": "What amenities are included?",
+      "answer": "Amenities vary by property. Check the unit details page for a complete list of amenities including WiFi, parking, kitchen, etc.",
+      "keywords": ["amenities", "facilities", "features", "included"]
+    },
+    {
+      "id": "10",
+      "question": "How do I leave a review?",
+      "answer": "After your checkout, you'll receive a link to leave a review. You can rate your experience and provide feedback about the property.",
+      "keywords": ["review", "rating", "feedback", "rate"]
+    }
+  ],
+  "hostFaqs": {
+    "13": [
+      {
+        "id": "h1",
+        "question": "What are the check-in and check-out times?",
+        "answer": "Check-in is from 3:00 PM onwards, and check-out is by 11:00 AM. Early check-in or late check-out can be arranged upon request with additional fees.",
+        "keywords": ["check in", "check out", "time", "hours", "early", "late"]
+      },
+      {
+        "id": "h2",
+        "question": "Is parking available?",
+        "answer": "Yes! Free parking is available on-site. We have 2 dedicated parking spaces for guests. No reservation needed - first come, first served.",
+        "keywords": ["parking", "car", "vehicle", "space", "free parking"]
+      },
+      {
+        "id": "h3",
+        "question": "Are pets allowed?",
+        "answer": "Sorry, pets are not allowed in this property to maintain cleanliness and accommodate guests with allergies. Service animals are welcome with proper documentation.",
+        "keywords": ["pets", "animals", "dogs", "cats", "pet policy", "service animals"]
+      },
+      {
+        "id": "h4",
+        "question": "What amenities are included?",
+        "answer": "Our property includes: Free WiFi, Air conditioning, Full kitchen with refrigerator and microwave, Smart TV with Netflix, Fresh linens and towels, Complimentary coffee and tea, and 24/7 security.",
+        "keywords": ["amenities", "wifi", "kitchen", "tv", "netflix", "linens", "coffee", "security"]
+      },
+      {
+        "id": "h5",
+        "question": "Is the property available for my dates?",
+        "answer": "Let me check the current availability for you! I'll look at the booking calendar to see what dates are open.",
+        "keywords": ["available", "dates", "calendar", "booking", "special request", "long stay", "availability", "free", "open"]
+      },
+      {
+        "id": "h6",
+        "question": "What's the cancellation policy?",
+        "answer": "I offer flexible cancellation: Full refund if cancelled 48+ hours before check-in. 50% refund if cancelled 24-48 hours before. No refund for same-day cancellations, except for emergencies (case by case).",
+        "keywords": ["cancel", "cancellation", "refund", "policy", "emergency", "flexible"]
+      },
+      {
+        "id": "h7",
+        "question": "How do I get the keys?",
+        "answer": "I use a smart lock system! You'll receive the door code via SMS 2 hours before your check-in time. The code is unique to your stay and expires after checkout for security.",
+        "keywords": ["keys", "access", "door code", "smart lock", "entry", "sms"]
+      },
+      {
+        "id": "h8",
+        "question": "Is there a minimum stay requirement?",
+        "answer": "Minimum stay is 2 nights for regular bookings. For weekends and holidays, minimum is 3 nights. Weekly stays (7+ nights) get 10% discount automatically applied!",
+        "keywords": ["minimum stay", "nights", "weekend", "holiday", "weekly", "discount"]
+      },
+      {
+        "id": "h9",
+        "question": "What's nearby the property?",
+        "answer": "Great location! 5-minute walk to downtown, 10 minutes to the beach, restaurants and cafes within 2 blocks. Grocery store across the street. Public transport stop right outside - very convenient!",
+        "keywords": ["location", "nearby", "downtown", "beach", "restaurants", "grocery", "transport", "convenient"]
+      },
+      {
+        "id": "h10",
+        "question": "Do you provide cleaning service?",
+        "answer": "The property is professionally cleaned before each stay. For stays longer than 7 days, I provide complimentary mid-stay cleaning. Additional cleaning can be arranged for $50.",
+        "keywords": ["cleaning", "housekeeping", "clean", "service", "mid-stay", "professional"]
+      },
+      {
+        "id": "h11",
+        "question": "How do I make a booking?",
+        "answer": "Booking is super easy! Just scroll down to the calendar, select your check-in and check-out dates, and click 'Book Now'. You'll get instant confirmation and receive all the details via email. Payment is secure and processed immediately.",
+        "keywords": ["how to book", "make booking", "reserve", "book now", "booking process", "how book"]
+      },
+      {
+        "id": "h12",
+        "question": "Can I book for tonight or tomorrow?",
+        "answer": "Yes! I accept same-day and next-day bookings if available. Just check the calendar - if the dates are green/available, you can book instantly. For same-day bookings, I'll send the access code within 1 hour of confirmation.",
+        "keywords": ["tonight", "tomorrow", "same day", "last minute", "urgent", "today", "asap"]
+      }
+    ]
+  },
+  "greetings": [
+    "Hello! I'm your Smart Stay assistant. How can I help you today?",
+    "Hi there! Welcome to Smart Stay. What can I assist you with?",
+    "Hey! I'm here to help with your booking questions. What would you like to know?"
+  ],
+  "fallback": [
+    "I'm not sure I understand. Could you rephrase that?",
+    "I don't have information about that. Would you like to speak with our support team?",
+    "That's a great question! Let me connect you with a human agent for better assistance."
+  ]
+}

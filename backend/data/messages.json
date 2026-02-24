@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "from": "13",
+    "fromRole": "host",
+    "to": "3",
+    "toRole": "guest",
+    "message": "HI\n",
+    "read": false,
+    "createdAt": "2026-02-20T17:39:49.847Z"
+  },
+  {
+    "id": "2",
+    "from": "2",
+    "fromRole": "host",
+    "to": "3",
+    "toRole": "guest",
+    "message": "Hi bro\n",
+    "read": true,
+    "createdAt": "2026-02-22T17:17:27.112Z"
+  },
+  {
+    "id": "3",
+    "from": "3",
+    "fromRole": "guest",
+    "to": "2",
+    "toRole": "host",
+    "message": "asdasd",
+    "read": false,
+    "createdAt": "2026-02-23T11:11:30.602Z"
+  }
+]

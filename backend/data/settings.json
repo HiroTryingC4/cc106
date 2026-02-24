@@ -1,0 +1,8 @@
+{
+  "siteName": "Smart Stay1",
+  "currency": "USD",
+  "timezone": "UTC",
+  "maintenanceMode": true,
+  "allowRegistration": true,
+  "requireEmailVerification": true
+}

@@ -1,0 +1,124 @@
+{
+  "logs": [
+    {
+      "id": "log_1",
+      "conversationId": "conv_1",
+      "timestamp": "2024-02-20T08:15:00Z",
+      "userId": "user_123",
+      "userRole": "guest",
+      "messageType": "user",
+      "message": "How do I book a unit?",
+      "faqId": "1",
+      "responseTime": 1200,
+      "isFallback": false
+    },
+    {
+      "id": "log_2",
+      "conversationId": "conv_1",
+      "timestamp": "2024-02-20T08:15:01Z",
+      "userId": "user_123",
+      "userRole": "guest",
+      "messageType": "bot",
+      "message": "To book a unit, browse available properties...",
+      "faqId": "1",
+      "responseTime": 1200,
+      "isFallback": false
+    },
+    {
+      "id": "log_3",
+      "conversationId": "conv_2",
+      "timestamp": "2024-02-20T09:30:00Z",
+      "userId": "user_456",
+      "userRole": "host",
+      "messageType": "user",
+      "message": "What payment methods do you accept?",
+      "faqId": "2",
+      "responseTime": 1100,
+      "isFallback": false
+    },
+    {
+      "id": "log_4",
+      "conversationId": "conv_2",
+      "timestamp": "2024-02-20T09:30:01Z",
+      "userId": "user_456",
+      "userRole": "host",
+      "messageType": "bot",
+      "message": "We accept payments via QR code...",
+      "faqId": "2",
+      "responseTime": 1100,
+      "isFallback": false
+    },
+    {
+      "id": "log_5",
+      "conversationId": "conv_3",
+      "timestamp": "2024-02-20T10:00:00Z",
+      "userId": "user_789",
+      "userRole": "guest",
+      "messageType": "user",
+      "message": "how to contact support",
+      "faqId": null,
+      "responseTime": 1300,
+      "isFallback": true
+    },
+    {
+      "id": "log_6",
+      "conversationId": "conv_3",
+      "timestamp": "2024-02-20T10:00:01Z",
+      "userId": "user_789",
+      "userRole": "guest",
+      "messageType": "bot",
+      "message": "I'm not sure I understand. Could you rephrase that?",
+      "faqId": null,
+      "responseTime": 1300,
+      "isFallback": true
+    },
+    {
+      "id": "log_7",
+      "conversationId": "conv_4",
+      "timestamp": "2024-02-20T10:15:00Z",
+      "userId": "user_234",
+      "userRole": "guest",
+      "messageType": "user",
+      "message": "What is the cancellation policy?",
+      "faqId": "3",
+      "responseTime": 1150,
+      "isFallback": false
+    },
+    {
+      "id": "log_8",
+      "conversationId": "conv_5",
+      "timestamp": "2024-02-20T10:30:00Z",
+      "userId": "user_567",
+      "userRole": "host",
+      "messageType": "user",
+      "message": "How do I check in?",
+      "faqId": "4",
+      "responseTime": 1180,
+      "isFallback": false
+    },
+    {
+      "id": "log_9",
+      "conversationId": "conv_6",
+      "timestamp": "2024-02-20T10:45:00Z",
+      "userId": "user_890",
+      "userRole": "guest",
+      "messageType": "user",
+      "message": "refund status check",
+      "faqId": null,
+      "responseTime": 1250,
+      "isFallback": true
+    },
+    {
+      "id": "log_10",
+      "conversationId": "conv_7",
+      "timestamp": "2024-02-20T11:00:00Z",
+      "userId": "user_345",
+      "userRole": "guest",
+      "messageType": "user",
+      "message": "What about security deposits?",
+      "faqId": "5",
+      "responseTime": 1120,
+      "isFallback": false
+    }
+  ]
+}

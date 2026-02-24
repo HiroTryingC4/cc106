@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" version="21.0.0">
+  <diagram name="Guest User Flow - Detailed" id="guest-flow">
+    <mxGraphModel dx="2000" dy="1500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1500">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="GUEST USER FLOW - DETAILED" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="20" width="800" height="50" as="geometry" />
+        </mxCell>
+        
+        <!-- START -->
+        <mxCell id="start" value="START" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="950" y="90" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2" edge="1" parent="1" source="start" target="landing">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Landing Page -->
+        <mxCell id="landing" value="Landing Page" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="950" y="180" width="100" height="50" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2" edge="1" parent="1" source="landing" target="dec-action">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Decision: Action? -->
+        <mxCell id="dec-action" value="Action?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="960" y="260" width="80" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Public Actions from Landing -->
+        <mxCell id="browse" value="Browse Units&#xa;(Public)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="200" y="380" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="search" value="Search &amp;amp;&#xa;Filter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="310" y="380" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="view-details" value="View Unit&#xa;Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="420" y="380" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ai-recs-public" value="AI&#xa;Recommendations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="530" y="380" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="faq" value="FAQ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="640" y="380" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="register" value="Register" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="1100" y="380" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="login" value="Login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="1210" y="380" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrows from decision to actions -->
+        <mxCell id="arrow-browse" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-action" target="browse">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-search" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-action" target="search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-details" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-action" target="view-details">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-ai-recs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-action" target="ai-recs-public">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-faq" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-action" target="faq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-register" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-action" target="register">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-login" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-action" target="login">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Unit Details Sub-features -->
+        <mxCell id="dec-details" value="View?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="435" y="450" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-to-dec-details" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="view-details" target="dec-details">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="gallery" value="Image&#xa;Gallery" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="280" y="540" width="70" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="amenities" value="Amenities&#xa;&amp;amp; Rules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="360" y="540" width="70" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="map" value="Location&#xa;Map" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="440" y="540" width="70" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="calendar" value="Availability&#xa;Calendar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="520" y="540" width="70" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="chatbot" value="AI Chatbot&#xa;(Q&amp;amp;A)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="600" y="540" width="70" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-gallery" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-details" target="gallery">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-amenities" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-details" target="amenities">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-map" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-details" target="map">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-calendar" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-details" target="calendar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-chatbot" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-details" target="chatbot">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Search & Filter Sub-features -->
+        <mxCell id="dec-search" value="Filter By?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="325" y="450" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-to-dec-search" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="search" target="dec-search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="filter-location" value="Location" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="200" y="540" width="60" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="filter-price" value="Price" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="270" y="540" width="60" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="filter-amenities" value="Amenities" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="340" y="540" width="60" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="filter-capacity" value="Capacity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="410" y="540" width="60" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-filter-location" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-search" target="filter-location">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-filter-price" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-search" target="filter-price">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-filter-amenities" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-search" target="filter-amenities">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-filter-capacity" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-search" target="filter-capacity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Registration Flow -->
+        <mxCell id="reg-form" value="Enter Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="1100" y="450" width="90" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="reg-create" value="Create Account" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="1100" y="500" width="90" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-reg-form" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="register" target="reg-form">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-reg-create" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="reg-form" target="reg-create">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Login Flow -->
+        <mxCell id="login-creds" value="Enter&#xa;Credentials" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="1210" y="450" width="90" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="login-auth" value="Authenticate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="1210" y="500" width="90" height="35" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-login-creds" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="login" target="login-creds">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-login-auth" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="login-creds" target="login-auth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Guest Dashboard -->
+        <mxCell id="guest-dashboard" value="GUEST DASHBOARD" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="900" y="600" width="200" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-to-dashboard1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2" edge="1" parent="1" source="reg-create" target="guest-dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-to-dashboard2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2" edge="1" parent="1" source="login-auth" target="guest-dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Dashboard Features Decision -->
+        <mxCell id="dec-dashboard" value="Feature?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="960" y="700" width="80" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-to-dec-dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2" edge="1" parent="1" source="guest-dashboard" target="dec-dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Dashboard Features -->
+        <mxCell id="dash-overview" value="Dashboard&#xa;Overview" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="100" y="820" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dash-browse" value="Browse &amp;amp;&#xa;Search" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="210" y="820" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dash-booking" value="Create&#xa;Booking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="320" y="820" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dash-mybookings" value="My&#xa;Bookings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="430" y="820" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dash-checkout" value="Check-out&#xa;Photo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="540" y="820" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dash-reviews" value="Reviews &amp;amp;&#xa;Ratings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="650" y="820" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dash-messages" value="Messages" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="760" y="820" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dash-recs" value="AI&#xa;Recommendations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="870" y="820" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dash-profile" value="Profile&#xa;Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="980" y="820" width="90" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- Arrows from dashboard decision to features -->
+        <mxCell id="arrow-dash-overview" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-dashboard" target="dash-overview">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-dash-browse" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-dashboard" target="dash-browse">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-dash-booking" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-dashboard" target="dash-booking">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-dash-mybookings" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-dashboard" target="dash-mybookings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-dash-checkout" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-dashboard" target="dash-checkout">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-dash-reviews" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-dashboard" target="dash-reviews">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-dash-messages" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-dashboard" target="dash-messages">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-dash-recs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-dashboard" target="dash-recs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-dash-profile" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-dashboard" target="dash-profile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Create Booking Sub-flow -->
+        <mxCell id="booking-dates" value="Select Dates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="280" y="900" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="booking-details" value="Enter Guest&#xa;Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="280" y="945" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="booking-review" value="Review&#xa;Summary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="280" y="990" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="booking-payment" value="Payment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="280" y="1035" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-booking-dates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dash-booking" target="booking-dates">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-booking-details" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="booking-dates" target="booking-details">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-booking-review" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="booking-details" target="booking-review">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-booking-payment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="booking-review" target="booking-payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Payment Sub-flow -->
+        <mxCell id="payment-enter" value="Enter Card&#xa;Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="280" y="1090" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="payment-process" value="Process&#xa;Payment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="280" y="1135" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dec-payment" value="Success?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="285" y="1180" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="payment-success" value="Payment&#xa;Success ✓" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="200" y="1260" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="payment-failed" value="Payment&#xa;Failed ✗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="370" y="1260" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="booking-confirmed" value="Booking&#xa;Confirmed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="200" y="1310" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-payment-enter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="booking-payment" target="payment-enter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-payment-process" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="payment-enter" target="payment-process">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-dec-payment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="payment-process" target="dec-payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-payment-success" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-payment" target="payment-success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-payment-failed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-payment" target="payment-failed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-booking-confirmed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="payment-success" target="booking-confirmed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- My Bookings Sub-flow -->
+        <mxCell id="mybookings-view" value="View All&#xa;Bookings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="390" y="900" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="mybookings-details" value="Booking&#xa;Details" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="390" y="945" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dec-mybookings" value="Action?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="395" y="990" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="mybookings-cancel" value="Cancel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="340" y="1070" width="60" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="mybookings-modify" value="Modify" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="410" y="1070" width="60" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="mybookings-contact" value="Contact&#xa;Host" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="480" y="1070" width="60" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-mybookings-view" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dash-mybookings" target="mybookings-view">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-mybookings-details" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="mybookings-view" target="mybookings-details">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-dec-mybookings" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="mybookings-details" target="dec-mybookings">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-mybookings-cancel" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-mybookings" target="mybookings-cancel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-mybookings-modify" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-mybookings" target="mybookings-modify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-mybookings-contact" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-mybookings" target="mybookings-contact">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Check-out Photo Sub-flow -->
+        <mxCell id="checkout-upload" value="Upload&#xa;Photo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="550" y="900" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="checkout-verify" value="Verify Unit&#xa;Condition" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="550" y="945" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="checkout-complete" value="Complete&#xa;Check-out" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="550" y="990" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-checkout-upload" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dash-checkout" target="checkout-upload">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-checkout-verify" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="checkout-upload" target="checkout-verify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-checkout-complete" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="checkout-verify" target="checkout-complete">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Reviews & Ratings Sub-flow -->
+        <mxCell id="review-rate" value="Rate Property&#xa;(1-5 stars)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="640" y="900" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="review-write" value="Write&#xa;Review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="640" y="945" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="review-cleanliness" value="Rate&#xa;Cleanliness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="640" y="990" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="review-accuracy" value="Rate&#xa;Accuracy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="640" y="1035" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="review-submit" value="Submit&#xa;Review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="640" y="1080" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-review-rate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dash-reviews" target="review-rate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-review-write" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="review-rate" target="review-write">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-review-cleanliness" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="review-write" target="review-cleanliness">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-review-accuracy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="review-cleanliness" target="review-accuracy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-review-submit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="review-accuracy" target="review-submit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Messages Sub-flow -->
+        <mxCell id="msg-view" value="View&#xa;Conversations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="750" y="900" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dec-msg" value="Action?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="755" y="945" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="msg-host" value="Message&#xa;Host" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="700" y="1025" width="60" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="msg-admin" value="Message&#xa;Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="770" y="1025" width="60" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="msg-new" value="Start New&#xa;Conversation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="840" y="1025" width="60" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-msg-view" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dash-messages" target="msg-view">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-dec-msg" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="msg-view" target="dec-msg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-msg-host" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-msg" target="msg-host">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-msg-admin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-msg" target="msg-admin">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-msg-new" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-msg" target="msg-new">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- AI Recommendations Sub-flow -->
+        <mxCell id="recs-view" value="View&#xa;Suggestions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="870" y="900" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="dec-recs" value="Based On?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="875" y="945" width="60" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="recs-prefs" value="Preferences" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="800" y="1025" width="60" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="recs-history" value="Browsing&#xa;History" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="870" y="1025" width="60" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="recs-similar" value="Similar&#xa;Properties" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="940" y="1025" width="60" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-recs-view" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dash-recs" target="recs-view">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-dec-recs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="recs-view" target="dec-recs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-recs-prefs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-recs" target="recs-prefs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-recs-history" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-recs" target="recs-history">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-recs-similar" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dec-recs" target="recs-similar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Profile Management Sub-flow -->
+        <mxCell id="profile-update" value="Update&#xa;Personal Info" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="980" y="900" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="profile-password" value="Change&#xa;Password" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="980" y="945" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="profile-prefs" value="Manage&#xa;Preferences" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="980" y="990" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="profile-history" value="View Booking&#xa;History" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="980" y="1035" width="70" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-profile-update" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="dash-profile" target="profile-update">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-profile-password" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="profile-update" target="profile-password">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-profile-prefs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="profile-password" target="profile-prefs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-profile-history" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1" edge="1" parent="1" source="profile-prefs" target="profile-history">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Logout -->
+        <mxCell id="logout" value="LOGOUT" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1400" y="710" width="100" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow-logout" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2" edge="1" parent="1" source="dec-dashboard" target="logout">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

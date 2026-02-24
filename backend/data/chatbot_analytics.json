@@ -1,0 +1,37 @@
+{
+  "summary": {
+    "totalConversations": 156,
+    "totalMessages": 782,
+    "totalUsers": 89,
+    "avgResponseTime": 1150,
+    "lastUpdated": "2024-02-20T10:30:00Z"
+  },
+  "faqUsage": {
+    "1": { "count": 48, "question": "How do I book a unit?" },
+    "2": { "count": 35, "question": "What payment methods do you accept?" },
+    "3": { "count": 28, "question": "What is the cancellation policy?" },
+    "4": { "count": 22, "question": "How do I check in?" },
+    "5": { "count": 18, "question": "What about security deposits?" },
+    "6": { "count": 15, "question": "Can I modify my booking?" },
+    "7": { "count": 12, "question": "How do I become a host?" },
+    "8": { "count": 10, "question": "How do I contact the host?" },
+    "9": { "count": 8, "question": "What amenities are included?" },
+    "10": { "count": 6, "question": "How do I leave a review?" }
+  },
+  "fallbackTriggers": [
+    { "query": "how to contact support", "count": 8 },
+    { "query": "refund status check", "count": 5 },
+    { "query": "change booking date", "count": 4 },
+    { "query": "pet policy details", "count": 3 },
+    { "query": "parking availability", "count": 2 }
+  ],
+  "dailyStats": [
+    { "date": "2024-02-14", "conversations": 18, "messages": 95, "avgResponseTime": 1200 },
+    { "date": "2024-02-15", "conversations": 22, "messages": 110, "avgResponseTime": 1180 },
+    { "date": "2024-02-16", "conversations": 25, "messages": 125, "avgResponseTime": 1150 },
+    { "date": "2024-02-17", "conversations": 20, "messages": 98, "avgResponseTime": 1160 },
+    { "date": "2024-02-18", "conversations": 19, "messages": 92, "avgResponseTime": 1140 },
+    { "date": "2024-02-19", "conversations": 28, "messages": 142, "avgResponseTime": 1130 },
+    { "date": "2024-02-20", "conversations": 24, "messages": 120, "avgResponseTime": 1150 }
+  ]
+}
