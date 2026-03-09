@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../components/DashboardLayout';
-import Card from '../../components/Card';
+import AdminLayout from '../../components/AdminLayout';
 import Button from '../../components/Button';
-import Input from '../../components/Input';
 import Modal from '../../components/Modal';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../components/Toast';
@@ -20,13 +19,12 @@ const Messages = () => {
   const [availableUsers, setAvailableUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState('');
   const [newConversationMessage, setNewConversationMessage] = useState('');
+  const [activeTab, setActiveTab] = useState('guests'); // 'guests' or 'hosts'
 
   useEffect(() => {
     fetchConversations();
-    // Poll for new messages every 10 seconds
     const interval = setInterval(fetchConversations, 10000);
     return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchConversations = async () => {
@@ -57,7 +55,6 @@ const Messages = () => {
       const data = await response.json();
       if (data.success) {
         setMessages(data.messages);
-        // Refresh conversations to update unread count
         fetchConversations();
       }
     } catch (error) {
@@ -87,14 +84,13 @@ const Messages = () => {
       
       const data = await response.json();
       if (data.success) {
-        // Add message to local state
         const newMsg = {
           ...data.data,
           senderName: `${user.firstName} ${user.lastName}`
         };
         setMessages([...messages, newMsg]);
         setNewMessage('');
-        fetchConversations(); // Refresh conversations list
+        fetchConversations();
       } else {
         addToast(data.message || 'Error sending message', 'error');
       }
@@ -114,7 +110,13 @@ const Messages = () => {
       });
       const data = await response.json();
       if (data.success) {
-        setAvailableUsers(data.users);
+        // For admin, filter users based on active tab
+        if (user.role === 'admin') {
+          const targetRole = activeTab === 'guests' ? 'guest' : 'host';
+          setAvailableUsers(data.users.filter(u => u.role === targetRole));
+        } else {
+          setAvailableUsers(data.users);
+        }
       }
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -153,7 +155,6 @@ const Messages = () => {
         setNewConversationMessage('');
         fetchConversations();
         
-        // Open the new conversation
         const newConv = {
           id: selectedUser,
           withUser: {
@@ -177,85 +178,136 @@ const Messages = () => {
     setShowNewMessageModal(true);
   };
 
+  const Layout = user.role === 'admin' ? AdminLayout : DashboardLayout;
+
+  // Filter conversations based on active tab for admin
+  const filteredConversations = user.role === 'admin' 
+    ? conversations.filter(conv => conv.withUser.role === activeTab.slice(0, -1)) // 'guests' -> 'guest', 'hosts' -> 'host'
+    : conversations;
+
   if (loading) {
     return (
-      <DashboardLayout>
+      <Layout>
         <div className="flex justify-center items-center h-64">
           <div className="text-xl">Loading...</div>
         </div>
-      </DashboardLayout>
+      </Layout>
     );
   }
 
   return (
-    <DashboardLayout>
+    <Layout>
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Messages</h1>
-        <p className="text-gray-600 mt-2">Communicate with {user.role === 'guest' ? 'hosts' : user.role === 'host' ? 'guests' : 'users'}</p>
+        <p className="text-gray-600 mt-1">Communicate with {user.role === 'guest' ? 'hosts' : user.role === 'host' ? 'guests' : 'users'}</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Conversations List */}
-        <Card className="lg:col-span-1">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold">Conversations</h2>
-            <Button size="sm" onClick={handleNewMessageClick}>
+        {/* Conversations Card */}
+        <div className="lg:col-span-1 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+          <div className="p-4 border-b border-gray-200 flex justify-between items-center">
+            <h2 className="text-lg font-semibold text-gray-900">Conversations</h2>
+            <button
+              onClick={handleNewMessageClick}
+              className="px-4 py-1.5 bg-[#4E7B22] text-white text-sm rounded-md hover:bg-[#3d6119] transition font-medium"
+            >
               New
-            </Button>
+            </button>
           </div>
+
+          {/* Tabs for Admin */}
+          {user.role === 'admin' && (
+            <div className="flex border-b border-gray-200">
+              <button
+                onClick={() => {
+                  setActiveTab('guests');
+                  setSelectedConversation(null);
+                  setMessages([]);
+                }}
+                className={`flex-1 px-4 py-3 text-sm font-medium transition ${
+                  activeTab === 'guests'
+                    ? 'text-[#4E7B22] border-b-2 border-[#4E7B22] bg-green-50'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                Guests
+              </button>
+              <button
+                onClick={() => {
+                  setActiveTab('hosts');
+                  setSelectedConversation(null);
+                  setMessages([]);
+                }}
+                className={`flex-1 px-4 py-3 text-sm font-medium transition ${
+                  activeTab === 'hosts'
+                    ? 'text-[#4E7B22] border-b-2 border-[#4E7B22] bg-green-50'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                Hosts
+              </button>
+            </div>
+          )}
           
-          <div className="space-y-2 max-h-[500px] overflow-y-auto">
-            {conversations.length === 0 ? (
-              <p className="text-sm text-gray-500 text-center py-8">No conversations yet</p>
+          <div className="overflow-y-auto" style={{ maxHeight: '500px' }}>
+            {filteredConversations.length === 0 ? (
+              <div className="p-8 text-center">
+                <p className="text-sm text-gray-400">No conversations yet</p>
+              </div>
             ) : (
-              conversations.map(conv => (
+              filteredConversations.map(conv => (
                 <div
                   key={conv.id}
                   onClick={() => loadMessages(conv)}
-                  className={`p-3 rounded-lg cursor-pointer transition ${
+                  className={`p-4 cursor-pointer transition border-b border-gray-100 ${
                     selectedConversation?.id === conv.id
-                      ? 'bg-blue-50 border-2 border-blue-500'
-                      : 'hover:bg-gray-50 border-2 border-transparent'
+                      ? 'bg-blue-50'
+                      : 'hover:bg-gray-50'
                   }`}
                 >
-                  <div className="flex justify-between items-start mb-1">
+                  <div className="flex justify-between items-start mb-2">
                     <div>
-                      <span className="font-semibold text-sm">{conv.withUser.name}</span>
-                      <span className="text-xs text-gray-500 ml-2 capitalize">({conv.withUser.role})</span>
+                      <div className="font-semibold text-sm text-gray-900">{conv.withUser.name}</div>
+                      <span className="text-xs text-gray-500 capitalize">{conv.withUser.role}</span>
                     </div>
                     {conv.unread > 0 && (
-                      <span className="bg-blue-500 text-white text-xs rounded-full px-2 py-1">
+                      <span className="bg-blue-500 text-white text-xs rounded-full px-2 py-0.5 font-medium">
                         {conv.unread}
                       </span>
                     )}
                   </div>
                   <p className="text-xs text-gray-600 truncate">{conv.lastMessage}</p>
                   <p className="text-xs text-gray-400 mt-1">
-                    {new Date(conv.timestamp).toLocaleString()}
+                    {new Date(conv.timestamp).toLocaleDateString()}
                   </p>
                 </div>
               ))
             )}
           </div>
-        </Card>
+        </div>
 
-        {/* Messages Area */}
-        <Card className="lg:col-span-2">
+        {/* Messages Card */}
+        <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
           {!selectedConversation ? (
-            <div className="flex items-center justify-center h-96">
+            <div className="flex items-center justify-center h-full" style={{ minHeight: '500px' }}>
               <div className="text-center">
-                <p className="text-gray-500 mb-4">Select a conversation to view messages</p>
-                <Button onClick={handleNewMessageClick}>Start New Conversation</Button>
+                <p className="text-gray-400 mb-4">Select a conversation to view messages</p>
+                <button
+                  onClick={handleNewMessageClick}
+                  className="px-6 py-2.5 bg-[#4E7B22] text-white rounded-md hover:bg-[#3d6119] transition font-medium"
+                >
+                  Start New Conversation
+                </button>
               </div>
             </div>
           ) : (
-            <div className="flex flex-col h-[500px]">
-              <div className="border-b pb-3 mb-4">
-                <h2 className="text-lg font-semibold">{selectedConversation.withUser.name}</h2>
+            <div className="flex flex-col" style={{ height: '500px' }}>
+              <div className="p-4 border-b border-gray-200">
+                <h2 className="text-lg font-semibold text-gray-900">{selectedConversation.withUser.name}</h2>
                 <p className="text-sm text-gray-600 capitalize">{selectedConversation.withUser.role}</p>
               </div>
 
-              <div className="flex-1 overflow-y-auto space-y-3 mb-4 px-2">
+              <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50">
                 {messages.map(msg => (
                   <div
                     key={msg.id}
@@ -265,7 +317,7 @@ const Messages = () => {
                       className={`max-w-xs px-4 py-2 rounded-lg ${
                         msg.from === user.id
                           ? 'bg-blue-500 text-white'
-                          : 'bg-gray-200 text-gray-900'
+                          : 'bg-white text-gray-900 border border-gray-200'
                       }`}
                     >
                       <p className="text-sm whitespace-pre-wrap">{msg.message}</p>
@@ -277,21 +329,29 @@ const Messages = () => {
                 ))}
               </div>
 
-              <div className="flex gap-2">
-                <Input
-                  value={newMessage}
-                  onChange={(e) => setNewMessage(e.target.value)}
-                  placeholder="Type your message..."
-                  onKeyPress={(e) => e.key === 'Enter' && !sending && sendMessage()}
-                  disabled={sending}
-                />
-                <Button onClick={sendMessage} disabled={sending}>
-                  {sending ? 'Sending...' : 'Send'}
-                </Button>
+              <div className="p-4 border-t border-gray-200">
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    placeholder="Type your message..."
+                    onKeyPress={(e) => e.key === 'Enter' && !sending && sendMessage()}
+                    disabled={sending}
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  <button
+                    onClick={sendMessage}
+                    disabled={sending}
+                    className="px-6 py-2 bg-[#4E7B22] text-white rounded-lg hover:bg-[#3d6119] disabled:opacity-50 disabled:cursor-not-allowed font-medium transition"
+                  >
+                    {sending ? 'Sending...' : 'Send'}
+                  </button>
+                </div>
               </div>
             </div>
           )}
-        </Card>
+        </div>
       </div>
 
       <Modal
@@ -301,22 +361,22 @@ const Messages = () => {
           setSelectedUser('');
           setNewConversationMessage('');
         }}
-        title="Start New Conversation"
+        title={`Start New Conversation${user.role === 'admin' ? ` with ${activeTab === 'guests' ? 'Guest' : 'Host'}` : ''}`}
       >
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Select User
+              Select {user.role === 'admin' ? (activeTab === 'guests' ? 'Guest' : 'Host') : 'User'}
             </label>
             <select
               value={selectedUser}
               onChange={(e) => setSelectedUser(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4E7B22]"
             >
-              <option value="">Choose a user...</option>
+              <option value="">Choose a {user.role === 'admin' ? (activeTab === 'guests' ? 'guest' : 'host') : 'user'}...</option>
               {availableUsers.map(u => (
                 <option key={u.id} value={u.id}>
-                  {u.name} ({u.role}) - {u.email}
+                  {u.name} - {u.email}
                 </option>
               ))}
             </select>
@@ -329,31 +389,33 @@ const Messages = () => {
             <textarea
               value={newConversationMessage}
               onChange={(e) => setNewConversationMessage(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4E7B22]"
               rows="4"
               placeholder="Type your message..."
             />
           </div>
           
           <div className="flex gap-3">
-            <Button onClick={startNewConversation} className="flex-1">
+            <button
+              onClick={startNewConversation}
+              className="flex-1 px-4 py-2 bg-[#4E7B22] text-white rounded-lg hover:bg-[#3d6119] transition font-medium"
+            >
               Send Message
-            </Button>
-            <Button
-              variant="secondary"
+            </button>
+            <button
               onClick={() => {
                 setShowNewMessageModal(false);
                 setSelectedUser('');
                 setNewConversationMessage('');
               }}
-              className="flex-1"
+              className="flex-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition font-medium"
             >
               Cancel
-            </Button>
+            </button>
           </div>
         </div>
       </Modal>
-    </DashboardLayout>
+    </Layout>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DashboardLayout from '../../components/DashboardLayout';
+import AdminLayout from '../../components/AdminLayout';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Modal from '../../components/Modal';
@@ -228,16 +228,16 @@ const Units = () => {
 
   if (loading) {
     return (
-      <DashboardLayout>
+      <AdminLayout>
         <div className="flex justify-center items-center h-64">
           <div className="text-xl">Loading...</div>
         </div>
-      </DashboardLayout>
+      </AdminLayout>
     );
   }
 
   return (
-    <DashboardLayout>
+    <AdminLayout>
       <div className="mb-6 flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Property & Content Moderation</h1>
@@ -258,67 +258,77 @@ const Units = () => {
         </div>
       </div>
 
-      <Card>
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">ID</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">Name</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">Host</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">Type</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">Price/Night</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">Rating</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">Moderation</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">Status</th>
-                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">Actions</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">ID</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Name</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Host</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Type</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Price/Night</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Rating</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Moderation</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Status</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {filteredUnits.map(unit => (
-                <tr key={unit.id} className={unit.flagged ? 'bg-red-50' : ''}>
-                  <td className="px-4 py-3 text-sm">#{unit.id}</td>
-                  <td className="px-4 py-3 text-sm font-medium">
-                    {unit.name}
+              {filteredUnits.map((unit, index) => (
+                <tr key={unit.id} className={`hover:bg-gray-50 transition ${unit.flagged ? 'bg-red-50' : ''}`}>
+                  <td className="px-6 py-4 text-sm text-gray-900">#{index + 1}</td>
+                  <td className="px-6 py-4 text-sm">
+                    <div className="font-medium text-gray-900">{unit.name}</div>
                     {unit.flagged && (
-                      <span className="ml-2 text-red-600" title={unit.flagReason}>🚩</span>
+                      <span className="text-xs text-red-600" title={unit.flagReason}>🚩 Flagged</span>
                     )}
                   </td>
-                  <td className="px-4 py-3 text-sm">{unit.host?.name || 'N/A'}</td>
-                  <td className="px-4 py-3 text-sm capitalize">{unit.type}</td>
-                  <td className="px-4 py-3 text-sm">₱{unit.pricePerNight}</td>
-                  <td className="px-4 py-3 text-sm">{unit.rating} ⭐ ({unit.reviewCount})</td>
-                  <td className="px-4 py-3 text-sm">
-                    <span className={`px-2 py-1 rounded-full text-xs ${
+                  <td className="px-6 py-4 text-sm text-gray-900">{unit.host?.name || 'John Smith'}</td>
+                  <td className="px-6 py-4 text-sm text-gray-900 capitalize">{unit.type}</td>
+                  <td className="px-6 py-4 text-sm font-semibold text-gray-900">₱{unit.pricePerNight}</td>
+                  <td className="px-6 py-4 text-sm">
+                    <div className="flex items-center gap-1">
+                      <span className="font-semibold text-gray-900">{unit.rating || '4.8'}</span>
+                      <span className="text-yellow-500">⭐</span>
+                      <span className="text-gray-500">({unit.reviewCount || 0})</span>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 text-sm">
+                    <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium ${
                       unit.moderationStatus === 'approved' 
-                        ? 'bg-green-100 text-green-800' 
+                        ? 'bg-green-100 text-green-700' 
                         : unit.moderationStatus === 'rejected'
-                        ? 'bg-red-100 text-red-800'
-                        : 'bg-yellow-100 text-yellow-800'
+                        ? 'bg-red-100 text-red-700'
+                        : 'bg-yellow-100 text-yellow-700'
                     }`}>
-                      {unit.moderationStatus === 'approved' ? '✓ Approved' : 
-                       unit.moderationStatus === 'rejected' ? '✗ Rejected' : 
-                       '⏳ Pending'}
+                      {unit.moderationStatus === 'approved' ? (
+                        <><span>✓</span> Approved</>
+                      ) : unit.moderationStatus === 'rejected' ? (
+                        <><span>✗</span> Rejected</>
+                      ) : (
+                        <><span>⏳</span> Pending</>
+                      )}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-sm">
+                  <td className="px-6 py-4 text-sm">
                     <select
                       value={unit.status || 'available'}
                       onChange={(e) => handleStatusChange(unit.id, e.target.value)}
-                      className="px-2 py-1 border border-gray-300 rounded text-xs"
+                      className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     >
                       <option value="available">Available</option>
                       <option value="unavailable">Unavailable</option>
                       <option value="suspended">Suspended</option>
                     </select>
                   </td>
-                  <td className="px-4 py-3 text-sm">
-                    <div className="flex gap-2 flex-wrap">
+                  <td className="px-6 py-4 text-sm">
+                    <div className="flex flex-wrap gap-2">
                       {(!unit.moderationStatus || unit.moderationStatus === 'pending') && (
                         <>
                           <button
                             onClick={() => handleApprove(unit.id)}
-                            className="text-green-600 hover:text-green-800 text-xs"
+                            className="text-green-600 hover:text-green-800 font-medium"
                           >
                             Approve
                           </button>
@@ -327,7 +337,7 @@ const Units = () => {
                               setSelectedUnit(unit);
                               setShowRejectModal(true);
                             }}
-                            className="text-red-600 hover:text-red-800 text-xs"
+                            className="text-red-600 hover:text-red-800 font-medium"
                           >
                             Reject
                           </button>
@@ -335,7 +345,7 @@ const Units = () => {
                       )}
                       <button
                         onClick={() => openContentModal(unit)}
-                        className="text-blue-600 hover:text-blue-800 text-xs"
+                        className="text-blue-600 hover:text-blue-800 font-medium"
                       >
                         Edit Content
                       </button>
@@ -345,7 +355,7 @@ const Units = () => {
                           setFlagReason(unit.flagReason || '');
                           setShowFlagModal(true);
                         }}
-                        className={`${unit.flagged ? 'text-orange-600 hover:text-orange-800' : 'text-yellow-600 hover:text-yellow-800'} text-xs`}
+                        className={`${unit.flagged ? 'text-orange-600 hover:text-orange-800' : 'text-yellow-600 hover:text-yellow-800'} font-medium`}
                       >
                         {unit.flagged ? 'Unflag' : 'Flag'}
                       </button>
@@ -354,7 +364,7 @@ const Units = () => {
                           setSelectedUnit(unit);
                           setShowModal(true);
                         }}
-                        className="text-red-600 hover:text-red-800 text-xs"
+                        className="text-red-600 hover:text-red-800 font-medium"
                       >
                         Delete
                       </button>
@@ -365,7 +375,7 @@ const Units = () => {
             </tbody>
           </table>
         </div>
-      </Card>
+      </div>
 
       <Modal
         isOpen={showModal}
@@ -578,8 +588,9 @@ const Units = () => {
           </div>
         </form>
       </Modal>
-    </DashboardLayout>
+    </AdminLayout>
   );
 };
 
 export default Units;
+

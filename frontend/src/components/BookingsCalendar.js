@@ -48,7 +48,7 @@ const BookingsCalendar = ({ bookings }) => {
   const getStatusColor = (status) => {
     switch (status) {
       case 'confirmed': return 'bg-green-500';
-      case 'pending': return 'bg-yellow-500';
+      case 'pending': return 'bg-orange-500';
       case 'completed': return 'bg-blue-500';
       case 'cancelled': return 'bg-red-500';
       default: return 'bg-gray-500';
@@ -58,7 +58,7 @@ const BookingsCalendar = ({ bookings }) => {
   const getStatusBadgeColor = (status) => {
     switch (status) {
       case 'confirmed': return 'bg-green-100 text-green-800';
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
+      case 'pending': return 'bg-orange-100 text-orange-800';
       case 'completed': return 'bg-blue-100 text-blue-800';
       case 'cancelled': return 'bg-red-100 text-red-800';
       default: return 'bg-gray-100 text-gray-800';
@@ -77,7 +77,27 @@ const BookingsCalendar = ({ bookings }) => {
 
   return (
     <Card>
-      <div className="p-4">
+      <div className="p-6">
+        {/* Status Legend at Top */}
+        <div className="mb-6 flex flex-wrap items-center gap-3 sm:gap-4">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <span className="text-sm text-gray-700">Confirmed</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <span className="text-sm text-gray-700">Pending</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+            <span className="text-sm text-gray-700">Completed</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+            <span className="text-sm text-gray-700">Cancelled</span>
+          </div>
+        </div>
+
         {/* Calendar Header */}
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold text-gray-900">
@@ -106,7 +126,7 @@ const BookingsCalendar = ({ bookings }) => {
         {/* Day Names */}
         <div className="grid grid-cols-7 gap-2 mb-2">
           {dayNames.map(day => (
-            <div key={day} className="text-center font-semibold text-gray-600 text-sm py-2">
+            <div key={day} className="text-center font-medium text-gray-500 text-sm py-2">
               {day}
             </div>
           ))}
@@ -125,63 +145,54 @@ const BookingsCalendar = ({ bookings }) => {
             const date = new Date(year, month, day);
             const dayBookings = getBookingsForDate(date);
             const isToday = new Date().toDateString() === date.toDateString();
+            const isPastDate = date < new Date(new Date().setHours(0, 0, 0, 0));
+
+            // Get the primary status color for the day
+            const confirmedCount = dayBookings.filter(b => b.status === 'confirmed').length;
+            const pendingCount = dayBookings.filter(b => b.status === 'pending').length;
+            const cancelledCount = dayBookings.filter(b => b.status === 'cancelled').length;
+            const completedCount = dayBookings.filter(b => b.status === 'completed').length;
+
+            let dayBgColor = 'bg-white';
+            
+            // If date has passed and has bookings, show as completed (blue)
+            if (isPastDate && dayBookings.length > 0) {
+              dayBgColor = 'bg-blue-400';
+            }
+            // Otherwise, show based on current status
+            else if (confirmedCount > 0) dayBgColor = 'bg-green-400';
+            else if (pendingCount > 0) dayBgColor = 'bg-yellow-400';
+            else if (completedCount > 0) dayBgColor = 'bg-blue-400';
+            else if (cancelledCount > 0) dayBgColor = 'bg-red-400';
 
             return (
               <div
                 key={day}
                 onClick={() => handleDateClick(date, dayBookings)}
-                className={`aspect-square border rounded-lg p-1 relative ${
-                  isToday ? 'border-blue-500 border-2' : 'border-gray-200'
-                } ${dayBookings.length > 0 ? 'bg-blue-50 cursor-pointer hover:bg-blue-100 transition' : 'bg-white'}`}
+                className={`aspect-square border rounded-lg p-2 relative transition-all ${
+                  isToday ? 'ring-2 ring-blue-500' : 'border-gray-200'
+                } ${dayBookings.length > 0 ? `${dayBgColor} cursor-pointer hover:opacity-80` : isPastDate ? 'bg-gray-50' : 'bg-white hover:bg-gray-50'}`}
               >
-                <div className={`text-sm font-medium ${isToday ? 'text-blue-600' : 'text-gray-900'}`}>
+                <div className={`text-sm font-medium ${
+                  dayBookings.length > 0 ? 'text-white' : isPastDate ? 'text-gray-400' : isToday ? 'text-blue-600' : 'text-gray-900'
+                }`}>
                   {day}
                 </div>
                 
-                {/* Booking indicators */}
-                {dayBookings.length > 0 && (
-                  <div className="mt-1 space-y-1">
-                    {dayBookings.slice(0, 2).map((booking, idx) => (
-                      <div
-                        key={idx}
-                        className={`h-1.5 rounded-full ${getStatusColor(booking.status)}`}
-                        title={`${booking.guest?.name || 'Guest'} - ${booking.status}`}
-                      />
-                    ))}
-                    {dayBookings.length > 2 && (
-                      <div className="text-xs text-gray-600 text-center font-medium">
-                        +{dayBookings.length - 2}
-                      </div>
-                    )}
+                {/* Show booking count if multiple bookings */}
+                {dayBookings.length > 1 && (
+                  <div className="absolute bottom-1 right-1 bg-white text-gray-900 text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    {dayBookings.length}
                   </div>
+                )}
+
+                {/* Show multi-status indicator if mixed statuses */}
+                {dayBookings.length > 0 && !isPastDate && (confirmedCount > 0 && pendingCount > 0) && (
+                  <div className="absolute bottom-1 left-1 right-1 h-1 bg-gradient-to-r from-green-500 to-yellow-500 rounded-full"></div>
                 )}
               </div>
             );
           })}
-        </div>
-
-        {/* Legend */}
-        <div className="mt-6 pt-4 border-t border-gray-200">
-          <h3 className="text-sm font-semibold text-gray-700 mb-3">Legend</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-green-500"></div>
-              <span className="text-sm text-gray-600">Confirmed</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-yellow-500"></div>
-              <span className="text-sm text-gray-600">Pending</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-blue-500"></div>
-              <span className="text-sm text-gray-600">Completed</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-red-500"></div>
-              <span className="text-sm text-gray-600">Cancelled</span>
-            </div>
-          </div>
-          <p className="text-xs text-gray-500 mt-3">💡 Click on a date with bookings to view details</p>
         </div>
       </div>
 

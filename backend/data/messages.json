@@ -6,7 +6,7 @@
     "to": "3",
     "toRole": "guest",
     "message": "HI\n",
-    "read": false,
+    "read": true,
     "createdAt": "2026-02-20T17:39:49.847Z"
   },
   {
@@ -28,5 +28,45 @@
     "message": "asdasd",
     "read": false,
     "createdAt": "2026-02-23T11:11:30.602Z"
+  },
+  {
+    "id": "4",
+    "from": "1",
+    "fromRole": "admin",
+    "to": "2",
+    "toRole": "host",
+    "message": "Your property listing has been approved and is now live on the platform. Thank you for maintaining high standards!",
+    "read": false,
+    "createdAt": "2026-03-05T10:30:00.000Z"
+  },
+  {
+    "id": "5",
+    "from": "1",
+    "fromRole": "admin",
+    "to": "3",
+    "toRole": "guest",
+    "message": "Welcome to SmartStay! We're here to help if you have any questions about your bookings or our platform.",
+    "read": true,
+    "createdAt": "2026-03-05T11:15:00.000Z"
+  },
+  {
+    "id": "6",
+    "from": "13",
+    "fromRole": "host",
+    "to": "3",
+    "toRole": "guest",
+    "message": "HI",
+    "read": true,
+    "createdAt": "2026-03-07T07:10:40.687Z"
+  },
+  {
+    "id": "7",
+    "from": "13",
+    "fromRole": "host",
+    "to": "3",
+    "toRole": "guest",
+    "message": "ASDASD",
+    "read": true,
+    "createdAt": "2026-03-07T07:10:43.605Z"
   }
 ]

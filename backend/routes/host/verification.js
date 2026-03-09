@@ -2,7 +2,39 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
+const multer = require('multer');
 const { verifyToken, checkRole } = require('../../middleware/auth');
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const uploadDir = path.join(__dirname, '../../uploads/verifications');
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    cb(null, uploadDir);
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = /jpeg|jpg|png|pdf/;
+    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = allowedTypes.test(file.mimetype);
+    
+    if (mimetype && extname) {
+      return cb(null, true);
+    } else {
+      cb(new Error('Only images (JPEG, PNG) and PDF files are allowed'));
+    }
+  }
+});
 
 // Get verification status
 router.get('/status', verifyToken, checkRole('host'), (req, res) => {
@@ -23,12 +55,38 @@ router.get('/status', verifyToken, checkRole('host'), (req, res) => {
 });
 
 // Submit verification documents
-router.post('/submit', verifyToken, checkRole('host'), (req, res) => {
+router.post('/submit', verifyToken, checkRole('host'), upload.fields([
+  { name: 'idPhoto', maxCount: 1 },
+  { name: 'selfieWithId', maxCount: 1 }
+]), (req, res) => {
   try {
-    const { documents } = req.body;
+    const {
+      businessName,
+      businessAddress,
+      businessType,
+      idType,
+      idNumber,
+      taxId,
+      bankAccount,
+      bankName,
+      proofOfOwnership,
+      additionalDocs
+    } = req.body;
     
-    if (!documents) {
-      return res.status(400).json({ success: false, message: 'Documents are required' });
+    // Validate required fields
+    if (!businessName || !businessAddress || !idNumber || !taxId || !bankAccount || !bankName) {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'All required fields must be filled' 
+      });
+    }
+    
+    // Validate files
+    if (!req.files || !req.files.idPhoto || !req.files.selfieWithId) {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'Both ID photo and selfie with ID are required' 
+      });
     }
     
     // Fetch full user data from users.json
@@ -49,6 +107,22 @@ router.post('/submit', verifyToken, checkRole('host'), (req, res) => {
     
     // Check if already exists
     const existingIndex = verifications.findIndex(v => v.hostId === req.user.id);
+    
+    // Build documents object
+    const documents = {
+      businessName,
+      businessAddress,
+      businessType,
+      idType,
+      idNumber,
+      taxId,
+      bankAccount,
+      bankName,
+      proofOfOwnership,
+      additionalDocs,
+      idPhoto: req.files.idPhoto[0].filename,
+      selfieWithId: req.files.selfieWithId[0].filename
+    };
     
     const verification = {
       id: existingIndex >= 0 ? verifications[existingIndex].id : String(verifications.length + 1),
@@ -73,6 +147,7 @@ router.post('/submit', verifyToken, checkRole('host'), (req, res) => {
     
     res.json({ success: true, message: 'Verification submitted successfully', verification });
   } catch (error) {
+    console.error('Verification submission error:', error);
     res.status(500).json({ success: false, message: error.message });
   }
 });

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DashboardLayout from '../../components/DashboardLayout';
+import AdminLayout from '../../components/AdminLayout';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Modal from '../../components/Modal';
@@ -156,7 +156,7 @@ const Security = () => {
   };
 
   return (
-    <DashboardLayout>
+    <AdminLayout>
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Security & Fraud Detection</h1>
         <p className="text-gray-600 mt-2">Monitor security threats and suspicious activities</p>
@@ -451,8 +451,9 @@ const Security = () => {
           </div>
         </div>
       </Modal>
-    </DashboardLayout>
+    </AdminLayout>
   );
 };
 
 export default Security;
+

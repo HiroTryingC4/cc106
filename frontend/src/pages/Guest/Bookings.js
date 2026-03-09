@@ -134,43 +134,113 @@ const Bookings = () => {
             </Card>
           ) : (
             <div className="space-y-4">
-              {filteredBookings.map(booking => (
-                <Card key={booking.id}>
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-semibold">Booking #{booking.id}</h3>
-                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(booking.status)}`}>
-                          {booking.status}
-                        </span>
+              {filteredBookings.map((booking, idx) => {
+                // Backward compatibility: default to 'standard' if pricingType is missing
+                const pricingType = booking.pricingType || 'standard';
+                
+                return (
+                  <Card key={`${booking.id}-${idx}`}>
+                    <div className="flex justify-between items-start">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <h3 className="text-xl font-semibold">Booking #{booking.id}</h3>
+                          <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(booking.status)}`}>
+                            {booking.status}
+                          </span>
+                          {pricingType === 'hourly' && (
+                            <span className="px-3 py-1 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
+                              ⏰ Hourly
+                            </span>
+                          )}
+                        </div>
+                        
+                        {/* Status Notice */}
+                        {booking.status === 'pending' && (
+                          <div className="mb-3 bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                            <div className="flex items-center text-sm">
+                              <svg className="w-4 h-4 text-yellow-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                              </svg>
+                              <span className="text-yellow-800 font-medium">
+                                The booking is done, waiting for the confirmation of the host
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {booking.status === 'confirmed' && booking.approvedAt && (
+                          <div className="mb-3 bg-green-50 border border-green-200 rounded-lg p-3">
+                            <div className="flex items-center text-sm">
+                              <svg className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                              </svg>
+                              <span className="text-green-800 font-medium">
+                                ✓ Booking confirmed - Ready for payment
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                        
+                        <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
+                          {pricingType === 'standard' ? (
+                            <>
+                              <div>
+                                <p className="font-medium text-gray-900">Check-in</p>
+                                <p>{new Date(booking.checkIn).toLocaleDateString()}</p>
+                              </div>
+                              <div>
+                                <p className="font-medium text-gray-900">Check-out</p>
+                                <p>{new Date(booking.checkOut).toLocaleDateString()}</p>
+                              </div>
+                              <div>
+                                <p className="font-medium text-gray-900">Guests</p>
+                                <p>{booking.guests}</p>
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <div>
+                                <p className="font-medium text-gray-900">Booking Date</p>
+                                <p>{booking.bookingDate ? new Date(booking.bookingDate).toLocaleDateString() : 'N/A'}</p>
+                              </div>
+                              <div>
+                                <p className="font-medium text-gray-900">Duration</p>
+                                <p>{booking.hourlyOption?.hours} hours</p>
+                              </div>
+                              <div>
+                                <p className="font-medium text-gray-900">Guests</p>
+                                <p>{booking.guests || 'N/A'}</p>
+                              </div>
+                              <div>
+                                <p className="font-medium text-gray-900">Time Type</p>
+                                <p>{booking.hourlyOption?.isFlexible ? 'Flexible' : 'Fixed'}</p>
+                              </div>
+                              <div>
+                                <p className="font-medium text-gray-900">Time</p>
+                                <p>
+                                  {booking.hourlyOption?.isFlexible 
+                                    ? `${booking.hourlyOption?.startTime || 'N/A'}`
+                                    : `${booking.hourlyOption?.checkInTime || 'N/A'} - ${booking.hourlyOption?.checkOutTime || 'N/A'}`
+                                  }
+                                </p>
+                              </div>
+                            </>
+                          )}
+                          <div>
+                            <p className="font-medium text-gray-900">Total Price</p>
+                            <p className="text-lg font-bold text-blue-600">₱{booking.totalPrice}</p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
-                        <div>
-                          <p className="font-medium text-gray-900">Check-in</p>
-                          <p>{new Date(booking.checkIn).toLocaleDateString()}</p>
-                        </div>
-                        <div>
-                          <p className="font-medium text-gray-900">Check-out</p>
-                          <p>{new Date(booking.checkOut).toLocaleDateString()}</p>
-                        </div>
-                        <div>
-                          <p className="font-medium text-gray-900">Guests</p>
-                          <p>{booking.guests}</p>
-                        </div>
-                        <div>
-                          <p className="font-medium text-gray-900">Total Price</p>
-                          <p className="text-lg font-bold text-blue-600">₱{booking.totalPrice}</p>
-                        </div>
+                      <div className="flex flex-col gap-2">
+                        <Link to={`/guest/bookings/${booking.id}`}>
+                          <Button size="sm">View Details</Button>
+                        </Link>
                       </div>
                     </div>
-                    <div className="flex flex-col gap-2">
-                      <Link to={`/guest/bookings/${booking.id}`}>
-                        <Button size="sm">View Details</Button>
-                      </Link>
-                    </div>
-                  </div>
-                </Card>
-              ))}
+                  </Card>
+                );
+              })}
             </div>
           )}
         </>

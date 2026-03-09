@@ -13,7 +13,8 @@ const Register = () => {
     phone: '',
     password: '',
     confirmPassword: '',
-    role: defaultRole
+    role: defaultRole,
+    companyName: '' // For hosts
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -47,7 +48,12 @@ const Register = () => {
     const result = await register(formData);
     
     if (result.success) {
-      navigate(result.user.role === 'host' ? '/host/dashboard' : '/guest/dashboard');
+      // Redirect hosts to onboarding wizard, guests to dashboard
+      if (result.user.role === 'host') {
+        navigate('/host/onboarding');
+      } else {
+        navigate('/guest/dashboard');
+      }
     } else {
       setError(result.message);
     }
@@ -123,6 +129,23 @@ const Register = () => {
               value={formData.phone}
               onChange={handleChange}
             />
+            
+            {/* Company Name - Only for hosts */}
+            {isHost && (
+              <div className="space-y-2">
+                <input
+                  name="companyName"
+                  type="text"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
+                  placeholder="Company/Business Name (Optional)"
+                  value={formData.companyName}
+                  onChange={handleChange}
+                />
+                <p className="text-xs text-gray-500">
+                  Enter your business or company name if you're managing properties professionally
+                </p>
+              </div>
+            )}
             
             {/* Role Selection - Hidden but can be toggled */}
             <div className="flex items-center justify-between bg-gray-50 p-3 rounded-md">

@@ -6,6 +6,7 @@ import Button from '../../components/Button';
 import BookingCalendar from '../../components/BookingCalendar';
 import PropertyChatbot from '../../components/PropertyChatbot';
 import AuthModal from '../../components/AuthModal';
+import CancellationPolicyDisplay from '../../components/CancellationPolicyDisplay';
 import { useAuth } from '../../context/AuthContext';
 
 const UnitDetails = () => {
@@ -177,6 +178,14 @@ const UnitDetails = () => {
                     <span className="text-xs font-semibold text-primary uppercase px-3 py-1 bg-blue-50 rounded-full">
                       {unit.type}
                     </span>
+                    {unit.instantBooking && (
+                      <span className="text-xs font-semibold bg-green-100 text-green-700 px-3 py-1 rounded-full flex items-center">
+                        <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        Instant Booking
+                      </span>
+                    )}
                     <div className="flex items-center text-yellow-500">
                       <span className="text-xl">★</span>
                       <span className="ml-1 text-sm font-semibold text-gray-900">{unit.rating}</span>
@@ -424,10 +433,58 @@ const UnitDetails = () => {
                 </div>
               </div>
 
+              {/* Cancellation Policy */}
+              {unit.cancellationPolicy && (
+                <div className="mb-8 pb-8 border-b">
+                  <h3 className="font-semibold text-2xl mb-6">Cancellation Policy</h3>
+                  <CancellationPolicyDisplay 
+                    policy={unit.cancellationPolicy} 
+                    customPolicy={unit.customCancellation}
+                  />
+                </div>
+              )}
+
               {/* House Rules */}
-              <div>
+              <div className="mb-8 pb-8 border-b">
                 <h3 className="font-semibold text-2xl mb-6">House Rules</h3>
                 <p className="text-gray-700 leading-relaxed">{unit.houseRules}</p>
+              </div>
+
+              {/* Host Information */}
+              <div>
+                <h3 className="font-semibold text-2xl mb-6">About the Host</h3>
+                <Link 
+                  to={`/hosts/${unit.hostId}`}
+                  className="block p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg hover:from-blue-100 hover:to-purple-100 transition-all shadow-sm hover:shadow-md border border-blue-100"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+                      {unit.hostName ? unit.hostName.charAt(0).toUpperCase() : 'H'}
+                    </div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-lg text-gray-900 mb-1">
+                        {unit.hostName || 'Host'}
+                      </div>
+                      {unit.companyName && (
+                        <div className="text-sm text-blue-600 font-medium mb-1 flex items-center">
+                          <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
+                          </svg>
+                          {unit.companyName}
+                        </div>
+                      )}
+                      <div className="text-sm text-gray-600 flex items-center">
+                        <svg className="w-4 h-4 mr-1 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                        View all properties and host details
+                      </div>
+                    </div>
+                    <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

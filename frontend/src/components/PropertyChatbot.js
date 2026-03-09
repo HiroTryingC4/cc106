@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { useAuth } from '../context/AuthContext';
 
 const PropertyChatbot = ({ unitId, hostId, unitName, onClose, isOpen: externalIsOpen = false }) => {
@@ -9,6 +10,19 @@ const PropertyChatbot = ({ unitId, hostId, unitName, onClose, isOpen: externalIs
   const [isTyping, setIsTyping] = useState(false);
   const [hostInfo, setHostInfo] = useState(null);
   const messagesEndRef = useRef(null);
+  const [isMinimized, setIsMinimized] = useState(() => {
+    try {
+      return localStorage.getItem('property_chat_minimized') === 'true';
+    } catch (e) {
+      return false;
+    }
+  });
+  useEffect(() => {
+    try {
+      localStorage.setItem('property_chat_minimized', isMinimized ? 'true' : 'false');
+    } catch (e) {}
+  }, [isMinimized]);
+  const [animState, setAnimState] = useState(''); // '', 'minimizing', 'restoring'
 
   // Update internal state when external prop changes
   useEffect(() => {
@@ -213,11 +227,13 @@ const PropertyChatbot = ({ unitId, hostId, unitName, onClose, isOpen: externalIs
   return (
     <>
       {/* Chat Button - Property Specific */}
-      {!isOpen && !onClose && (
+      {/* Render button inline so users can open chatbot */}
+      {!isOpen && !onClose && !isMinimized && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-24 right-6 bg-green-600 text-white rounded-full p-4 shadow-lg hover:bg-green-700 transition-all z-40 flex items-center gap-2"
+          className="fixed bottom-24 right-6 bg-green-600 text-white rounded-full p-4 shadow-lg hover:bg-green-700 transition-all z-60 flex items-center gap-2"
           title="Chat with host"
+          style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
@@ -226,18 +242,19 @@ const PropertyChatbot = ({ unitId, hostId, unitName, onClose, isOpen: externalIs
         </button>
       )}
 
-      {/* Chat Window */}
-      {isOpen && (
+      {/* Chat Window rendered into document.body to avoid stacking/context clipping */}
+      {typeof document !== 'undefined' && isOpen && createPortal(
         <>
           {/* Backdrop */}
           <div 
-            className="fixed inset-0 bg-black bg-opacity-25 z-40"
+            className="fixed inset-0 bg-black bg-opacity-25 z-40 pointer-events-auto"
             onClick={handleClose}
           />
           
           {/* Modal */}
-          <div className="fixed bottom-6 right-6 w-96 max-w-[calc(100vw-3rem)] h-[600px] max-h-[calc(100vh-3rem)] bg-white rounded-2xl shadow-2xl flex flex-col z-50 border border-gray-200"
-               onClick={(e) => e.stopPropagation()}>
+          <div
+            className={`fixed bottom-6 right-6 w-96 max-w-[calc(100vw-3rem)] h-[600px] max-h-[calc(100vh-3rem)] bg-white rounded-2xl shadow-2xl flex flex-col z-60 border border-gray-200 transition-transform transition-opacity duration-300 ${animState === 'minimizing' ? 'translate-y-8 opacity-0' : animState === 'restoring' ? 'translate-y-8 opacity-0' : 'translate-y-0 opacity-100'}`}
+            onClick={(e) => e.stopPropagation()}>
             {/* Header */}
             <div className="bg-gradient-to-r from-green-600 to-green-700 text-white p-4 rounded-t-2xl flex justify-between items-center">
               <div className="flex items-center gap-3">
@@ -257,6 +274,22 @@ const PropertyChatbot = ({ unitId, hostId, unitName, onClose, isOpen: externalIs
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <button
+                onClick={() => {
+                  setAnimState('minimizing');
+                  setTimeout(() => {
+                    setAnimState('');
+                    setIsOpen(false);
+                    setIsMinimized(true);
+                  }, 300);
+                }}
+                title="Minimize"
+                className="text-white hover:bg-white/20 rounded-full p-1 transition-colors ml-2"
+              >
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 12h16" />
                 </svg>
               </button>
             </div>
@@ -361,8 +394,31 @@ const PropertyChatbot = ({ unitId, hostId, unitName, onClose, isOpen: externalIs
               </div>
             </div>
           </div>
-        </>
-      )}
+        </>, document.body)
+      }
+
+      {/* Minimized bar (portal) */}
+      {typeof document !== 'undefined' && isMinimized && createPortal(
+          <div className={`fixed bottom-16 right-6 z-70 flex items-center gap-2 bg-white border border-gray-200 rounded-full shadow-lg px-3 py-2 transition-transform transition-opacity duration-300 ${animState === 'restoring' ? 'translate-y-8 opacity-0' : 'translate-y-0 opacity-100'}`} style={{ minWidth: 160 }}>
+          <button onClick={() => {
+              setAnimState('restoring');
+              setIsMinimized(false);
+              try { localStorage.setItem('property_chat_minimized', 'false'); } catch (e) {}
+              setIsOpen(true);
+              setTimeout(() => setAnimState(''), 20);
+            }} className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+            </svg>
+            <span className="text-sm text-gray-700">Host Chat (minimized)</span>
+          </button>
+          <button onClick={() => { setIsMinimized(false); try { localStorage.setItem('property_chat_minimized', 'false'); } catch (e) {} }} title="Close" className="ml-2 p-1 rounded-full hover:bg-gray-100">
+            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>, document.body)
+      }
     </>
   );
 };

@@ -20,6 +20,9 @@ app.use('/api/host', require('./routes/host'));
 app.use('/api/guest', require('./routes/guest'));
 app.use('/api/chatbot', require('./routes/chatbot'));
 app.use('/api/messages', require('./routes/messages'));
+app.use('/api/notifications', require('./routes/notifications'));
+app.use('/api/promo-codes', require('./routes/promo-codes'));
+app.use('/api/public/hosts', require('./routes/public/hosts'));
 
 // Health check
 app.get('/api/health', (req, res) => {

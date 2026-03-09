@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DashboardLayout from '../../components/DashboardLayout';
-import Card from '../../components/Card';
-import Button from '../../components/Button';
+import AdminLayout from '../../components/AdminLayout';
 
 const Logs = () => {
   const [logs, setLogs] = useState([]);
@@ -30,31 +28,29 @@ const Logs = () => {
   };
 
   const getActionIcon = (action) => {
-    switch (action) {
-      case 'booking_created': return '📅';
-      case 'booking_cancelled': return '❌';
-      case 'booking_completed': return '✅';
-      case 'unit_created': return '🏠';
-      case 'unit_updated': return '✏️';
-      case 'unit_deleted': return '🗑️';
-      case 'user_created': return '👤';
-      case 'user_updated': return '✏️';
-      case 'user_deactivated': return '🚫';
-      case 'review_created': return '⭐';
-      case 'review_deleted': return '🗑️';
-      case 'payment_completed': return '💰';
-      case 'login': return '🔐';
-      case 'logout': return '🚪';
-      default: return '📝';
-    }
+    const iconMap = {
+      'booking_created': { icon: '📅', bg: 'bg-blue-100', color: 'text-blue-600' },
+      'booking_cancelled': { icon: '❌', bg: 'bg-red-100', color: 'text-red-600' },
+      'booking_completed': { icon: '✅', bg: 'bg-green-100', color: 'text-green-600' },
+      'booking_approved': { icon: '✓', bg: 'bg-green-100', color: 'text-green-600' },
+      'unit_created': { icon: '🏠', bg: 'bg-green-100', color: 'text-green-600' },
+      'unit_updated': { icon: '✏️', bg: 'bg-blue-100', color: 'text-blue-600' },
+      'unit_deleted': { icon: '🗑️', bg: 'bg-red-100', color: 'text-red-600' },
+      'user_created': { icon: '👤', bg: 'bg-green-100', color: 'text-green-600' },
+      'user_updated': { icon: '✏️', bg: 'bg-blue-100', color: 'text-blue-600' },
+      'user_deactivated': { icon: '🚫', bg: 'bg-red-100', color: 'text-red-600' },
+      'review_created': { icon: '⭐', bg: 'bg-yellow-100', color: 'text-yellow-600' },
+      'review_submitted': { icon: '�', bg: 'bg-green-100', color: 'text-green-600' },
+      'review_deleted': { icon: '🗑️', bg: 'bg-red-100', color: 'text-red-600' },
+      'payment_completed': { icon: '�', bg: 'bg-green-100', color: 'text-green-600' },
+      'login': { icon: '🔐', bg: 'bg-blue-100', color: 'text-blue-600' },
+      'logout': { icon: '🚪', bg: 'bg-gray-100', color: 'text-gray-600' }
+    };
+    return iconMap[action] || { icon: '📝', bg: 'bg-gray-100', color: 'text-gray-600' };
   };
 
-  const getActionColor = (action) => {
-    if (action.includes('created')) return 'text-green-600';
-    if (action.includes('deleted') || action.includes('cancelled')) return 'text-red-600';
-    if (action.includes('updated')) return 'text-blue-600';
-    if (action.includes('completed')) return 'text-green-600';
-    return 'text-gray-600';
+  const formatActionTitle = (action) => {
+    return action.replace(/_/g, ' ').toUpperCase();
   };
 
   const filteredLogs = logs.filter(log => {
@@ -64,106 +60,137 @@ const Logs = () => {
 
   if (loading) {
     return (
-      <DashboardLayout>
+      <AdminLayout>
         <div className="flex justify-center items-center h-64">
           <div className="text-xl">Loading...</div>
         </div>
-      </DashboardLayout>
+      </AdminLayout>
     );
   }
 
   return (
-    <DashboardLayout>
+    <AdminLayout>
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Activity Logs</h1>
         <p className="text-gray-600 mt-2">System activity and audit trail</p>
       </div>
 
       <div className="mb-6 flex gap-2 flex-wrap">
-        <Button
-          variant={filter === 'all' ? 'primary' : 'secondary'}
+        <button
           onClick={() => setFilter('all')}
-          size="sm"
+          className={`px-4 py-2 rounded-lg font-medium transition ${
+            filter === 'all'
+              ? 'bg-gray-800 text-white'
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}
         >
           All
-        </Button>
-        <Button
-          variant={filter === 'booking' ? 'primary' : 'secondary'}
+        </button>
+        <button
           onClick={() => setFilter('booking')}
-          size="sm"
+          className={`px-4 py-2 rounded-lg font-medium transition ${
+            filter === 'booking'
+              ? 'bg-gray-800 text-white'
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}
         >
           Bookings
-        </Button>
-        <Button
-          variant={filter === 'unit' ? 'primary' : 'secondary'}
+        </button>
+        <button
           onClick={() => setFilter('unit')}
-          size="sm"
+          className={`px-4 py-2 rounded-lg font-medium transition ${
+            filter === 'unit'
+              ? 'bg-gray-800 text-white'
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}
         >
           Units
-        </Button>
-        <Button
-          variant={filter === 'user' ? 'primary' : 'secondary'}
+        </button>
+        <button
           onClick={() => setFilter('user')}
-          size="sm"
+          className={`px-4 py-2 rounded-lg font-medium transition ${
+            filter === 'user'
+              ? 'bg-gray-800 text-white'
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}
         >
           Users
-        </Button>
-        <Button
-          variant={filter === 'payment' ? 'primary' : 'secondary'}
+        </button>
+        <button
           onClick={() => setFilter('payment')}
-          size="sm"
+          className={`px-4 py-2 rounded-lg font-medium transition ${
+            filter === 'payment'
+              ? 'bg-gray-800 text-white'
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}
         >
           Payments
-        </Button>
-        <Button
-          variant={filter === 'review' ? 'primary' : 'secondary'}
+        </button>
+        <button
           onClick={() => setFilter('review')}
-          size="sm"
+          className={`px-4 py-2 rounded-lg font-medium transition ${
+            filter === 'review'
+              ? 'bg-gray-800 text-white'
+              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+          }`}
         >
           Reviews
-        </Button>
+        </button>
       </div>
 
-      <Card>
-        <div className="space-y-3">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div className="p-6 space-y-4">
           {filteredLogs.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-gray-500">No activity logs found</p>
             </div>
           ) : (
-            filteredLogs.map(log => (
-              <div
-                key={log.id}
-                className="flex items-start gap-4 p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition"
-              >
-                <div className="text-3xl">{getActionIcon(log.action)}</div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className={`font-semibold ${getActionColor(log.action)}`}>
-                      {log.action.replace(/_/g, ' ').toUpperCase()}
-                    </span>
-                    <span className="text-xs text-gray-500">
-                      {new Date(log.timestamp).toLocaleString()}
-                    </span>
+            filteredLogs.map(log => {
+              const iconData = getActionIcon(log.action);
+              return (
+                <div
+                  key={log.id}
+                  className="flex items-start gap-4 p-4 bg-white border border-gray-200 rounded-xl hover:shadow-md transition-shadow"
+                >
+                  <div className={`w-12 h-12 ${iconData.bg} rounded-lg flex items-center justify-center text-2xl flex-shrink-0`}>
+                    {iconData.icon}
                   </div>
-                  <p className="text-sm text-gray-700">{log.details}</p>
-                  {log.userId && (
-                    <p className="text-xs text-gray-500 mt-1">User ID: {log.userId}</p>
-                  )}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <span className={`font-semibold text-sm ${iconData.color}`}>
+                        {formatActionTitle(log.action)}
+                      </span>
+                      <span className="text-xs text-gray-500 whitespace-nowrap">
+                        {new Date(log.timestamp).toLocaleDateString('en-US', {
+                          month: 'numeric',
+                          day: 'numeric',
+                          year: 'numeric',
+                          hour: 'numeric',
+                          minute: '2-digit',
+                          hour12: true
+                        })}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-900 mb-1">{log.details}</p>
+                    {log.userId && (
+                      <p className="text-xs text-gray-500">User ID: {log.userId}</p>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           )}
         </div>
-      </Card>
+      </div>
 
       {filteredLogs.length > 0 && (
         <div className="mt-4 text-center text-sm text-gray-600">
           Showing {filteredLogs.length} of {logs.length} logs
         </div>
       )}
-    </DashboardLayout>
+    </AdminLayout>
   );
 };
 
 export default Logs;
+

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DashboardLayout from '../../components/DashboardLayout';
+import AdminLayout from '../../components/AdminLayout';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Modal from '../../components/Modal';
@@ -87,16 +87,16 @@ const Bookings = () => {
 
   if (loading) {
     return (
-      <DashboardLayout>
+      <AdminLayout>
         <div className="flex justify-center items-center h-64">
           <div className="text-xl">Loading...</div>
         </div>
-      </DashboardLayout>
+      </AdminLayout>
     );
   }
 
   return (
-    <DashboardLayout>
+    <AdminLayout>
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Booking Management</h1>
         <p className="text-gray-600 mt-2">Manage all system bookings</p>
@@ -218,8 +218,9 @@ const Bookings = () => {
           </Button>
         </div>
       </Modal>
-    </DashboardLayout>
+    </AdminLayout>
   );
 };
 
 export default Bookings;
+

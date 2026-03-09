@@ -110,16 +110,38 @@ Authorization: Bearer <token>
     {
       "id": "1",
       "unitId": "1",
+      "pricingType": "standard",
       "checkIn": "2024-06-15",
       "checkOut": "2024-06-20",
       "guests": 2,
       "totalPrice": 750,
       "status": "confirmed",
       "paymentStatus": "paid"
+    },
+    {
+      "id": "2",
+      "unitId": "2",
+      "pricingType": "hourly",
+      "hourlyOption": {
+        "hours": "6",
+        "price": "500",
+        "isFlexible": true,
+        "checkInTime": "10:00",
+        "checkOutTime": "16:00",
+        "startTime": "10:00"
+      },
+      "totalPrice": 700,
+      "status": "pending",
+      "paymentStatus": "pending"
     }
   ]
 }
 ```
+
+**Backward Compatibility:**
+- Bookings without `pricingType` field are automatically treated as `"standard"`
+- Old bookings will display correctly with default pricing type
+- All existing booking functionality remains unchanged
 
 ### Create Booking
 
@@ -128,17 +150,52 @@ POST /guest/bookings
 Authorization: Bearer <token>
 ```
 
-**Request Body:**
+**Request Body (Standard Pricing):**
 ```json
 {
   "unitId": "1",
+  "pricingType": "standard",
   "checkIn": "2024-07-01",
   "checkOut": "2024-07-05",
-  "guests": 2
+  "guests": 2,
+  "totalPrice": 850
 }
 ```
 
-**Response:**
+**Request Body (Hourly Pricing - Fixed Time):**
+```json
+{
+  "unitId": "1",
+  "pricingType": "hourly",
+  "hourlyOption": {
+    "hours": "6",
+    "price": "500",
+    "isFlexible": false,
+    "checkInTime": "14:00",
+    "checkOutTime": "20:00"
+  },
+  "totalPrice": 700
+}
+```
+
+**Request Body (Hourly Pricing - Flexible Time):**
+```json
+{
+  "unitId": "1",
+  "pricingType": "hourly",
+  "hourlyOption": {
+    "hours": "12",
+    "price": "800",
+    "isFlexible": true,
+    "checkInTime": "10:00",
+    "checkOutTime": "22:00",
+    "startTime": "10:00"
+  },
+  "totalPrice": 1000
+}
+```
+
+**Response (Standard Pricing):**
 ```json
 {
   "success": true,
@@ -147,12 +204,89 @@ Authorization: Bearer <token>
     "id": "4",
     "unitId": "1",
     "guestId": "3",
+    "pricingType": "standard",
     "checkIn": "2024-07-01",
     "checkOut": "2024-07-05",
     "guests": 2,
+    "nights": 4,
+    "basePrice": 600,
+    "extraGuestFee": 0,
     "totalPrice": 600,
-    "status": "pending"
+    "securityDeposit": 200,
+    "status": "pending",
+    "paymentStatus": "pending",
+    "createdAt": "2024-06-15T10:30:00.000Z"
   }
+}
+```
+
+**Response (Hourly Pricing):**
+```json
+{
+  "success": true,
+  "message": "Booking created successfully",
+  "booking": {
+    "id": "5",
+    "unitId": "1",
+    "guestId": "3",
+    "pricingType": "hourly",
+    "hourlyOption": {
+      "hours": "6",
+      "price": "500",
+      "isFlexible": false,
+      "checkInTime": "14:00",
+      "checkOutTime": "20:00",
+      "startTime": null
+    },
+    "totalPrice": 700,
+    "securityDeposit": 200,
+    "status": "pending",
+    "paymentStatus": "pending",
+    "createdAt": "2024-06-15T10:30:00.000Z"
+  }
+}
+```
+
+**Validation Rules:**
+
+For Standard Pricing:
+- `checkIn` and `checkOut` are required
+- `checkOut` must be after `checkIn`
+- `guests` must not exceed unit's `maxGuests`
+- No date conflicts with existing bookings
+
+For Hourly Pricing:
+- `hourlyOption` object is required
+- `hours` and `price` must match an available option in unit's `hourlyPricing` array
+- For flexible options (`isFlexible: true`), `startTime` is required
+- Price calculation must match: `hourlyOption.price + securityDeposit = totalPrice`
+
+**Error Responses:**
+```json
+{
+  "success": false,
+  "message": "Check-in and check-out dates are required"
+}
+```
+
+```json
+{
+  "success": false,
+  "message": "Invalid hourly pricing option"
+}
+```
+
+```json
+{
+  "success": false,
+  "message": "Start time is required for flexible options"
+}
+```
+
+```json
+{
+  "success": false,
+  "message": "Price calculation mismatch"
 }
 ```
 
@@ -662,6 +796,53 @@ GET /units
 ```http
 GET /units/:id
 ```
+
+**Response:**
+```json
+{
+  "success": true,
+  "unit": {
+    "id": "1",
+    "name": "Luxury Apartment",
+    "description": "Beautiful apartment in the city center",
+    "type": "Apartment",
+    "location": "Manila, Philippines",
+    "pricePerNight": 150,
+    "maxGuests": 4,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "securityDeposit": 200,
+    "extraGuestFee": 50,
+    "amenities": ["WiFi", "Pool", "Parking"],
+    "images": ["image1.jpg", "image2.jpg"],
+    "hourlyPricing": [
+      {
+        "hours": "6",
+        "price": "500",
+        "isFlexible": false,
+        "checkInTime": "14:00",
+        "checkOutTime": "20:00"
+      },
+      {
+        "hours": "12",
+        "price": "800",
+        "isFlexible": true
+      }
+    ],
+    "hostId": "2",
+    "status": "active"
+  }
+}
+```
+
+**Hourly Pricing Fields:**
+- `hours`: Duration in hours (string)
+- `price`: Price for this duration (string)
+- `isFlexible`: Boolean indicating if guest can choose start time
+- `checkInTime`: Fixed check-in time (only for `isFlexible: false`)
+- `checkOutTime`: Fixed check-out time (only for `isFlexible: false`)
+
+**Note**: If `hourlyPricing` array is empty or missing, the unit only offers standard per-night pricing.
 
 ---
 

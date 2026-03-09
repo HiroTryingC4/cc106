@@ -110,15 +110,19 @@ const Units = () => {
       <div className="mb-6 flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">My Units</h1>
-          <p className="text-gray-600 mt-2">Manage your property listings</p>
+          <p className="text-gray-500 mt-1">Manage your properties and AI assistants</p>
         </div>
         {isVerified ? (
           <Link to="/host/units/new">
-            <Button>+ Add New Unit</Button>
+            <Button className="bg-[#4E7B22] hover:bg-[#3d6219] text-white flex items-center gap-2">
+              <span className="text-lg">⊕</span>
+              Add new unit
+            </Button>
           </Link>
         ) : (
-          <Button disabled title="Verification required">
-            🔒 Add New Unit
+          <Button disabled title="Verification required" className="flex items-center gap-2">
+            <span className="text-lg">🔒</span>
+            Add new unit
           </Button>
         )}
       </div>
@@ -139,70 +143,104 @@ const Units = () => {
           </div>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {units.map(unit => (
-            <Card key={unit.id}>
-              {unit.images && unit.images[0] && (
-                <img
-                  src={unit.images[0]}
-                  alt={unit.name}
-                  className="w-full h-48 object-cover rounded-t-lg -mt-6 -mx-6 mb-4"
-                />
-              )}
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl font-semibold">{unit.name}</h3>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  unit.available ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+            <Card key={unit.id} className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow relative">
+              {/* Status Badge */}
+              <div className="absolute top-3 right-3 z-10">
+                <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  unit.available ? 'bg-green-500 text-white' : 'bg-yellow-500 text-white'
                 }`}>
-                  {unit.available ? 'Available' : 'Unavailable'}
+                  {unit.available ? 'active' : 'maintenance'}
                 </span>
               </div>
-              <p className="text-sm text-gray-600 mb-2">{unit.location}</p>
-              <p className="text-sm text-gray-500 mb-4 line-clamp-2">{unit.description}</p>
-              
-              <div className="grid grid-cols-2 gap-2 text-sm mb-4">
-                <div>
-                  <span className="text-gray-600">Type:</span>
-                  <span className="ml-1 font-medium">{unit.type}</span>
-                </div>
-                <div>
-                  <span className="text-gray-600">Bedrooms:</span>
-                  <span className="ml-1 font-medium">{unit.bedrooms}</span>
-                </div>
-                <div>
-                  <span className="text-gray-600">Max Guests:</span>
-                  <span className="ml-1 font-medium">{unit.maxGuests}</span>
-                </div>
-                <div>
-                  <span className="text-gray-600">Price:</span>
-                  <span className="ml-1 font-medium text-blue-600">₱{unit.pricePerNight}/night</span>
-                </div>
-              </div>
 
-              <div className="flex gap-2">
-                {isVerified ? (
-                  <>
-                    <Link to={`/host/units/${unit.id}/edit`} className="flex-1">
-                      <Button size="sm" variant="secondary" className="w-full">Edit</Button>
-                    </Link>
-                    <Button
-                      size="sm"
-                      variant="danger"
-                      onClick={() => setDeleteModal({ show: true, unitId: unit.id })}
-                    >
-                      Delete
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Button size="sm" variant="secondary" className="flex-1" disabled title="Verification required">
-                      🔒 Edit
-                    </Button>
-                    <Button size="sm" variant="danger" disabled title="Verification required">
-                      🔒 Delete
-                    </Button>
-                  </>
+              {/* Unit Image */}
+              {unit.images && unit.images[0] ? (
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={unit.images[0]}
+                    alt={unit.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="relative h-48 bg-gray-200 flex items-center justify-center">
+                  <span className="text-gray-400 text-4xl">🏠</span>
+                </div>
+              )}
+
+              {/* Unit Details */}
+              <div className="p-4">
+                <div className="flex items-start gap-2 mb-2">
+                  <span className="text-yellow-500 text-lg">🏠</span>
+                  <h3 className="text-lg font-bold text-gray-900">{unit.name}</h3>
+                </div>
+
+                {unit.address && (
+                  <p className="text-sm text-gray-500 mb-3 flex items-center gap-1">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    {unit.address.split(',')[0]}
+                  </p>
                 )}
+
+                <div className="grid grid-cols-2 gap-2 text-xs mb-3">
+                  <div>
+                    <span className="text-gray-500">Type:</span>
+                    <span className="ml-1 font-medium text-gray-700">{unit.type}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-500">Hourly Type:</span>
+                    <span className="ml-1 font-medium text-gray-700">{unit.hourlyType || 'Flexible'}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-500">Bedrooms:</span>
+                    <span className="ml-1 font-medium text-gray-700">{unit.bedrooms}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-500">Time:</span>
+                    <span className="ml-1 font-medium text-gray-700">
+                      {unit.checkInTime || '1:00 pm'} - {unit.checkOutTime || '5:00pm'}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <span className="text-sm text-gray-600">Price: </span>
+                  <span className="text-lg font-bold text-green-600">₱{unit.pricePerNight}/night</span>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-2">
+                  {isVerified ? (
+                    <>
+                      <Link to={`/host/units/${unit.id}/edit`} className="flex-1">
+                        <button className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 transition flex items-center justify-center gap-1">
+                          <span>✏️</span>
+                          Edit
+                        </button>
+                      </Link>
+                      <button
+                        onClick={() => setDeleteModal({ show: true, unitId: unit.id })}
+                        className="px-4 py-2 text-sm bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                      >
+                        Delete
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button className="flex-1 px-3 py-2 text-sm border border-gray-300 rounded-lg bg-gray-100 text-gray-400 cursor-not-allowed" disabled>
+                        <span>🔒</span> Edit
+                      </button>
+                      <button className="px-4 py-2 text-sm bg-gray-300 text-gray-500 rounded-lg cursor-not-allowed" disabled>
+                        Delete
+                      </button>
+                    </>
+                  )}
+                </div>
               </div>
             </Card>
           ))}

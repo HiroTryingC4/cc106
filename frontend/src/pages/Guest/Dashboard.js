@@ -92,123 +92,110 @@ const GuestDashboard = () => {
 
   return (
     <DashboardLayout>
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900">Guest Dashboard</h1>
-        <p className="text-gray-600 mt-2">Welcome back! Here's your booking overview</p>
+      <div className="mb-6 md:mb-8">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">Guest Dashboard</h1>
+        <p className="text-sm md:text-base text-gray-500">Welcome back! Here's your booking overview</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <Card>
-          <h3 className="text-gray-600 text-sm mb-2">Total Bookings</h3>
-          <p className="text-3xl font-bold text-blue-600">{stats.totalBookings}</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
+        <Card className="bg-white shadow-sm hover:shadow-md transition-shadow">
+          <h3 className="text-gray-500 text-sm font-medium mb-2">Total Bookings</h3>
+          <p className="text-4xl font-bold text-blue-600">{stats.totalBookings}</p>
         </Card>
-        <Card>
-          <h3 className="text-gray-600 text-sm mb-2">Upcoming</h3>
-          <p className="text-3xl font-bold text-green-600">{stats.upcomingBookings}</p>
+        <Card className="bg-white shadow-sm hover:shadow-md transition-shadow">
+          <h3 className="text-gray-500 text-sm font-medium mb-2">Upcoming</h3>
+          <p className="text-4xl font-bold text-green-600">{stats.upcomingBookings}</p>
         </Card>
-        <Card>
-          <h3 className="text-gray-600 text-sm mb-2">Completed</h3>
-          <p className="text-3xl font-bold text-gray-700">{stats.completedBookings}</p>
+        <Card className="bg-white shadow-sm hover:shadow-md transition-shadow">
+          <h3 className="text-gray-500 text-sm font-medium mb-2">Completed</h3>
+          <p className="text-4xl font-bold text-blue-600">{stats.completedBookings}</p>
         </Card>
-        <Card>
-          <h3 className="text-gray-600 text-sm mb-2">Total Spent</h3>
-          <p className="text-3xl font-bold text-purple-600">₱{stats.totalSpent}</p>
+        <Card className="bg-white shadow-sm hover:shadow-md transition-shadow">
+          <h3 className="text-gray-500 text-sm font-medium mb-2">Total Spend</h3>
+          <p className="text-4xl font-bold text-purple-600">₱{stats.totalSpent}</p>
         </Card>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        <Card className="lg:col-span-2">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold">Recent Bookings</h2>
-            <Link to="/guest/bookings">
-              <Button size="sm" variant="secondary">View All</Button>
+      <Card className="mb-6 md:mb-8 bg-white shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 md:mb-6 gap-3">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900">Recent Bookings</h2>
+          <Link to="/guest/bookings">
+            <button className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors min-h-[44px]">
+              View all
+            </button>
+          </Link>
+        </div>
+        
+        {recentBookings.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-gray-500 mb-4">No bookings yet. Start exploring!</p>
+            <Link to="/units">
+              <Button>Browse Units</Button>
             </Link>
           </div>
-          
-          {recentBookings.length === 0 ? (
-            <div className="text-center py-8">
-              <p className="text-gray-600 mb-4">No bookings yet. Start exploring!</p>
-              <Link to="/units">
-                <Button>Browse Units</Button>
-              </Link>
-            </div>
-          ) : (
-            <div className="space-y-3">
-              {recentBookings.map(booking => (
-                <div key={booking.id} className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors">
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="font-semibold">Booking #{booking.id}</span>
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(booking.status)}`}>
-                          {booking.status}
-                        </span>
-                      </div>
-                      <p className="text-sm text-gray-600">
-                        {new Date(booking.checkIn).toLocaleDateString()} - {new Date(booking.checkOut).toLocaleDateString()}
-                      </p>
-                      <p className="text-sm font-medium text-blue-600 mt-1">₱{booking.totalPrice}</p>
+        ) : (
+          <div className="space-y-3 md:space-y-4">
+            {recentBookings.map(booking => (
+              <div key={booking.id} className="bg-gray-50 rounded-lg p-3 md:p-4 hover:bg-gray-100 transition-colors">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-2">
+                      <span className="font-semibold text-sm md:text-base text-gray-900">Booking #{booking.id}</span>
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(booking.status)}`}>
+                        {booking.status}
+                      </span>
                     </div>
-                    <Link to={`/guest/bookings/${booking.id}`}>
-                      <Button size="sm">View</Button>
-                    </Link>
+                    <p className="text-xs md:text-sm text-gray-600 mb-1">
+                      {new Date(booking.checkIn).toLocaleDateString()} - {new Date(booking.checkOut).toLocaleDateString()}
+                    </p>
+                    <p className="text-sm md:text-base font-bold text-gray-900">₱{booking.totalPrice}</p>
                   </div>
+                  <Link to={`/guest/bookings/${booking.id}`}>
+                    <button className="w-full sm:w-auto px-6 py-2 bg-green-700 hover:bg-green-800 text-white rounded-lg text-sm font-medium transition-colors min-h-[44px]">
+                      View
+                    </button>
+                  </Link>
                 </div>
-              ))}
-            </div>
-          )}
-        </Card>
-
-        <Card>
-          <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
-          <div className="space-y-3">
-            <Link to="/units" className="block">
-              <Button className="w-full">Browse Units</Button>
-            </Link>
-            <Link to="/guest/bookings" className="block">
-              <Button className="w-full" variant="secondary">My Bookings</Button>
-            </Link>
-            <Link to="/guest/profile" className="block">
-              <Button className="w-full" variant="secondary">Edit Profile</Button>
-            </Link>
+              </div>
+            ))}
           </div>
-        </Card>
-      </div>
+        )}
+      </Card>
 
       {/* Browsing Analytics */}
       {browsingAnalytics && browsingAnalytics.totalViews > 0 && (
-        <Card className="mb-8">
-          <h2 className="text-xl font-semibold mb-4">📊 Your Browsing Insights</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card className="mb-6 md:mb-8 bg-white shadow-sm">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">📊 Your Browsing Insights</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <div>
-              <h3 className="text-sm text-gray-600 mb-2">Properties Viewed</h3>
-              <p className="text-2xl font-bold text-blue-600">{browsingAnalytics.totalViews}</p>
+              <h3 className="text-xs md:text-sm text-gray-500 font-medium mb-2 md:mb-3">Properties Viewed</h3>
+              <p className="text-3xl md:text-4xl font-bold text-blue-600">{browsingAnalytics.totalViews}</p>
             </div>
             <div>
-              <h3 className="text-sm text-gray-600 mb-2">Preferred Property Types</h3>
-              <div className="space-y-1">
+              <h3 className="text-xs md:text-sm text-gray-500 font-medium mb-2 md:mb-3">Preferred Property Types</h3>
+              <div className="space-y-2">
                 {browsingAnalytics.preferredTypes.slice(0, 3).map((type, index) => (
                   <div key={index} className="flex items-center justify-between">
-                    <span className="text-sm capitalize">{type.type}</span>
-                    <span className="text-xs text-gray-500">{type.count} views</span>
+                    <span className="text-xs md:text-sm capitalize font-medium text-gray-700">{type.type}</span>
+                    <span className="text-xs md:text-sm text-gray-500">{type.count} views</span>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <h3 className="text-sm text-gray-600 mb-2">Your Price Range</h3>
-              <p className="text-lg font-semibold">
+              <h3 className="text-xs md:text-sm text-gray-500 font-medium mb-2 md:mb-3">Your Price Range</h3>
+              <p className="text-lg md:text-xl font-bold text-gray-900">
                 ₱{browsingAnalytics.averagePriceRange.min} - ₱{browsingAnalytics.averagePriceRange.max}
               </p>
-              <p className="text-xs text-gray-500">Average: ₱{browsingAnalytics.averagePriceRange.average}/night</p>
+              <p className="text-xs md:text-sm text-gray-500 mt-1">Average: ₱{browsingAnalytics.averagePriceRange.average}/night</p>
             </div>
           </div>
           {browsingAnalytics.commonAmenities.length > 0 && (
-            <div className="mt-4 pt-4 border-t">
-              <h3 className="text-sm text-gray-600 mb-2">Amenities You Look For</h3>
+            <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-200">
+              <h3 className="text-xs md:text-sm text-gray-500 font-medium mb-2 md:mb-3">Amenities You Look For:</h3>
               <div className="flex flex-wrap gap-2">
                 {browsingAnalytics.commonAmenities.map((item, index) => (
-                  <span key={index} className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">
+                  <span key={index} className="px-3 md:px-4 py-1.5 md:py-2 bg-blue-50 text-blue-700 rounded-full text-xs md:text-sm font-medium">
                     {item.amenity}
                   </span>
                 ))}
@@ -220,14 +207,14 @@ const GuestDashboard = () => {
 
       {/* Smart Recommendations */}
       {recommendations.length > 0 && (
-        <Card className="mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold">✨ Recommended For You</h2>
+        <Card className="mb-6 md:mb-8">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3 md:mb-4 gap-3">
+            <h2 className="text-lg md:text-xl font-semibold">✨ Recommended For You</h2>
             <Link to="/guest/recommendations">
               <Button size="sm" variant="secondary">View All</Button>
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
             {recommendations.map((unit) => (
               <Link
                 key={unit.id}
@@ -249,6 +236,15 @@ const GuestDashboard = () => {
                     )}
                   </div>
                   <h3 className="font-semibold text-sm mb-1 line-clamp-1">{unit.name}</h3>
+                  {unit.address && (
+                    <p className="text-xs text-gray-500 mb-1 flex items-center gap-1 line-clamp-1">
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      {unit.address}
+                    </p>
+                  )}
                   <div className="flex items-center justify-between">
                     <span className="text-lg font-bold text-blue-600">₱{unit.pricePerNight}</span>
                     <div className="flex items-center text-xs">

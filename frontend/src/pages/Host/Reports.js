@@ -321,7 +321,6 @@ const Reports = () => {
                     <th className="px-4 py-3 text-left text-xs font-medium text-gray-500">Period</th>
                     <th className="px-4 py-3 text-right text-xs font-medium text-gray-500">Revenue</th>
                     <th className="px-4 py-3 text-right text-xs font-medium text-gray-500">Expenses</th>
-                    <th className="px-4 py-3 text-right text-xs font-medium text-gray-500">Salaries</th>
                     <th className="px-4 py-3 text-right text-xs font-medium text-gray-500">Net Profit</th>
                   </tr>
                 </thead>
@@ -334,9 +333,6 @@ const Reports = () => {
                       </td>
                       <td className="px-4 py-3 text-sm text-right text-red-600">
                         ₱{item.expenses.toFixed(2)}
-                      </td>
-                      <td className="px-4 py-3 text-sm text-right text-orange-600">
-                        ₱{item.salaries.toFixed(2)}
                       </td>
                       <td className={`px-4 py-3 text-sm text-right font-semibold ${
                         item.netProfit >= 0 ? 'text-blue-600' : 'text-red-600'
@@ -432,12 +428,6 @@ const Reports = () => {
                   <span className="text-gray-600">Expenses:</span>
                   <span className="font-semibold text-red-600">
                     ₱{performanceMetrics.financial.expenses.toFixed(0)}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Salaries:</span>
-                  <span className="font-semibold text-orange-600">
-                    ₱{performanceMetrics.financial.salaries.toFixed(0)}
                   </span>
                 </div>
                 <div className="flex justify-between pt-2 border-t">

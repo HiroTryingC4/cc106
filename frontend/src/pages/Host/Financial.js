@@ -11,7 +11,7 @@ const Financial = ({ isTab = false }) => {
   const [profitAnalysis, setProfitAnalysis] = useState(null);
   const [loading, setLoading] = useState(true);
   const [exporting, setExporting] = useState(false);
-  const [activeTab, setActiveTab] = useState('summary'); // summary, profit-analysis
+  const [activeTab, setActiveTab] = useState('overview'); // overview, expense-tracking
 
   useEffect(() => {
     fetchFinancialData();
@@ -152,33 +152,33 @@ const Financial = ({ isTab = false }) => {
       <div className="mb-6 border-b border-gray-200">
         <div className="flex gap-4">
           <button
-            onClick={() => setActiveTab('summary')}
+            onClick={() => setActiveTab('overview')}
             className={`pb-3 px-4 font-medium ${
-              activeTab === 'summary'
-                ? 'border-b-2 border-blue-500 text-blue-600'
+              activeTab === 'overview'
+                ? 'border-b-2 border-orange-500 text-orange-600'
                 : 'text-gray-600 hover:text-gray-800'
             }`}
           >
-            Financial Summary
+            Financial Overview
           </button>
           <button
-            onClick={() => setActiveTab('profit-analysis')}
+            onClick={() => setActiveTab('expense-tracking')}
             className={`pb-3 px-4 font-medium ${
-              activeTab === 'profit-analysis'
-                ? 'border-b-2 border-blue-500 text-blue-600'
+              activeTab === 'expense-tracking'
+                ? 'border-b-2 border-gray-500 text-gray-600'
                 : 'text-gray-600 hover:text-gray-800'
             }`}
           >
-            Profit Analysis
+            Expense Tracking
           </button>
         </div>
       </div>
 
-      {/* Summary Tab */}
-      {activeTab === 'summary' && (
+      {/* Financial Overview Tab */}
+      {activeTab === 'overview' && (
         <>
           {/* Summary Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <Card>
               <h3 className="text-sm text-gray-600 mb-2">Kinita (Revenue)</h3>
               <p className="text-3xl font-bold text-green-600">₱{financial?.kinita.total || 0}</p>
@@ -188,11 +188,6 @@ const Financial = ({ isTab = false }) => {
               <h3 className="text-sm text-gray-600 mb-2">Gastos (Expenses)</h3>
               <p className="text-3xl font-bold text-red-600">₱{financial?.gastos.total.toFixed(0) || 0}</p>
               <p className="text-xs text-gray-500 mt-1">Actual costs</p>
-            </Card>
-            <Card>
-              <h3 className="text-sm text-gray-600 mb-2">Salaries</h3>
-              <p className="text-3xl font-bold text-orange-600">₱{financial?.salaries?.total.toFixed(0) || 0}</p>
-              <p className="text-xs text-gray-500 mt-1">Staff payments</p>
             </Card>
             <Card>
               <h3 className="text-sm text-gray-600 mb-2">Net Profit</h3>
@@ -284,8 +279,8 @@ const Financial = ({ isTab = false }) => {
         </>
       )}
 
-      {/* Profit Analysis Tab */}
-      {activeTab === 'profit-analysis' && profitAnalysis && (
+      {/* Expense Tracking Tab */}
+      {activeTab === 'expense-tracking' && profitAnalysis && (
         <>
           {/* Net Profit Breakdown */}
           <Card className="mb-8">
@@ -301,12 +296,6 @@ const Financial = ({ isTab = false }) => {
                 <span className="text-gray-700">Less: Expenses</span>
                 <span className="text-2xl font-bold text-red-600">
                   -₱{profitAnalysis.netProfit.breakdown.expenses.toFixed(2)}
-                </span>
-              </div>
-              <div className="flex justify-between items-center py-2">
-                <span className="text-gray-700">Less: Salaries</span>
-                <span className="text-2xl font-bold text-orange-600">
-                  -₱{profitAnalysis.netProfit.breakdown.salaries.toFixed(2)}
                 </span>
               </div>
               <div className="flex justify-between items-center py-3 border-t-2 border-gray-300">
@@ -424,7 +413,6 @@ const Financial = ({ isTab = false }) => {
                     <div className="flex gap-4">
                       <span className="text-green-600">Revenue: ₱{trend.revenue.toFixed(0)}</span>
                       <span className="text-red-600">Expenses: ₱{trend.expenses.toFixed(0)}</span>
-                      <span className="text-orange-600">Salaries: ₱{trend.salaries.toFixed(0)}</span>
                       <span className={`font-semibold ${
                         trend.profit >= 0 ? 'text-blue-600' : 'text-red-600'
                       }`}>

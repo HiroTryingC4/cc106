@@ -35,6 +35,51 @@ const checkRole = (...roles) => {
   };
 };
 
+const checkAdminType = (...adminTypes) => {
+  return (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({ success: false, message: 'Unauthorized' });
+    }
+
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({ 
+        success: false, 
+        message: 'Admin access required' 
+      });
+    }
+
+    // Fetch user from database to check admin type
+    const usersPath = path.join(__dirname, '../data/users.json');
+    const usersData = fs.readFileSync(usersPath, 'utf8');
+    const users = JSON.parse(usersData);
+    const user = users.find(u => u.id === req.user.id);
+    
+    if (!user || !user.adminType) {
+      return res.status(403).json({ 
+        success: false, 
+        message: 'Admin type not configured' 
+      });
+    }
+
+    // Super admin has access to everything
+    if (user.adminType === 'super') {
+      req.user.adminType = 'super';
+      return next();
+    }
+
+    // Check if user's admin type is in allowed types
+    if (!adminTypes.includes(user.adminType)) {
+      return res.status(403).json({ 
+        success: false, 
+        message: 'Insufficient admin privileges' 
+      });
+    }
+
+    req.user.adminType = user.adminType;
+    next();
+  };
+};
+
 const checkVerified = (req, res, next) => {
   if (!req.user) {
     return res.status(401).json({ success: false, message: 'Unauthorized' });
@@ -63,4 +108,4 @@ const checkVerified = (req, res, next) => {
   next();
 };
 
-module.exports = { verifyToken, checkRole, checkVerified };
+module.exports = { verifyToken, checkRole, checkVerified, checkAdminType };

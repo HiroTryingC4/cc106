@@ -159,5 +159,53 @@
     "reviewedAt": "2026-02-20T17:18:51.482Z",
     "reviewedBy": "1",
     "rejectionReason": null
+  },
+  {
+    "id": "8",
+    "hostId": "16",
+    "hostName": "Riemar1 Ligad1",
+    "hostEmail": "riemarligad22@gmail.com",
+    "documents": {
+      "businessName": "Zephore",
+      "businessAddress": "asdasd",
+      "businessType": "individual",
+      "idType": "passport",
+      "idNumber": "123123",
+      "taxId": "123123",
+      "bankAccount": "asdasd",
+      "bankName": "asdasd",
+      "proofOfOwnership": "riemarligad22@gmail.com",
+      "additionalDocs": "riemarligad22@gmail.com"
+    },
+    "status": "approved",
+    "submittedAt": "2026-02-24T13:39:08.457Z",
+    "reviewedAt": "2026-02-24T13:39:28.555Z",
+    "reviewedBy": "1",
+    "rejectionReason": null
+  },
+  {
+    "id": "9",
+    "hostId": "8",
+    "hostName": "TRIALHOST3 TRIALHOST2",
+    "hostEmail": "TRIALHOST3@GMAIL.COM",
+    "documents": {
+      "businessName": "TRIALHOST3 PROPERTY",
+      "businessAddress": "AAA",
+      "businessType": "partnership",
+      "idType": "passport",
+      "idNumber": "213",
+      "taxId": "21",
+      "bankAccount": "TRIALHOST3@GMAIL.COM",
+      "bankName": "TRIALHOST3@GMAIL.COM",
+      "proofOfOwnership": "TRIALHOST3@GMAIL.COM",
+      "additionalDocs": "TRIALHOST3@GMAIL.COM",
+      "idPhoto": "idPhoto-1773051864977-818230766.png",
+      "selfieWithId": "selfieWithId-1773051864985-781041277.png"
+    },
+    "status": "approved",
+    "submittedAt": "2026-03-09T10:24:24.992Z",
+    "reviewedAt": "2026-03-09T10:25:51.281Z",
+    "reviewedBy": "1",
+    "rejectionReason": null
   }
 ]

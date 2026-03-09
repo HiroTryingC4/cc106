@@ -52,13 +52,66 @@ Welcome to Smart Stay, a comprehensive property management system for short-term
 
 ### Making a Booking
 
-1. On the unit details page, click "Book Now"
-2. Select your check-in and check-out dates using the calendar
+#### Choosing Your Pricing Type
+
+When you click "Book Now" on a unit details page, you'll see two pricing options:
+
+1. **Standard Per Night** (🌙): Traditional multi-night stays
+2. **Hourly Pricing** (⏰): Short-term hourly bookings (if available)
+
+**Note**: Not all units offer hourly pricing. If only standard pricing is available, you'll see an informational message.
+
+#### Standard Per Night Booking
+
+1. Select "Standard Per Night" pricing type
+2. Choose your check-in and check-out dates using the calendar
    - Red dates are unavailable
    - Blue dates are your selection
 3. Enter the number of guests
-4. Review the price breakdown
-5. Click "Continue to Payment"
+   - Base price covers up to 2 guests
+   - Additional guests incur extra fees (if applicable)
+4. Review the price breakdown showing:
+   - Nightly rate × number of nights
+   - Extra guest fees (if applicable)
+   - Security deposit
+   - Total amount
+5. Click "Review Booking"
+6. Confirm your booking details in the modal
+7. Click "Confirm & Proceed to Payment"
+
+#### Hourly Pricing Booking
+
+If the unit offers hourly pricing, you can book for shorter durations:
+
+1. Select "Hourly Pricing" pricing type
+2. Choose from available hourly options displayed as cards:
+   - Each card shows the duration (e.g., 6 hours, 12 hours)
+   - Price for that duration
+   - Time type badge (Fixed Time or Flexible Time)
+
+**Fixed-Time Options** (🕐):
+- Pre-set check-in and check-out times
+- Example: 2:00 PM - 8:00 PM for a 6-hour booking
+- Simply select the card to choose this option
+
+**Flexible-Time Options** (✨):
+- You choose your own start time
+- After selecting the card, pick your preferred start time
+- End time is automatically calculated based on duration
+- Example: Start at 10:00 AM for 6 hours = End at 4:00 PM
+
+3. Review the price breakdown showing:
+   - Hourly rate for selected duration
+   - Security deposit
+   - Total amount
+4. Click "Review Booking"
+5. Confirm your booking details in the modal
+6. Click "Confirm & Proceed to Payment"
+
+**Important Notes**:
+- Hourly bookings are perfect for day-use, events, or short stays
+- Security deposits are refunded after checkout inspection
+- All times are displayed in local time zone
 
 ### Payment Process
 

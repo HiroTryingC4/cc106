@@ -153,11 +153,9 @@ router.get('/financial-summary', verifyToken, checkRole('host'), (req, res) => {
     const { period = 'monthly' } = req.query; // monthly, quarterly, yearly
     const bookings = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/bookings.json'), 'utf8'));
     const expenses = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/expenses.json'), 'utf8'));
-    const payroll = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/payroll.json'), 'utf8'));
     
-    const hostBookings = bookings.filter(b => b.hostId === req.user.id && b.paymentStatus === 'paid');
-    const hostExpenses = expenses.filter(e => e.hostId === req.user.id);
-    const hostPayroll = payroll.filter(p => p.hostId === req.user.id);
+    const hostBookings = bookings.filter(b => String(b.hostId) === String(req.user.id) && b.paymentStatus === 'paid');
+    const hostExpenses = expenses.filter(e => String(e.hostId) === String(req.user.id));
     
     const now = new Date();
     let periodData = [];
@@ -182,19 +180,11 @@ router.get('/financial-summary', verifyToken, checkRole('host'), (req, res) => {
           })
           .reduce((sum, e) => sum + e.amount, 0);
         
-        const monthSalaries = hostPayroll
-          .filter(p => {
-            const paymentDate = new Date(p.paymentDate);
-            return paymentDate.getMonth() === date.getMonth() && paymentDate.getFullYear() === date.getFullYear();
-          })
-          .reduce((sum, p) => sum + p.netPay, 0);
-        
         periodData.push({
           period: monthKey,
           revenue: monthRevenue,
           expenses: monthExpenses,
-          salaries: monthSalaries,
-          netProfit: monthRevenue - monthExpenses - monthSalaries
+          netProfit: monthRevenue - monthExpenses
         });
       }
     } else if (period === 'quarterly') {
@@ -218,19 +208,11 @@ router.get('/financial-summary', verifyToken, checkRole('host'), (req, res) => {
           })
           .reduce((sum, e) => sum + e.amount, 0);
         
-        const quarterSalaries = hostPayroll
-          .filter(p => {
-            const paymentDate = new Date(p.paymentDate);
-            return paymentDate >= quarterStart && paymentDate <= quarterEnd;
-          })
-          .reduce((sum, p) => sum + p.netPay, 0);
-        
         periodData.push({
           period: quarterKey,
           revenue: quarterRevenue,
           expenses: quarterExpenses,
-          salaries: quarterSalaries,
-          netProfit: quarterRevenue - quarterExpenses - quarterSalaries
+          netProfit: quarterRevenue - quarterExpenses
         });
       }
     } else if (period === 'yearly') {
@@ -246,16 +228,11 @@ router.get('/financial-summary', verifyToken, checkRole('host'), (req, res) => {
           .filter(e => new Date(e.date).getFullYear() === year)
           .reduce((sum, e) => sum + e.amount, 0);
         
-        const yearSalaries = hostPayroll
-          .filter(p => new Date(p.paymentDate).getFullYear() === year)
-          .reduce((sum, p) => sum + p.netPay, 0);
-        
         periodData.push({
           period: year.toString(),
           revenue: yearRevenue,
           expenses: yearExpenses,
-          salaries: yearSalaries,
-          netProfit: yearRevenue - yearExpenses - yearSalaries
+          netProfit: yearRevenue - yearExpenses
         });
       }
     }
@@ -319,8 +296,7 @@ router.get('/performance-metrics', verifyToken, checkRole('host'), (req, res) =>
     
     // Financial metrics
     const totalExpenses = hostExpenses.reduce((sum, e) => sum + e.amount, 0);
-    const totalSalaries = hostPayroll.reduce((sum, p) => sum + p.netPay, 0);
-    const netProfit = totalRevenue - totalExpenses - totalSalaries;
+    const netProfit = totalRevenue - totalExpenses;
     const profitMargin = totalRevenue > 0 ? ((netProfit / totalRevenue) * 100).toFixed(2) : 0;
     
     // Response time (mock data - would need actual message data)
@@ -353,7 +329,6 @@ router.get('/performance-metrics', verifyToken, checkRole('host'), (req, res) =>
         financial: {
           revenue: totalRevenue,
           expenses: totalExpenses,
-          salaries: totalSalaries,
           netProfit: netProfit,
           profitMargin: parseFloat(profitMargin)
         },

@@ -20,10 +20,12 @@ const Button = ({
     outline: 'border-2 border-primary text-primary hover:bg-blue-50 focus:ring-primary disabled:border-blue-300 disabled:text-blue-300',
   };
 
+  // Touch-optimized sizes with minimum 44px height for mobile
+  // Responsive sizing: smaller on mobile, larger on desktop
   const sizes = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2 text-base',
-    lg: 'px-6 py-3 text-lg',
+    sm: 'px-3 py-2 text-sm min-h-[44px] min-w-[44px]',
+    md: 'px-4 py-2 text-base min-h-[44px] md:min-h-[48px]',
+    lg: 'px-6 py-3 text-lg min-h-[44px] md:min-h-[52px]',
   };
 
   return (

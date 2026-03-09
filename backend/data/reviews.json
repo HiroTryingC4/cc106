@@ -1,1 +1,128 @@
-[]
+[
+  {
+    "id": "1",
+    "unitId": "1",
+    "guestId": "3",
+    "bookingId": "booking-1",
+    "rating": 5,
+    "comment": "Absolutely amazing stay! The beachfront condo exceeded all expectations. The views were breathtaking, and the host was incredibly responsive. Would definitely book again!",
+    "createdAt": "2026-02-15T10:30:00.000Z",
+    "flagged": false
+  },
+  {
+    "id": "2",
+    "unitId": "3",
+    "guestId": "6",
+    "bookingId": "booking-2",
+    "rating": 4,
+    "comment": "Great villa for families! The kids loved the pool. Only minor issue was the WiFi was a bit slow, but overall a wonderful experience.",
+    "createdAt": "2026-02-18T14:20:00.000Z",
+    "flagged": false
+  },
+  {
+    "id": "3",
+    "unitId": "1",
+    "guestId": "7",
+    "bookingId": "booking-3",
+    "rating": 1,
+    "comment": "WORST PLACE EVER!!! SCAM SCAM SCAM!!! The host is a THIEF and LIAR. DO NOT BOOK THIS PROPERTY. I will report this to authorities. FAKE REVIEWS!!!",
+    "createdAt": "2026-02-20T09:15:00.000Z",
+    "flagged": true,
+    "flagReason": "Inappropriate content - excessive caps, accusations without evidence",
+    "flaggedAt": "2026-02-20T10:00:00.000Z"
+  },
+  {
+    "id": "4",
+    "unitId": "5",
+    "guestId": "3",
+    "bookingId": "booking-4",
+    "rating": 5,
+    "comment": "Perfect urban loft! The location was ideal for exploring the city. Clean, modern, and exactly as described. Highly recommend!",
+    "createdAt": "2026-02-22T16:45:00.000Z",
+    "flagged": false
+  },
+  {
+    "id": "5",
+    "unitId": "8",
+    "guestId": "6",
+    "bookingId": "booking-5",
+    "rating": 4,
+    "comment": "Charming countryside cottage. Very peaceful and relaxing. The garden was beautiful. Would have given 5 stars but the heating took a while to warm up.",
+    "createdAt": "2026-02-23T11:30:00.000Z",
+    "flagged": false
+  },
+  {
+    "id": "6",
+    "unitId": "2",
+    "guestId": "7",
+    "bookingId": "booking-6",
+    "rating": 2,
+    "comment": "This is spam content promoting my business. Visit www.fake-website.com for better deals! Contact me at fake-email@spam.com for discounts!!!",
+    "createdAt": "2026-02-24T08:20:00.000Z",
+    "flagged": true,
+    "flagReason": "Spam - contains promotional links and contact information",
+    "flaggedAt": "2026-02-24T09:00:00.000Z"
+  },
+  {
+    "id": "7",
+    "unitId": "3",
+    "guestId": "3",
+    "bookingId": "booking-7",
+    "rating": 5,
+    "comment": "Fantastic family vacation! The villa had everything we needed. The private pool was a huge hit with the kids. Host was very accommodating.",
+    "createdAt": "2026-02-25T13:10:00.000Z",
+    "flagged": false
+  },
+  {
+    "id": "8",
+    "unitId": "4",
+    "guestId": "6",
+    "bookingId": "booking-8",
+    "rating": 3,
+    "comment": "The cabin was okay but not worth the price. The photos were misleading - it looked much nicer online. Also found the place dirty upon arrival.",
+    "createdAt": "2026-02-26T10:00:00.000Z",
+    "flagged": false
+  },
+  {
+    "id": "9",
+    "unitId": "1",
+    "guestId": "8",
+    "bookingId": "booking-9",
+    "rating": 1,
+    "comment": "I hate this place and the host is ugly and stupid. Everyone who stays here is an idiot. This review contains offensive language and personal attacks that violate community guidelines.",
+    "createdAt": "2026-02-27T15:30:00.000Z",
+    "flagged": true,
+    "flagReason": "Offensive language and personal attacks",
+    "flaggedAt": "2026-02-27T16:00:00.000Z"
+  },
+  {
+    "id": "10",
+    "unitId": "5",
+    "guestId": "7",
+    "bookingId": "booking-10",
+    "rating": 5,
+    "comment": "Loved the loft! Perfect for a weekend getaway. The rooftop access was amazing for morning coffee. Will definitely return!",
+    "createdAt": "2026-02-28T09:45:00.000Z",
+    "flagged": false
+  },
+  {
+    "id": "11",
+    "unitId": "8",
+    "guestId": "3",
+    "bookingId": "booking-11",
+    "rating": 4,
+    "comment": "Beautiful cottage in a serene location. Great for disconnecting from city life. The fireplace was cozy on cold nights.",
+    "createdAt": "2026-03-01T12:20:00.000Z",
+    "flagged": false
+  },
+  {
+    "id": "12",
+    "unitId": "2",
+    "guestId": "6",
+    "bookingId": "booking-12",
+    "rating": 5,
+    "comment": "Perfect for business travel! Close to downtown, quiet, and had everything I needed for work. The workspace was excellent.",
+    "createdAt": "2026-03-02T14:15:00.000Z",
+    "flagged": false
+  }
+]

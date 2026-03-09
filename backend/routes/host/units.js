@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const { verifyToken, checkRole, checkVerified } = require('../../middleware/auth');
+const { createNotification } = require('../notifications');
 
 // Configure multer for image uploads
 const storage = multer.diskStorage({
@@ -63,10 +64,10 @@ router.get('/:id', verifyToken, checkRole('host'), (req, res) => {
   }
 });
 
-// Create new unit
-router.post('/', verifyToken, checkRole('host'), checkVerified, (req, res) => {
+// Create new unit (allow unverified hosts for onboarding)
+router.post('/', verifyToken, checkRole('host'), (req, res) => {
   try {
-    const { name, type, location, description, pricePerNight, bedrooms, bathrooms, maxGuests, amenities, securityDeposit, houseRules, instantBooking, extraGuestFee, hourlyPricing, fixedCheckInTime, fixedCheckOutTime, nightHours, latitude, longitude } = req.body;
+    const { name, type, location, description, pricePerNight, bedrooms, bathrooms, maxGuests, amenities, securityDeposit, houseRules, instantBooking, extraGuestFee, hourlyPricing, fixedCheckInTime, fixedCheckOutTime, nightHours, latitude, longitude, acceptsMinors, baseGuestsIncluded } = req.body;
     
     if (!name || !type || !location) {
       return res.status(400).json({ success: false, message: 'Missing required fields' });
@@ -84,6 +85,7 @@ router.post('/', verifyToken, checkRole('host'), checkVerified, (req, res) => {
       description: description || '',
       pricePerNight: Number(pricePerNight) || 0,
       nightHours: nightHours || '22',
+      baseGuestsIncluded: Number(baseGuestsIncluded) || 2,
       bedrooms: Number(bedrooms) || 1,
       bathrooms: Number(bathrooms) || 1,
       maxGuests: Number(maxGuests) || 2,
@@ -92,6 +94,7 @@ router.post('/', verifyToken, checkRole('host'), checkVerified, (req, res) => {
       extraGuestFee: Number(extraGuestFee) || 200,
       houseRules: houseRules || '',
       instantBooking: instantBooking || false,
+      acceptsMinors: acceptsMinors || false,
       stayDuration: 'flexible', // Default to flexible, managed by hourly pricing
       hourlyPricing: hourlyPricing || [],
       fixedCheckInTime: fixedCheckInTime || '14:00',
@@ -109,6 +112,26 @@ router.post('/', verifyToken, checkRole('host'), checkVerified, (req, res) => {
     units.push(newUnit);
     fs.writeFileSync(unitsPath, JSON.stringify(units, null, 2));
     
+    // Send notification to all admins
+    try {
+      const usersPath = path.join(__dirname, '../../data/users.json');
+      const users = JSON.parse(fs.readFileSync(usersPath, 'utf8'));
+      const admins = users.filter(u => u.role === 'admin');
+      
+      admins.forEach(admin => {
+        createNotification(
+          admin.id,
+          'info',
+          'New Unit Submitted',
+          `Host ${req.user.name || req.user.email} has created a new unit: "${name}"`,
+          `/admin/units`
+        );
+      });
+    } catch (notifError) {
+      console.error('Error sending notification:', notifError);
+      // Don't fail the request if notification fails
+    }
+    
     res.json({ success: true, message: 'Unit created successfully', unit: newUnit });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -118,7 +141,7 @@ router.post('/', verifyToken, checkRole('host'), checkVerified, (req, res) => {
 // Update unit
 router.put('/:id', verifyToken, checkRole('host'), checkVerified, (req, res) => {
   try {
-    const { name, type, location, description, pricePerNight, bedrooms, bathrooms, maxGuests, amenities, securityDeposit, available, houseRules, instantBooking, extraGuestFee, hourlyPricing, fixedCheckInTime, fixedCheckOutTime, nightHours, latitude, longitude } = req.body;
+    const { name, type, location, description, pricePerNight, bedrooms, bathrooms, maxGuests, amenities, securityDeposit, available, houseRules, instantBooking, extraGuestFee, hourlyPricing, fixedCheckInTime, fixedCheckOutTime, nightHours, latitude, longitude, acceptsMinors, baseGuestsIncluded } = req.body;
     
     const unitsPath = path.join(__dirname, '../../data/units.json');
     const units = JSON.parse(fs.readFileSync(unitsPath, 'utf8'));
@@ -136,6 +159,7 @@ router.put('/:id', verifyToken, checkRole('host'), checkVerified, (req, res) => 
     if (description !== undefined) unit.description = description;
     if (pricePerNight) unit.pricePerNight = Number(pricePerNight);
     if (nightHours !== undefined) unit.nightHours = nightHours;
+    if (baseGuestsIncluded !== undefined) unit.baseGuestsIncluded = Number(baseGuestsIncluded);
     if (bedrooms) unit.bedrooms = Number(bedrooms);
     if (bathrooms) unit.bathrooms = Number(bathrooms);
     if (maxGuests) unit.maxGuests = Number(maxGuests);
@@ -145,6 +169,7 @@ router.put('/:id', verifyToken, checkRole('host'), checkVerified, (req, res) => 
     if (available !== undefined) unit.available = available;
     if (houseRules !== undefined) unit.houseRules = houseRules;
     if (instantBooking !== undefined) unit.instantBooking = instantBooking;
+    if (acceptsMinors !== undefined) unit.acceptsMinors = acceptsMinors;
     if (hourlyPricing !== undefined) unit.hourlyPricing = hourlyPricing;
     if (fixedCheckInTime !== undefined) unit.fixedCheckInTime = fixedCheckInTime;
     if (fixedCheckOutTime !== undefined) unit.fixedCheckOutTime = fixedCheckOutTime;

@@ -6,6 +6,7 @@ import PrivateRoute from './components/PrivateRoute';
 import ChatbotWidget from './components/ChatbotWidget';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingSpinner from './components/LoadingSpinner';
+import ScrollToTop from './components/ScrollToTop';
 
 // Auth Pages - Keep these loaded immediately
 import Login from './pages/Auth/Login';
@@ -23,14 +24,18 @@ import HostLanding from './pages/Public/HostLanding';
 const NotFound = lazy(() => import('./pages/NotFound'));
 const Units = lazy(() => import('./pages/Public/Units'));
 const UnitDetails = lazy(() => import('./pages/Public/UnitDetails'));
+const PublicHostProfile = lazy(() => import('./pages/Public/HostProfile'));
 const PublicRecommendations = lazy(() => import('./pages/Public/Recommendations'));
 const FAQ = lazy(() => import('./pages/Public/FAQ'));
 
 // Guest Pages - Lazy loaded
 const GuestDashboard = lazy(() => import('./pages/Guest/Dashboard'));
+const GuestUnits = lazy(() => import('./pages/Guest/Units'));
+const GuestUnitDetails = lazy(() => import('./pages/Guest/UnitDetails'));
 const Bookings = lazy(() => import('./pages/Guest/Bookings'));
 const BookingDetails = lazy(() => import('./pages/Guest/BookingDetails'));
 const CreateBooking = lazy(() => import('./pages/Guest/CreateBooking'));
+const GuestInformation = lazy(() => import('./pages/Guest/GuestInformation'));
 const Payment = lazy(() => import('./pages/Guest/Payment'));
 const Profile = lazy(() => import('./pages/Guest/Profile'));
 const CheckoutPhoto = lazy(() => import('./pages/Guest/CheckoutPhoto'));
@@ -43,14 +48,19 @@ const HostUnits = lazy(() => import('./pages/Host/Units'));
 const UnitForm = lazy(() => import('./pages/Host/UnitForm'));
 const HostBookings = lazy(() => import('./pages/Host/Bookings'));
 const Analytics = lazy(() => import('./pages/Host/Analytics'));
+const BecomeHostLanding = lazy(() => import('./pages/Host/BecomeHost/BecomeHostLanding'));
+const OnboardingWizard = lazy(() => import('./pages/Host/BecomeHost/OnboardingWizard'));
 const Financial = lazy(() => import('./pages/Host/Financial'));
 const Expenses = lazy(() => import('./pages/Host/Expenses'));
-const Payroll = lazy(() => import('./pages/Host/Payroll'));
+const Deposits = lazy(() => import('./pages/Host/Deposits'));
+const Payments = lazy(() => import('./pages/Host/Payments'));
 const FinancialManagement = lazy(() => import('./pages/Host/FinancialManagement'));
 const HostReports = lazy(() => import('./pages/Host/Reports'));
 const Guests = lazy(() => import('./pages/Host/Guests'));
 const ChatbotManage = lazy(() => import('./pages/Host/ChatbotManage'));
 const HostVerification = lazy(() => import('./pages/Host/Verification'));
+const HostProfile = lazy(() => import('./pages/Host/Profile'));
+const HostPromoCodes = lazy(() => import('./pages/Host/PromoCodes'));
 
 // Admin Pages - Lazy loaded
 const AdminDashboard = lazy(() => import('./pages/Admin/Dashboard'));
@@ -65,6 +75,8 @@ const AdminChatbot = lazy(() => import('./pages/Admin/Chatbot'));
 const AdminChatbotAnalytics = lazy(() => import('./pages/Admin/ChatbotAnalytics'));
 const AdminVerifications = lazy(() => import('./pages/Admin/Verifications'));
 const AdminSecurity = lazy(() => import('./pages/Admin/Security'));
+const AdminProfile = lazy(() => import('./pages/Admin/Profile'));
+const AdminPromoCodes = lazy(() => import('./pages/Admin/PromoCodes'));
 
 // Shared Pages - Lazy loaded
 const Notifications = lazy(() => import('./pages/Shared/Notifications'));
@@ -76,12 +88,14 @@ function App() {
       <AuthProvider>
         <ToastProvider>
           <Router>
+            <ScrollToTop />
             <Suspense fallback={<LoadingSpinner fullScreen />}>
               <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Landing />} />
           <Route path="/guest-home" element={<GuestLanding />} />
           <Route path="/host-home" element={<HostLanding />} />
+          <Route path="/become-a-host" element={<BecomeHostLanding />} />
           <Route path="/login" element={<Login />} />
           <Route path="/guest/login" element={<GuestLogin />} />
           <Route path="/host/login" element={<HostLogin />} />
@@ -90,6 +104,7 @@ function App() {
           <Route path="/register/:userType" element={<Register />} />
           <Route path="/units" element={<Units />} />
           <Route path="/units/:id" element={<UnitDetails />} />
+          <Route path="/hosts/:hostId" element={<PublicHostProfile />} />
           <Route path="/recommendations" element={<PublicRecommendations />} />
           <Route path="/faq" element={<FAQ />} />
 
@@ -99,6 +114,22 @@ function App() {
             element={
               <PrivateRoute role="guest">
                 <GuestDashboard />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/guest/units" 
+            element={
+              <PrivateRoute role="guest">
+                <GuestUnits />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/guest/units/:id" 
+            element={
+              <PrivateRoute role="guest">
+                <GuestUnitDetails />
               </PrivateRoute>
             } 
           />
@@ -123,6 +154,14 @@ function App() {
             element={
               <PrivateRoute role="guest">
                 <CreateBooking />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/guest/bookings/:id/guest-information" 
+            element={
+              <PrivateRoute role="guest">
+                <GuestInformation />
               </PrivateRoute>
             } 
           />
@@ -185,10 +224,22 @@ function App() {
 
           {/* Host Routes */}
           <Route 
+            path="/host/onboarding" 
+            element={<OnboardingWizard />}
+          />
+          <Route 
             path="/host/dashboard" 
             element={
               <PrivateRoute role="host">
                 <HostDashboard />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/host/profile" 
+            element={
+              <PrivateRoute role="host">
+                <HostProfile />
               </PrivateRoute>
             } 
           />
@@ -265,10 +316,18 @@ function App() {
             } 
           />
           <Route 
-            path="/host/payroll" 
+            path="/host/deposits" 
             element={
               <PrivateRoute role="host">
-                <Payroll />
+                <Deposits />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/host/payments" 
+            element={
+              <PrivateRoute role="host">
+                <Payments />
               </PrivateRoute>
             } 
           />
@@ -285,6 +344,14 @@ function App() {
             element={
               <PrivateRoute role="host">
                 <Guests />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/host/promo-codes" 
+            element={
+              <PrivateRoute role="host">
+                <HostPromoCodes />
               </PrivateRoute>
             } 
           />
@@ -407,6 +474,22 @@ function App() {
             element={
               <PrivateRoute role="admin">
                 <AdminSecurity />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/admin/promo-codes" 
+            element={
+              <PrivateRoute role="admin">
+                <AdminPromoCodes />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/admin/profile" 
+            element={
+              <PrivateRoute role="admin">
+                <AdminProfile />
               </PrivateRoute>
             } 
           />

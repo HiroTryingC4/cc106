@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DashboardLayout from '../../components/DashboardLayout';
+import AdminLayout from '../../components/AdminLayout';
 import Card from '../../components/Card';
 import { useToast } from '../../components/Toast';
 
@@ -59,16 +59,16 @@ const ChatbotAnalytics = () => {
 
   if (loading) {
     return (
-      <DashboardLayout>
+      <AdminLayout>
         <div className="flex justify-center items-center h-64">
           <div className="text-xl">Loading analytics...</div>
         </div>
-      </DashboardLayout>
+      </AdminLayout>
     );
   }
 
   return (
-    <DashboardLayout>
+    <AdminLayout>
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Chatbot Analytics & Monitoring</h1>
         <p className="text-gray-600 mt-2">Track chatbot performance and user interactions</p>
@@ -236,8 +236,9 @@ const ChatbotAnalytics = () => {
           </table>
         </div>
       </Card>
-    </DashboardLayout>
+    </AdminLayout>
   );
 };
 
 export default ChatbotAnalytics;
+

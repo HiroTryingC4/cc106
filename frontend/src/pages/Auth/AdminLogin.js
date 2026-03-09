@@ -30,9 +30,13 @@ const AdminLogin = () => {
         body: JSON.stringify(formData)
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
 
-      if (data.success) {
+      if (data && data.success) {
         if (data.requireMFA) {
           // MFA required - show verification code input
           setTempToken(data.tempToken);
@@ -46,10 +50,11 @@ const AdminLogin = () => {
           navigate('/admin/dashboard');
         }
       } else {
-        addToast(data.message || 'Login failed', 'error');
+        addToast(data?.message || 'Login failed', 'error');
       }
     } catch (error) {
-      addToast('An error occurred. Please try again.', 'error');
+      console.error('Admin login error:', error);
+      addToast('Cannot connect to server. Please ensure the backend is running.', 'error');
     } finally {
       setLoading(false);
     }
@@ -69,17 +74,22 @@ const AdminLogin = () => {
         })
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
 
-      if (data.success) {
+      if (data && data.success) {
         login(data.token, tempUser);
         addToast('Welcome back, Admin!', 'success');
         navigate('/admin/dashboard');
       } else {
-        addToast(data.message || 'Invalid verification code', 'error');
+        addToast(data?.message || 'Invalid verification code', 'error');
       }
     } catch (error) {
-      addToast('An error occurred. Please try again.', 'error');
+      console.error('MFA verification error:', error);
+      addToast('Cannot connect to server. Please ensure the backend is running.', 'error');
     } finally {
       setLoading(false);
     }

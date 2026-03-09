@@ -44,24 +44,35 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const login = async (email, password) => {
+  const login = (tokenValue, userData) => {
+    localStorage.setItem('token', tokenValue);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${tokenValue}`;
+    setToken(tokenValue);
+    setUser(userData);
+  };
+
+  const loginWithCredentials = async (email, password) => {
     try {
       const response = await axios.post('http://localhost:5000/api/auth/login', {
         email,
         password
       });
       
-      const { token, user } = response.data;
-      localStorage.setItem('token', token);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      setToken(token);
-      setUser(user);
-      
-      return { success: true, user };
+      if (response.data && response.data.token && response.data.user) {
+        const { token, user } = response.data;
+        login(token, user);
+        return { success: true, user };
+      } else {
+        return { 
+          success: false, 
+          message: 'Invalid response from server' 
+        };
+      }
     } catch (error) {
+      console.error('Login error:', error);
       return { 
         success: false, 
-        message: error.response?.data?.message || 'Login failed' 
+        message: error.response?.data?.message || error.message || 'Cannot connect to server. Please ensure the backend is running.' 
       };
     }
   };
@@ -70,17 +81,21 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await axios.post('http://localhost:5000/api/auth/register', userData);
       
-      const { token, user } = response.data;
-      localStorage.setItem('token', token);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      setToken(token);
-      setUser(user);
-      
-      return { success: true, user };
+      if (response.data && response.data.token && response.data.user) {
+        const { token, user } = response.data;
+        login(token, user);
+        return { success: true, user };
+      } else {
+        return { 
+          success: false, 
+          message: 'Invalid response from server' 
+        };
+      }
     } catch (error) {
+      console.error('Registration error:', error);
       return { 
         success: false, 
-        message: error.response?.data?.message || 'Registration failed' 
+        message: error.response?.data?.message || error.message || 'Cannot connect to server. Please ensure the backend is running.' 
       };
     }
   };
@@ -102,6 +117,7 @@ export const AuthProvider = ({ children }) => {
     user,
     loading,
     login,
+    loginWithCredentials,
     register,
     logout,
     refreshUser,

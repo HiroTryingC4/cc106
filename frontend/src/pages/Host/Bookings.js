@@ -136,68 +136,70 @@ const Bookings = () => {
 
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Bookings</h1>
-        <p className="text-gray-600 mt-2">Manage your property bookings</p>
+        <p className="text-gray-500 mt-1">Manage all your property bookings</p>
       </div>
 
       {/* View Mode Toggle */}
       <div className="mb-6 flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
         <div className="flex gap-2">
-          <Button
-            variant={filter === 'all' ? 'primary' : 'secondary'}
-            onClick={() => setFilter('all')}
-          >
-            All
-          </Button>
-          <Button
-            variant={filter === 'pending' ? 'primary' : 'secondary'}
-            onClick={() => setFilter('pending')}
-          >
-            Pending
-          </Button>
-          <Button
-            variant={filter === 'confirmed' ? 'primary' : 'secondary'}
-            onClick={() => setFilter('confirmed')}
-          >
-            Confirmed
-          </Button>
-          <Button
-            variant={filter === 'completed' ? 'primary' : 'secondary'}
-            onClick={() => setFilter('completed')}
-          >
-            Completed
-          </Button>
-        </div>
-
-        <div className="flex gap-2 bg-gray-100 p-1 rounded-lg">
           <button
-            onClick={() => setViewMode('list')}
-            className={`px-4 py-2 rounded-md text-sm font-medium transition ${
-              viewMode === 'list'
-                ? 'bg-white text-blue-600 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
+            onClick={() => setFilter('all')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+              filter === 'all'
+                ? 'bg-[#4E7B22] text-white'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             }`}
           >
-            <span className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              List View
-            </span>
+            All
+          </button>
+          <button
+            onClick={() => setFilter('pending')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+              filter === 'pending'
+                ? 'bg-[#4E7B22] text-white'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            }`}
+          >
+            Pending
+          </button>
+          <button
+            onClick={() => setFilter('confirmed')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+              filter === 'confirmed'
+                ? 'bg-[#4E7B22] text-white'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            }`}
+          >
+            Confirmed
+          </button>
+        </div>
+
+        <div className="flex gap-2">
+          <button
+            onClick={() => setViewMode('list')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 ${
+              viewMode === 'list'
+                ? 'bg-[#4E7B22] text-white'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            List View
           </button>
           <button
             onClick={() => setViewMode('calendar')}
-            className={`px-4 py-2 rounded-md text-sm font-medium transition ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition flex items-center gap-2 ${
               viewMode === 'calendar'
-                ? 'bg-white text-blue-600 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-[#4E7B22] text-white'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             }`}
           >
-            <span className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              Calendar View
-            </span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Calendar View
           </button>
         </div>
       </div>
@@ -218,105 +220,109 @@ const Bookings = () => {
           {/* List View */}
           {viewMode === 'list' && (
             <div className="space-y-4">
-              {filteredBookings.map(booking => (
-                <Card key={booking.id}>
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-semibold">Booking #{booking.id}</h3>
-                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(booking.status)}`}>
-                          {booking.status}
-                        </span>
-                        {booking.paymentStatus === 'paid' && (
-                          <span className="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                            Paid
+              {filteredBookings.map(booking => {
+                const pricingType = booking.pricingType || 'standard';
+                
+                return (
+                  <Card key={booking.id} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                      {/* Left Section - Booking Info */}
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-4">
+                          <h3 className="text-xl font-bold text-gray-900">Booking #{booking.id}</h3>
+                          <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                            booking.status === 'pending' ? 'bg-yellow-500 text-white' :
+                            booking.status === 'confirmed' ? 'bg-green-500 text-white' :
+                            booking.status === 'completed' ? 'bg-blue-500 text-white' :
+                            'bg-gray-500 text-white'
+                          }`}>
+                            {booking.status}
                           </span>
+                          {booking.paymentStatus === 'paid' && (
+                            <span className="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                              Paid
+                            </span>
+                          )}
+                        </div>
+                        
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                          <div>
+                            <p className="text-gray-500 text-xs mb-1">Unit</p>
+                            <p className="font-medium text-gray-900">{booking.unit?.name || 'Trial#1'}</p>
+                          </div>
+                          <div>
+                            <p className="text-gray-500 text-xs mb-1">Total Price</p>
+                            <p className="font-bold text-gray-900">₱{booking.totalPrice}</p>
+                          </div>
+                          <div>
+                            <p className="text-gray-500 text-xs mb-1">Check-in</p>
+                            <p className="font-medium text-gray-900">{new Date(booking.checkIn).toLocaleDateString()}</p>
+                          </div>
+                          <div>
+                            <p className="text-gray-500 text-xs mb-1">Contacts</p>
+                            <p className="font-medium text-gray-900">{booking.guest?.email || 'trial1@gmail.com'}</p>
+                            <p className="text-gray-600 text-xs">{booking.guest?.phone || '09123456789'}</p>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mt-3">
+                          <div>
+                            <p className="text-gray-500 text-xs mb-1">Guests</p>
+                            <p className="font-medium text-gray-900">{booking.guests}</p>
+                          </div>
+                          <div>
+                            <p className="text-gray-500 text-xs mb-1">Security Deposit</p>
+                            <p className="font-medium text-gray-900">₱{booking.securityDeposit}</p>
+                          </div>
+                          <div>
+                            <p className="text-gray-500 text-xs mb-1">Check-out</p>
+                            <p className="font-medium text-gray-900">{new Date(booking.checkOut).toLocaleDateString()}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Right Section - Actions */}
+                      <div className="flex lg:flex-col gap-2 lg:items-end">
+                        <button
+                          onClick={() => setGuestProfileModal({ show: true, guest: booking.guest })}
+                          className="px-4 py-2 text-sm border border-yellow-600 text-yellow-600 rounded-lg hover:bg-yellow-50 transition font-medium"
+                        >
+                          View Guest
+                        </button>
+                        {booking.status === 'pending' && (
+                          <>
+                            {isVerified ? (
+                              <>
+                                <button
+                                  onClick={() => setActionModal({ show: true, booking, action: 'approve' })}
+                                  className="px-4 py-2 text-sm bg-green-500 text-white rounded-lg hover:bg-green-600 transition font-medium"
+                                >
+                                  Approve
+                                </button>
+                                <button
+                                  onClick={() => setActionModal({ show: true, booking, action: 'reject' })}
+                                  className="px-4 py-2 text-sm bg-red-500 text-white rounded-lg hover:bg-red-600 transition font-medium"
+                                >
+                                  Reject
+                                </button>
+                              </>
+                            ) : (
+                              <>
+                                <button className="px-4 py-2 text-sm bg-gray-300 text-gray-500 rounded-lg cursor-not-allowed" disabled>
+                                  🔒 Approve
+                                </button>
+                                <button className="px-4 py-2 text-sm bg-gray-300 text-gray-500 rounded-lg cursor-not-allowed" disabled>
+                                  🔒 Reject
+                                </button>
+                              </>
+                            )}
+                          </>
                         )}
                       </div>
-                      
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                        <div>
-                          <p className="text-gray-600">Unit</p>
-                          <p className="font-medium">{booking.unit?.name || 'N/A'}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-600">Guest</p>
-                          <p className="font-medium">{booking.guest?.name || 'N/A'}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-600">Check-in</p>
-                          <p className="font-medium">{new Date(booking.checkIn).toLocaleDateString()}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-600">Check-out</p>
-                          <p className="font-medium">{new Date(booking.checkOut).toLocaleDateString()}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-600">Guests</p>
-                          <p className="font-medium">{booking.guests}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-600">Total Price</p>
-                          <p className="font-medium text-blue-600">₱{booking.totalPrice}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-600">Security Deposit</p>
-                          <p className="font-medium">₱{booking.securityDeposit}</p>
-                        </div>
-                        <div>
-                          <p className="text-gray-600">Contact</p>
-                          <p className="font-medium text-sm">{booking.guest?.email || 'N/A'}</p>
-                        </div>
-                      </div>
                     </div>
-
-                    <div className="flex lg:flex-col gap-2">
-                      <Button
-                        size="sm"
-                        variant="secondary"
-                        onClick={() => setGuestProfileModal({ show: true, guest: booking.guest })}
-                      >
-                        View Guest
-                      </Button>
-                      {booking.status === 'pending' && (
-                        <>
-                          {isVerified ? (
-                            <>
-                              <Button
-                                size="sm"
-                                onClick={() => setActionModal({ show: true, booking, action: 'approve' })}
-                              >
-                                Approve
-                              </Button>
-                              <Button
-                                size="sm"
-                                variant="danger"
-                                onClick={() => setActionModal({ show: true, booking, action: 'reject' })}
-                              >
-                                Reject
-                              </Button>
-                            </>
-                          ) : (
-                            <>
-                              <Button size="sm" disabled title="Verification required">
-                                🔒 Approve
-                              </Button>
-                              <Button size="sm" variant="danger" disabled title="Verification required">
-                                🔒 Reject
-                              </Button>
-                            </>
-                          )}
-                        </>
-                      )}
-                      {booking.status === 'confirmed' && booking.checkoutPhotos && (
-                        <Button size="sm" variant="secondary">
-                          View Photos
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-                </Card>
-              ))}
+                  </Card>
+                );
+              })}
             </div>
           )}
         </>

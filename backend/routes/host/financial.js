@@ -9,11 +9,9 @@ router.get('/summary', verifyToken, checkRole('host'), (req, res) => {
   try {
     const bookings = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/bookings.json'), 'utf8'));
     const expenses = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/expenses.json'), 'utf8'));
-    const payroll = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/payroll.json'), 'utf8'));
     
-    const hostBookings = bookings.filter(b => b.hostId === req.user.id && b.paymentStatus === 'paid');
-    const hostExpenses = expenses.filter(e => e.hostId === req.user.id);
-    const hostPayroll = payroll.filter(p => p.hostId === req.user.id);
+    const hostBookings = bookings.filter(b => String(b.hostId) === String(req.user.id) && b.paymentStatus === 'paid');
+    const hostExpenses = expenses.filter(e => String(e.hostId) === String(req.user.id));
     
     // Calculate Kinita (Revenue)
     const totalRevenue = hostBookings.reduce((sum, b) => sum + b.totalPrice, 0);
@@ -35,17 +33,8 @@ router.get('/summary', verifyToken, checkRole('host'), (req, res) => {
       monthlyExpenses[monthKey] = (monthlyExpenses[monthKey] || 0) + expense.amount;
     });
     
-    // Calculate Salaries (Actual Payroll)
-    const totalSalaries = hostPayroll.reduce((sum, p) => sum + p.netPay, 0);
-    const monthlySalaries = {};
-    hostPayroll.forEach(payment => {
-      const date = new Date(payment.paymentDate);
-      const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-      monthlySalaries[monthKey] = (monthlySalaries[monthKey] || 0) + payment.netPay;
-    });
-    
-    // Calculate Net Profit (Revenue - Expenses - Salaries)
-    const netProfit = totalRevenue - totalExpenses - totalSalaries;
+    // Calculate Net Profit (Revenue - Expenses only, no salaries)
+    const netProfit = totalRevenue - totalExpenses;
     const netProfitPercentage = totalRevenue > 0 ? ((netProfit / totalRevenue) * 100).toFixed(1) : 0;
     
     // Security deposits
@@ -63,10 +52,6 @@ router.get('/summary', verifyToken, checkRole('host'), (req, res) => {
         gastos: {
           total: totalExpenses,
           monthly: monthlyExpenses
-        },
-        salaries: {
-          total: totalSalaries,
-          monthly: monthlySalaries
         },
         netProfit: {
           total: netProfit,
@@ -166,12 +151,10 @@ router.get('/profit-analysis', verifyToken, checkRole('host'), (req, res) => {
   try {
     const bookings = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/bookings.json'), 'utf8'));
     const expenses = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/expenses.json'), 'utf8'));
-    const payroll = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/payroll.json'), 'utf8'));
     const units = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/units.json'), 'utf8'));
     
     const hostBookings = bookings.filter(b => b.hostId === req.user.id && b.paymentStatus === 'paid');
     const hostExpenses = expenses.filter(e => e.hostId === req.user.id);
-    const hostPayroll = payroll.filter(p => p.hostId === req.user.id);
     const hostUnits = units.filter(u => u.hostId === req.user.id);
     
     // Revenue
@@ -180,17 +163,14 @@ router.get('/profit-analysis', verifyToken, checkRole('host'), (req, res) => {
     // Expenses
     const totalExpenses = hostExpenses.reduce((sum, e) => sum + e.amount, 0);
     
-    // Salaries
-    const totalSalaries = hostPayroll.reduce((sum, p) => sum + p.netPay, 0);
-    
-    // Net Profit = Revenue - Expenses - Salaries
-    const netProfit = totalRevenue - totalExpenses - totalSalaries;
+    // Net Profit = Revenue - Expenses only (no salaries)
+    const netProfit = totalRevenue - totalExpenses;
     
     // Profit Margins
-    const grossProfit = totalRevenue - totalExpenses; // Before salaries
+    const grossProfit = totalRevenue - totalExpenses;
     const grossMargin = totalRevenue > 0 ? ((grossProfit / totalRevenue) * 100).toFixed(2) : 0;
     const netMargin = totalRevenue > 0 ? ((netProfit / totalRevenue) * 100).toFixed(2) : 0;
-    const operatingMargin = totalRevenue > 0 ? (((totalRevenue - totalExpenses - totalSalaries) / totalRevenue) * 100).toFixed(2) : 0;
+    const operatingMargin = totalRevenue > 0 ? (((totalRevenue - totalExpenses) / totalRevenue) * 100).toFixed(2) : 0;
     
     // ROI Calculation (assuming investment is stored in units)
     const totalInvestment = hostUnits.reduce((sum, u) => sum + (u.investment || 0), 0);
@@ -198,16 +178,16 @@ router.get('/profit-analysis', verifyToken, checkRole('host'), (req, res) => {
     const annualROI = totalInvestment > 0 ? ((netProfit * 12 / totalInvestment) * 100).toFixed(2) : 0;
     
     // Break-even Analysis
-    const fixedCosts = totalSalaries; // Monthly fixed costs
+    const fixedCosts = 0; // No fixed costs (salaries removed)
     const variableCosts = totalExpenses; // Variable costs
     const avgBookingPrice = hostBookings.length > 0 ? totalRevenue / hostBookings.length : 0;
     const avgVariableCostPerBooking = hostBookings.length > 0 ? variableCosts / hostBookings.length : 0;
-    const breakEvenUnits = avgBookingPrice > avgVariableCostPerBooking 
+    const breakEvenUnits = avgBookingPrice > avgVariableCostPerBooking && fixedCosts > 0
       ? Math.ceil(fixedCosts / (avgBookingPrice - avgVariableCostPerBooking))
       : 0;
     const breakEvenRevenue = breakEvenUnits * avgBookingPrice;
     const currentBookings = hostBookings.length;
-    const isAboveBreakEven = currentBookings >= breakEvenUnits;
+    const isAboveBreakEven = fixedCosts === 0 ? netProfit >= 0 : currentBookings >= breakEvenUnits;
     
     // Profitability Trends (last 6 months)
     const trends = [];
@@ -230,20 +210,12 @@ router.get('/profit-analysis', verifyToken, checkRole('host'), (req, res) => {
         })
         .reduce((sum, e) => sum + e.amount, 0);
       
-      const monthSalaries = hostPayroll
-        .filter(p => {
-          const paymentDate = new Date(p.paymentDate);
-          return paymentDate.getMonth() === date.getMonth() && paymentDate.getFullYear() === date.getFullYear();
-        })
-        .reduce((sum, p) => sum + p.netPay, 0);
-      
-      const monthProfit = monthRevenue - monthExpenses - monthSalaries;
+      const monthProfit = monthRevenue - monthExpenses;
       
       trends.push({
         month: monthKey,
         revenue: monthRevenue,
         expenses: monthExpenses,
-        salaries: monthSalaries,
         profit: monthProfit
       });
     }
@@ -271,8 +243,7 @@ router.get('/profit-analysis', verifyToken, checkRole('host'), (req, res) => {
           total: netProfit,
           breakdown: {
             revenue: totalRevenue,
-            expenses: totalExpenses,
-            salaries: totalSalaries
+            expenses: totalExpenses
           }
         },
         profitMargins: {

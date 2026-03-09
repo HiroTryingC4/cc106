@@ -101,6 +101,47 @@ const Payment = () => {
         <p className="text-gray-600 mt-2">Complete your booking payment</p>
       </div>
 
+      {/* Booking Status Notice */}
+      {booking.status === 'pending' && (
+        <div className="mb-6 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg">
+          <div className="flex items-start">
+            <div className="flex-shrink-0">
+              <svg className="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div className="ml-3 flex-1">
+              <h3 className="text-sm font-semibold text-yellow-900">
+                ⏳ Waiting for the Approval of the Host
+              </h3>
+              <p className="text-sm text-yellow-700 mt-1">
+                Your booking request has been submitted and is pending host approval. You can proceed with payment preparation, but the booking will only be finalized once the host confirms.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {booking.status === 'confirmed' && booking.paymentStatus === 'pending' && (
+        <div className="mb-6 bg-green-50 border-l-4 border-green-400 p-4 rounded-lg">
+          <div className="flex items-start">
+            <div className="flex-shrink-0">
+              <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div className="ml-3 flex-1">
+              <h3 className="text-sm font-semibold text-green-900">
+                ✓ Booking Confirmed - Ready for Payment
+              </h3>
+              <p className="text-sm text-green-700 mt-1">
+                Your booking has been confirmed! Please complete the payment to finalize your reservation.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <h3 className="text-xl font-semibold mb-4">Payment Details</h3>

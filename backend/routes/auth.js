@@ -28,7 +28,7 @@ const generateMFACode = () => {
 // Register
 router.post('/register', async (req, res) => {
   try {
-    const { email, password, firstName, lastName, phone, role = 'guest' } = req.body;
+    const { email, password, firstName, lastName, phone, role = 'guest', companyName } = req.body;
     const users = getUsersData();
     
     if (users.find(u => u.email === email)) {
@@ -48,6 +48,11 @@ router.post('/register', async (req, res) => {
       createdAt: new Date().toISOString()
     };
 
+    // Add company name for hosts
+    if (role === 'host' && companyName) {
+      newUser.companyName = companyName;
+    }
+
     users.push(newUser);
     saveUsersData(users);
 
@@ -66,6 +71,7 @@ router.post('/register', async (req, res) => {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         role: newUser.role,
+        companyName: newUser.companyName,
         verified: false,
         verifiedAt: null
       }
@@ -162,9 +168,13 @@ router.post('/verify-mfa', async (req, res) => {
       return res.status(401).json({ success: false, message: 'Invalid verification code' });
     }
 
+    // Get user to include adminType in token
+    const users = getUsersData();
+    const user = users.find(u => u.id === decoded.id);
+
     // MFA verified - issue real token
     const token = jwt.sign(
-      { id: decoded.id, email: decoded.email, role: decoded.role },
+      { id: decoded.id, email: decoded.email, role: decoded.role, adminType: user?.adminType },
       process.env.JWT_SECRET,
       { expiresIn: '7d' }
     );
@@ -174,7 +184,15 @@ router.post('/verify-mfa', async (req, res) => {
 
     res.json({
       success: true,
-      token
+      token,
+      user: {
+        id: user.id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        role: user.role,
+        adminType: user.adminType
+      }
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -200,7 +218,7 @@ router.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign(
-      { id: user.id, email: user.email, role: user.role },
+      { id: user.id, email: user.email, role: user.role, adminType: user.adminType },
       process.env.JWT_SECRET,
       { expiresIn: '7d' }
     );
@@ -214,6 +232,8 @@ router.post('/login', async (req, res) => {
         firstName: user.firstName,
         lastName: user.lastName,
         role: user.role,
+        adminType: user.adminType,
+        companyName: user.companyName,
         verified: user.verified || false,
         verifiedAt: user.verifiedAt || null
       }
@@ -248,6 +268,8 @@ router.get('/me', (req, res) => {
         firstName: user.firstName,
         lastName: user.lastName,
         role: user.role,
+        adminType: user.adminType,
+        companyName: user.companyName,
         verified: user.verified || false,
         verifiedAt: user.verifiedAt || null
       }

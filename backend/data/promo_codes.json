@@ -1,0 +1,53 @@
+[
+  {
+    "id": "1",
+    "hostId": "13",
+    "code": "SUMMER1",
+    "type": "percentage",
+    "value": 1,
+    "unitIds": [
+      "9"
+    ],
+    "usageLimit": 1,
+    "usageCount": 0,
+    "expiresAt": "2026-03-14",
+    "description": "QQ",
+    "active": true,
+    "isPlatformWide": false,
+    "createdAt": "2026-03-07T05:01:28.649Z",
+    "updatedAt": "2026-03-07T05:33:35.434Z"
+  },
+  {
+    "id": "2",
+    "hostId": "13",
+    "code": "SUMMER2",
+    "type": "percentage",
+    "value": 2,
+    "unitIds": [
+      "23"
+    ],
+    "usageLimit": 12,
+    "usageCount": 0,
+    "expiresAt": null,
+    "description": "as",
+    "active": true,
+    "isPlatformWide": false,
+    "createdAt": "2026-03-07T05:02:17.032Z",
+    "updatedAt": "2026-03-07T05:47:17.375Z"
+  },
+  {
+    "id": "3",
+    "hostId": "13",
+    "code": "OO",
+    "type": "percentage",
+    "value": 1,
+    "unitIds": null,
+    "usageLimit": 1,
+    "usageCount": 0,
+    "expiresAt": "2026-03-08",
+    "description": "hhh",
+    "active": true,
+    "isPlatformWide": false,
+    "createdAt": "2026-03-07T05:10:29.877Z"
+  }
+]

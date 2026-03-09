@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DashboardLayout from '../../components/DashboardLayout';
+import AdminLayout from '../../components/AdminLayout';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -98,16 +98,16 @@ const System = () => {
 
   if (loading) {
     return (
-      <DashboardLayout>
+      <AdminLayout>
         <div className="flex justify-center items-center h-64">
           <div className="text-xl">Loading...</div>
         </div>
-      </DashboardLayout>
+      </AdminLayout>
     );
   }
 
   return (
-    <DashboardLayout>
+    <AdminLayout>
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900">System Management</h1>
         <p className="text-gray-600 mt-2">System statistics and settings</p>
@@ -281,8 +281,9 @@ const System = () => {
           Download Backup
         </Button>
       </Card>
-    </DashboardLayout>
+    </AdminLayout>
   );
 };
 
 export default System;
+

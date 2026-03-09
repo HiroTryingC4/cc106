@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DashboardLayout from '../../components/DashboardLayout';
+import AdminLayout from '../../components/AdminLayout';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -84,7 +84,7 @@ const Reports = () => {
   };
 
   return (
-    <DashboardLayout>
+    <AdminLayout>
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-900">Reports & Analytics</h1>
         <p className="text-gray-600 mt-2">Generate custom reports</p>
@@ -261,8 +261,9 @@ const Reports = () => {
           </div>
         </Card>
       )}
-    </DashboardLayout>
+    </AdminLayout>
   );
 };
 
 export default Reports;
+

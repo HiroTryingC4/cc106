@@ -24,8 +24,12 @@ const HostVerification = () => {
     bankAccount: '',
     bankName: '',
     proofOfOwnership: '',
-    additionalDocs: ''
+    additionalDocs: '',
+    idPhoto: null,
+    selfieWithId: null
   });
+  const [idPhotoPreview, setIdPhotoPreview] = useState(null);
+  const [selfiePreview, setSelfiePreview] = useState(null);
 
   useEffect(() => {
     fetchVerificationStatus();
@@ -60,17 +64,46 @@ const HostVerification = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate required files
+    if (!formData.idPhoto || !formData.selfieWithId) {
+      addToast('Please upload both ID photo and selfie with ID', 'error');
+      return;
+    }
+
     setSubmitting(true);
 
     try {
       const token = localStorage.getItem('token');
+      
+      // Create FormData for file upload
+      const submitData = new FormData();
+      submitData.append('businessName', formData.businessName);
+      submitData.append('businessAddress', formData.businessAddress);
+      submitData.append('businessType', formData.businessType);
+      submitData.append('idType', formData.idType);
+      submitData.append('idNumber', formData.idNumber);
+      submitData.append('taxId', formData.taxId);
+      submitData.append('bankAccount', formData.bankAccount);
+      submitData.append('bankName', formData.bankName);
+      submitData.append('proofOfOwnership', formData.proofOfOwnership);
+      submitData.append('additionalDocs', formData.additionalDocs);
+      
+      // Append files
+      if (formData.idPhoto) {
+        submitData.append('idPhoto', formData.idPhoto);
+      }
+      if (formData.selfieWithId) {
+        submitData.append('selfieWithId', formData.selfieWithId);
+      }
+
       const response = await fetch('http://localhost:5000/api/host/verification/submit', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
+          // Don't set Content-Type, let browser set it with boundary for FormData
         },
-        body: JSON.stringify({ documents: formData })
+        body: submitData
       });
 
       const data = await response.json();
@@ -167,7 +200,14 @@ const HostVerification = () => {
               <h3 className="text-xl font-bold mb-6">Resubmit Verification Documents</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Form fields will be rendered below */}
-                <VerificationForm formData={formData} setFormData={setFormData} />
+                <VerificationForm 
+                  formData={formData} 
+                  setFormData={setFormData}
+                  idPhotoPreview={idPhotoPreview}
+                  setIdPhotoPreview={setIdPhotoPreview}
+                  selfiePreview={selfiePreview}
+                  setSelfiePreview={setSelfiePreview}
+                />
                 <Button type="submit" disabled={submitting} className="w-full">
                   {submitting ? 'Submitting...' : 'Resubmit Documents'}
                 </Button>
@@ -206,7 +246,14 @@ const HostVerification = () => {
         <Card>
           <h2 className="text-xl font-bold mb-6">Submit Verification Documents</h2>
           <form onSubmit={handleSubmit} className="space-y-6">
-            <VerificationForm formData={formData} setFormData={setFormData} />
+            <VerificationForm 
+              formData={formData} 
+              setFormData={setFormData}
+              idPhotoPreview={idPhotoPreview}
+              setIdPhotoPreview={setIdPhotoPreview}
+              selfiePreview={selfiePreview}
+              setSelfiePreview={setSelfiePreview}
+            />
             
             <div className="pt-4 border-t">
               <Button type="submit" disabled={submitting} className="w-full">
@@ -221,7 +268,32 @@ const HostVerification = () => {
 };
 
 // Separate component for the form fields
-const VerificationForm = ({ formData, setFormData }) => {
+const VerificationForm = ({ formData, setFormData, idPhotoPreview, setIdPhotoPreview, selfiePreview, setSelfiePreview }) => {
+  
+  const handleIdPhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFormData({ ...formData, idPhoto: file });
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setIdPhotoPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSelfieChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFormData({ ...formData, selfieWithId: file });
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelfiePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <>
       <div>
@@ -291,6 +363,73 @@ const VerificationForm = ({ formData, setFormData }) => {
             onChange={(e) => setFormData({ ...formData, taxId: e.target.value })}
             required
           />
+
+          {/* ID Photo Upload */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              ID Photo * <span className="text-red-500">(Required)</span>
+            </label>
+            <p className="text-xs text-gray-600 mb-2">
+              Upload a clear photo of your ID (front side). Make sure all details are visible.
+            </p>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleIdPhotoChange}
+              className="block w-full text-sm text-gray-500
+                file:mr-4 file:py-2 file:px-4
+                file:rounded-lg file:border-0
+                file:text-sm file:font-semibold
+                file:bg-blue-50 file:text-blue-700
+                hover:file:bg-blue-100
+                cursor-pointer border border-gray-300 rounded-lg"
+            />
+            {idPhotoPreview && (
+              <div className="mt-3">
+                <img
+                  src={idPhotoPreview}
+                  alt="ID Preview"
+                  className="w-full max-w-md h-48 object-contain border-2 border-gray-300 rounded-lg"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Selfie with ID Upload */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Selfie Holding ID * <span className="text-red-500">(Required)</span>
+            </label>
+            <p className="text-xs text-gray-600 mb-2">
+              Take a selfie while holding your ID next to your face. Both your face and ID should be clearly visible.
+            </p>
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-2">
+              <p className="text-xs text-yellow-800">
+                <strong>Tips:</strong> Good lighting, hold ID at chest level, make sure your face and ID details are clear and not blurry.
+              </p>
+            </div>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleSelfieChange}
+              className="block w-full text-sm text-gray-500
+                file:mr-4 file:py-2 file:px-4
+                file:rounded-lg file:border-0
+                file:text-sm file:font-semibold
+                file:bg-green-50 file:text-green-700
+                hover:file:bg-green-100
+                cursor-pointer border border-gray-300 rounded-lg"
+            />
+            {selfiePreview && (
+              <div className="mt-3">
+                <img
+                  src={selfiePreview}
+                  alt="Selfie Preview"
+                  className="w-full max-w-md h-48 object-contain border-2 border-gray-300 rounded-lg"
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
 

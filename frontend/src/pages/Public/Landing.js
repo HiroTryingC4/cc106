@@ -10,7 +10,7 @@ const Landing = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white py-32 overflow-hidden">
+      <section className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 text-white py-28 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
@@ -19,59 +19,42 @@ const Landing = () => {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="inline-block mb-4 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold">
-              🎉 AI-Powered Property Management Platform
+            <div className="inline-block mb-4 px-4 py-2 bg-white/10 rounded-full text-sm font-semibold">
+              Everything You Need in One Platform
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Welcome to <span className="text-white drop-shadow-lg">SmartStay</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+              Smart Stay — Ready to Get Started?
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white drop-shadow-md max-w-3xl mx-auto">
-              Your Complete AI-Driven Property Management Solution for Intelligent Booking, Financial Analytics, and Seamless Guest Experiences
+            <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-white/90">
+              Join thousands of satisfied users and experience the future of property management
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link to="/units">
                 <Button size="lg" className="!bg-white !text-blue-600 hover:!bg-gray-100 shadow-xl font-bold">
-                  🏠 Explore Properties
+                  🏠 Browse Properties
                 </Button>
               </Link>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="!border-2 !border-white !text-white hover:!bg-white hover:!text-blue-600 shadow-xl font-bold"
-                onClick={() => setShowAuthModal(true)}
-              >
-                ✨ Get Started Free
-              </Button>
+              <Link to="/host-home">
+                <Button size="lg" className="!bg-white !text-purple-600 hover:!bg-gray-100 shadow font-bold">
+                  💼 List Your Property
+                </Button>
+              </Link>
             </div>
             
             {/* User Type Cards */}
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {/* Guest Card */}
-              <div className="bg-white/10 backdrop-blur-md text-white rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-all transform hover:scale-105">
-                <div className="text-5xl mb-4">🏠</div>
-                <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-md">For Guests</h3>
-                <p className="text-white/90 mb-6 drop-shadow-sm">
-                  Find & book your perfect stay with AI-powered recommendations
-                </p>
-                <Link to="/units">
-                  <Button className="w-full !bg-white !text-blue-600 hover:!bg-gray-100 font-bold">
-                    Browse Properties
-                  </Button>
-                </Link>
+              <div className="bg-emerald-50 rounded-2xl p-6 border border-emerald-100 hover:shadow-lg transition">
+                <div className="text-4xl mb-3">🔍</div>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">Smart Search & Filters</h3>
+                <p className="text-emerald-700 mb-4">Advanced search with filters for price, location, amenities, and more</p>
               </div>
 
               {/* Host Card */}
-              <div className="bg-white/10 backdrop-blur-md text-white rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-all transform hover:scale-105">
-                <div className="text-5xl mb-4">💼</div>
-                <h3 className="text-2xl font-bold mb-3 text-white drop-shadow-md">For Hosts</h3>
-                <p className="text-white/90 mb-6 drop-shadow-sm">
-                  List your property & earn income with powerful analytics
-                </p>
-                <Link to="/host-home">
-                  <Button className="w-full !bg-white !text-purple-600 hover:!bg-gray-100 font-bold">
-                    Become a Host
-                  </Button>
-                </Link>
+              <div className="bg-emerald-50 rounded-2xl p-6 border border-emerald-100 hover:shadow-lg transition">
+                <div className="text-4xl mb-3">🧾</div>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">Property Management</h3>
+                <p className="text-emerald-700 mb-4">Easily list, edit, and manage multiple properties with photos and details</p>
               </div>
             </div>
           </div>
@@ -93,40 +76,40 @@ const Landing = () => {
           {/* Guest Features */}
           <div className="mb-16">
             <div className="flex items-center justify-center mb-8">
-              <div className="bg-blue-100 text-blue-600 px-6 py-2 rounded-full font-bold text-lg">
-                🏠 For Guests
+              <div className="bg-emerald-100 text-emerald-700 px-6 py-2 rounded-full font-bold text-lg">
+                For Guests
               </div>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="bg-emerald-50 p-6 rounded-xl hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">🔍</div>
-                <h3 className="text-xl font-bold mb-2 text-blue-900">Smart Search & Filters</h3>
-                <p className="text-gray-700">Advanced search with filters for price, location, amenities, and more</p>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">Smart Search & Filters</h3>
+                <p className="text-emerald-700">Advanced search with filters for price, location, amenities, and more</p>
               </div>
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="bg-emerald-50 p-6 rounded-xl hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">🤖</div>
-                <h3 className="text-xl font-bold mb-2 text-blue-900">AI Recommendations</h3>
-                <p className="text-gray-700">Personalized property suggestions based on your preferences and browsing history</p>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">AI Recommendations</h3>
+                <p className="text-emerald-700">Personalized property suggestions based on your preferences and browsing history</p>
               </div>
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="bg-emerald-50 p-6 rounded-xl hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">📅</div>
-                <h3 className="text-xl font-bold mb-2 text-blue-900">Real-Time Availability</h3>
-                <p className="text-gray-700">Check availability instantly with interactive calendar and instant booking</p>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">Real-Time Availability</h3>
+                <p className="text-emerald-700">Check availability instantly with interactive calendar and instant booking</p>
               </div>
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="bg-emerald-50 p-6 rounded-xl hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">💳</div>
-                <h3 className="text-xl font-bold mb-2 text-blue-900">Secure QR Payments</h3>
-                <p className="text-gray-700">Fast and secure payment processing with QR code technology</p>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">Secure QR Payments</h3>
+                <p className="text-emerald-700">Fast and secure payment processing with QR code technology</p>
               </div>
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="bg-emerald-50 p-6 rounded-xl hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">⭐</div>
-                <h3 className="text-xl font-bold mb-2 text-blue-900">Reviews & Ratings</h3>
-                <p className="text-gray-700">Share your experience with photos and help others make informed decisions</p>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">Reviews & Ratings</h3>
+                <p className="text-emerald-700">Share your experience with photos and help others make informed decisions</p>
               </div>
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="bg-emerald-50 p-6 rounded-xl hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">💬</div>
-                <h3 className="text-xl font-bold mb-2 text-blue-900">24/7 AI Chatbot</h3>
-                <p className="text-gray-700">Get instant answers to your questions anytime, anywhere</p>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">24/7 AI Chatbot</h3>
+                <p className="text-emerald-700">Get instant answers to your questions anytime, anywhere</p>
               </div>
             </div>
           </div>
@@ -134,40 +117,40 @@ const Landing = () => {
           {/* Host Features */}
           <div>
             <div className="flex items-center justify-center mb-8">
-              <div className="bg-purple-100 text-purple-600 px-6 py-2 rounded-full font-bold text-lg">
-                💼 For Hosts
+              <div className="bg-emerald-100 text-emerald-700 px-6 py-2 rounded-full font-bold text-lg">
+                For Hosts
               </div>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">🏢</div>
-                <h3 className="text-xl font-bold mb-2 text-purple-900">Property Management</h3>
-                <p className="text-gray-700">Easily list, edit, and manage multiple properties with photos and details</p>
-              </div>
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="bg-emerald-50 p-6 rounded-xl hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">📊</div>
-                <h3 className="text-xl font-bold mb-2 text-purple-900">Advanced Analytics</h3>
-                <p className="text-gray-700">Track bookings, occupancy rates, revenue trends, and guest statistics</p>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">Advanced Analytics</h3>
+                <p className="text-emerald-700">Track bookings, occupancy rates, revenue trends, and guest statistics</p>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="bg-emerald-50 p-6 rounded-xl hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">💰</div>
-                <h3 className="text-xl font-bold mb-2 text-purple-900">Financial Dashboard</h3>
-                <p className="text-gray-700">Monitor revenue, expenses, payroll, and calculate net profit automatically</p>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">Financial Dashboard</h3>
+                <p className="text-emerald-700">Monitor revenue, expenses, payroll, and calculate net profit automatically</p>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">📈</div>
-                <h3 className="text-xl font-bold mb-2 text-purple-900">Expense Tracking</h3>
-                <p className="text-gray-700">Track all property expenses by category with detailed reports</p>
+              <div className="bg-emerald-50 p-6 rounded-xl hover:shadow-lg transition-shadow">
+                <div className="text-4xl mb-4">🧾</div>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">Expense Tracking</h3>
+                <p className="text-emerald-700">Track all property expenses by category with detailed reports</p>
               </div>
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">👥</div>
-                <h3 className="text-xl font-bold mb-2 text-purple-900">Payroll Management</h3>
-                <p className="text-gray-700">Manage employee salaries, track payments, and generate payroll reports</p>
-              </div>
-              <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl hover:shadow-lg transition-shadow">
+              <div className="bg-emerald-50 p-6 rounded-xl hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">📝</div>
-                <h3 className="text-xl font-bold mb-2 text-purple-900">Custom Reports</h3>
-                <p className="text-gray-700">Generate detailed financial and booking reports with export options</p>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">Custom Reports</h3>
+                <p className="text-emerald-700">Generate detailed financial and booking reports with export options</p>
+              </div>
+              <div className="bg-emerald-50 p-6 rounded-xl hover:shadow-lg transition-shadow">
+                <div className="text-4xl mb-4">⏰</div>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">Flexible Time Units</h3>
+                <p className="text-emerald-700">Set customizable work hours, track time logs, and manage shift-based schedules with ease</p>
+              </div>
+              <div className="bg-emerald-50 p-6 rounded-xl hover:shadow-lg transition-shadow">
+                <div className="text-4xl mb-4">🔒</div>
+                <h3 className="text-xl font-bold mb-2 text-emerald-800">Secure Payments</h3>
+                <p className="text-emerald-700">Multiple secure payment options with clear payout schedules</p>
               </div>
             </div>
           </div>
@@ -175,11 +158,11 @@ const Landing = () => {
       </section>
 
       {/* AI Features Highlight */}
-      <section className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-emerald-700 to-emerald-500 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white drop-shadow-lg">
-              🤖 Powered by Artificial Intelligence
+              Powered by Artificial Intelligence
             </h2>
             <p className="text-xl text-white/95 max-w-3xl mx-auto drop-shadow-md">
               Experience the future of property management with our AI-driven features
@@ -223,92 +206,82 @@ const Landing = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-emerald-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-2 text-gray-900">Trusted by Thousands</h2>
-            <p className="text-gray-600">Join our growing community of hosts and guests</p>
+            <h2 className="text-3xl font-bold mb-2">Trusted by Thousands</h2>
+            <p className="opacity-90">Join our growing community of hosts and guests</p>
           </div>
           <div className="grid md:grid-cols-4 gap-8 text-center">
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="text-5xl font-bold text-blue-600 mb-2">1,000+</div>
-              <p className="text-gray-600 font-semibold">Properties Listed</p>
+            <div className="bg-emerald-500 p-6 rounded-xl shadow-md">
+              <div className="text-4xl font-bold mb-2">1,000+</div>
+              <p className="font-semibold">Properties Listed</p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="text-5xl font-bold text-purple-600 mb-2">5,000+</div>
-              <p className="text-gray-600 font-semibold">Happy Guests</p>
+            <div className="bg-emerald-500 p-6 rounded-xl shadow-md">
+              <div className="text-4xl font-bold mb-2">5,000+</div>
+              <p className="font-semibold">Happy Guests</p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="text-5xl font-bold text-pink-600 mb-2">500+</div>
-              <p className="text-gray-600 font-semibold">Verified Hosts</p>
+            <div className="bg-emerald-500 p-6 rounded-xl shadow-md">
+              <div className="text-4xl font-bold mb-2">500+</div>
+              <p className="font-semibold">Verified Hosts</p>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <div className="text-5xl font-bold text-green-600 mb-2">4.8★</div>
-              <p className="text-gray-600 font-semibold">Average Rating</p>
+            <div className="bg-emerald-500 p-6 rounded-xl shadow-md">
+              <div className="text-4xl font-bold mb-2">4.8</div>
+              <p className="font-semibold">Average Rating</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">How SmartStay Works</h2>
-            <p className="text-xl text-gray-600">Get started in just a few simple steps</p>
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-emerald-800 mb-2">How SmartStay Works</h2>
+            <p className="text-sm text-emerald-600">Get started in just a few simple steps</p>
           </div>
 
           {/* For Guests */}
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-center mb-8 text-blue-600">For Guests</h3>
-            <div className="grid md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-                <h4 className="font-bold mb-2">Browse Properties</h4>
-                <p className="text-sm text-gray-600">Search and filter through our curated selection</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-                <h4 className="font-bold mb-2">Select Dates</h4>
-                <p className="text-sm text-gray-600">Check availability and choose your dates</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-                <h4 className="font-bold mb-2">Book & Pay</h4>
-                <p className="text-sm text-gray-600">Secure booking with QR code payment</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
-                <h4 className="font-bold mb-2">Enjoy Your Stay</h4>
-                <p className="text-sm text-gray-600">Check-in and have a wonderful experience</p>
-              </div>
+          <div className="mb-12">
+            <h3 className="text-lg font-semibold text-center mb-8 text-emerald-800">For Guests</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-start">
+              {[{
+                n: 1, title: 'Browse Properties', desc: 'Search and filter through our curated selection'
+              },{
+                n: 2, title: 'Select Dates', desc: 'Check availability and choose your dates'
+              },{
+                n: 3, title: 'Book & Pay', desc: 'Secure booking with QR code payment'
+              },{
+                n: 4, title: 'Enjoy Your Stay', desc: 'Check-in and have a wonderful experience'
+              }].map((s) => (
+                <div key={s.n} className="text-center">
+                  <div className="w-14 h-14 bg-emerald-400 text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-3">{s.n}</div>
+                  <h4 className="font-semibold mb-1 text-emerald-800">{s.title}</h4>
+                  <p className="text-xs text-emerald-600">{s.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
 
           {/* For Hosts */}
-          <div>
-            <h3 className="text-2xl font-bold text-center mb-8 text-purple-600">For Hosts</h3>
-            <div className="grid md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-                <h4 className="font-bold mb-2">List Property</h4>
-                <p className="text-sm text-gray-600">Add photos, details, and amenities</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-                <h4 className="font-bold mb-2">Get Verified</h4>
-                <p className="text-sm text-gray-600">Complete verification process</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-                <h4 className="font-bold mb-2">Receive Bookings</h4>
-                <p className="text-sm text-gray-600">Approve or manage booking requests</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
-                <h4 className="font-bold mb-2">Earn Income</h4>
-                <p className="text-sm text-gray-600">Track earnings and manage finances</p>
-              </div>
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold text-center mb-8 text-emerald-800">For Hosts</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 items-start">
+              {[{
+                n: 1, title: 'List Property', desc: 'Add photos, details, and amenities'
+              },{
+                n: 2, title: 'Get Verified', desc: 'Complete verification process'
+              },{
+                n: 3, title: 'Receive Bookings', desc: 'Approve or manage booking requests'
+              },{
+                n: 4, title: 'Earn Income', desc: 'Track earnings and manage finances'
+              }].map((s) => (
+                <div key={s.n} className="text-center">
+                  <div className="w-14 h-14 bg-emerald-400 text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-3">{s.n}</div>
+                  <h4 className="font-semibold mb-1 text-emerald-800">{s.title}</h4>
+                  <p className="text-xs text-emerald-600">{s.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -380,7 +353,7 @@ const Landing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-green-600 to-green-700 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white drop-shadow-lg">Ready to Get Started?</h2>
           <p className="text-xl mb-8 text-white/95 drop-shadow-md">
@@ -388,13 +361,13 @@ const Landing = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Link to="/units">
-              <Button size="lg" className="!bg-white !text-blue-600 hover:!bg-gray-100 shadow-xl font-bold">
-                🏠 Browse Properties
+              <Button size="lg" className="!bg-white !text-green-600 hover:!bg-gray-100 shadow-xl font-bold">
+                Explore Properties
               </Button>
             </Link>
-            <Link to="/host-home">
-              <Button size="lg" className="!bg-white !text-purple-600 hover:!bg-gray-100 shadow-xl font-bold">
-                💼 List Your Property
+            <Link to="/units">
+              <Button size="lg" className="!bg-white !text-green-600 hover:!bg-gray-100 shadow-xl font-bold">
+                Explore Properties
               </Button>
             </Link>
           </div>

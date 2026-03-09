@@ -11,5 +11,18 @@
     "phone": "123123",
     "status": "active",
     "createdAt": "2026-02-20T18:37:14.127Z"
+  },
+  {
+    "id": "1771945869369",
+    "hostId": "16",
+    "name": "Riemar ",
+    "position": "idk1",
+    "salary": 123,
+    "paymentFrequency": "weekly",
+    "startDate": "2026-02-24",
+    "email": "simon.ysamae.balajadia@gmail.com",
+    "phone": "1287361724123",
+    "status": "active",
+    "createdAt": "2026-02-24T15:11:09.369Z"
   }
 ]
