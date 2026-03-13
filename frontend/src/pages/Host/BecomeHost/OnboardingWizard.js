@@ -13,7 +13,7 @@ import Step7Publish from './steps/Step7Publish';
 import Step8Verification from './steps/Step8Verification';
 import SocialProof from './components/SocialProof';
 import Confetti from './components/Confetti';
-import ExitIntentModal from './components/ExitIntentModal';
+
 import ProgressReward from './components/ProgressReward';
 import SmartTips from './components/SmartTips';
 
@@ -24,7 +24,6 @@ const OnboardingWizard = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [showReward, setShowReward] = useState(false);
   const [rewardMessage, setRewardMessage] = useState('');
-  const [showExitModal, setShowExitModal] = useState(false);
   const [completedSteps, setCompletedSteps] = useState([]);
   const [formData, setFormData] = useState({
     // Step 1
@@ -54,21 +53,6 @@ const OnboardingWizard = () => {
   });
 
   const totalSteps = 8; // Property type, details, photos, title/desc, review, register, publish, verification
-
-  // Exit intent detection
-  useEffect(() => {
-    const handleMouseLeave = (e) => {
-      if (e.clientY < 0 && currentStep < 8 && currentStep > 1) {
-        const progress = (currentStep / totalSteps) * 100;
-        if (progress > 20 && progress < 100) {
-          setShowExitModal(true);
-        }
-      }
-    };
-
-    document.addEventListener('mouseout', handleMouseLeave);
-    return () => document.removeEventListener('mouseout', handleMouseLeave);
-  }, [currentStep]);
 
   // Auto-save draft every 30 seconds
   useEffect(() => {
@@ -345,18 +329,6 @@ const OnboardingWizard = () => {
           icon={showReward}
         />
       )}
-
-      {/* Exit Intent Modal */}
-      <ExitIntentModal
-        show={showExitModal}
-        onClose={() => {
-          setShowExitModal(false);
-          handleSaveExit();
-        }}
-        onContinue={() => setShowExitModal(false)}
-        progress={(currentStep / totalSteps) * 100}
-        completedSteps={completedSteps}
-      />
 
       {/* Header */}
       <div className="bg-white border-b sticky top-0 z-10 shadow-sm">

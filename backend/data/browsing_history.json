@@ -4423,5 +4423,27 @@
       "WiFi"
     ],
     "viewedAt": "2026-03-09T11:10:00.532Z"
+  },
+  {
+    "id": "300",
+    "guestId": "3",
+    "unitId": "3",
+    "unitType": "house",
+    "pricePerNight": 1000,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-03-10T07:59:57.421Z"
+  },
+  {
+    "id": "301",
+    "guestId": "3",
+    "unitId": "3",
+    "unitType": "house",
+    "pricePerNight": 1000,
+    "bedrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "viewedAt": "2026-03-10T07:59:57.479Z"
   }
 ]

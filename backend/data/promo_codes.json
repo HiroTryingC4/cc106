@@ -49,5 +49,38 @@
     "active": true,
     "isPlatformWide": false,
     "createdAt": "2026-03-07T05:10:29.877Z"
+  },
+  {
+    "id": "4",
+    "hostId": "10",
+    "code": "NIGGAKA",
+    "type": "percentage",
+    "value": 100,
+    "unitIds": null,
+    "usageLimit": 2,
+    "usageCount": 0,
+    "expiresAt": "2026-03-19",
+    "description": "Oms\n",
+    "active": true,
+    "isPlatformWide": false,
+    "createdAt": "2026-03-10T07:48:42.942Z"
+  },
+  {
+    "id": "5",
+    "hostId": "17",
+    "code": "SUNERAW",
+    "type": "percentage",
+    "value": 20,
+    "unitIds": [
+      "3"
+    ],
+    "usageLimit": 2,
+    "usageCount": 0,
+    "expiresAt": "2026-03-17",
+    "description": "aaa",
+    "active": true,
+    "isPlatformWide": false,
+    "createdAt": "2026-03-10T07:58:01.321Z",
+    "updatedAt": "2026-03-10T07:58:12.512Z"
   }
 ]

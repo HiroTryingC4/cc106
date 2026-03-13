@@ -207,5 +207,30 @@
     "reviewedAt": "2026-03-09T10:25:51.281Z",
     "reviewedBy": "1",
     "rejectionReason": null
+  },
+  {
+    "id": "10",
+    "hostId": "17",
+    "hostName": "Riemar  Ligad",
+    "hostEmail": "RiemarLigad@gmail.com",
+    "documents": {
+      "businessName": "Riemar AIRBNB",
+      "businessAddress": "ASD",
+      "businessType": "individual",
+      "idType": "passport",
+      "idNumber": "123",
+      "taxId": "123",
+      "bankAccount": "ASD",
+      "bankName": "ASD",
+      "proofOfOwnership": "ASDASDA",
+      "additionalDocs": "ASDASD",
+      "idPhoto": "idPhoto-1773129359199-899570487.png",
+      "selfieWithId": "selfieWithId-1773129359212-600807508.png"
+    },
+    "status": "approved",
+    "submittedAt": "2026-03-10T07:55:59.227Z",
+    "reviewedAt": "2026-03-10T07:56:50.775Z",
+    "reviewedBy": "1",
+    "rejectionReason": null
   }
 ]

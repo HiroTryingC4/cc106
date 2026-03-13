@@ -197,5 +197,30 @@
     "status": "active",
     "createdAt": "2026-03-09T16:47:09.423Z",
     "companyName": "Riemar Company"
+  },
+  {
+    "id": "17",
+    "email": "RiemarLigad@gmail.com",
+    "password": "$2a$10$MB6LSNbDskJpKUqATzESle4P33sTS5g5D1odzaiLUk5NAa7IiWGWa",
+    "role": "host",
+    "firstName": "Riemar ",
+    "lastName": "Ligad",
+    "phone": "123123",
+    "status": "active",
+    "createdAt": "2026-03-10T07:55:12.243Z",
+    "companyName": "Riemar Company",
+    "verified": true,
+    "verifiedAt": "2026-03-10T07:56:50.775Z"
+  },
+  {
+    "id": "18",
+    "email": "sasa@gmail.com",
+    "password": "$2a$10$/qs8/XpOekMDHBayB9va3eOepZxM.GTMdColKAWFT6NgUfg1Tmob2",
+    "role": "host",
+    "firstName": "syadsa",
+    "lastName": "saasa",
+    "phone": "213213213",
+    "status": "active",
+    "createdAt": "2026-03-10T08:38:48.169Z"
   }
 ]

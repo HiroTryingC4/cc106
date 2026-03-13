@@ -68,5 +68,40 @@
     "available": true,
     "moderationStatus": "approved",
     "createdAt": "2026-03-09T16:47:13.650Z"
+  },
+  {
+    "id": "3",
+    "hostId": "17",
+    "name": "A",
+    "type": "house",
+    "location": "A",
+    "description": "A",
+    "pricePerNight": 1000,
+    "nightHours": "22",
+    "baseGuestsIncluded": 2,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "maxGuests": 2,
+    "amenities": [],
+    "securityDeposit": 500,
+    "extraGuestFee": 200,
+    "houseRules": "No smoking. No pets. Check-in after 2PM. Check-out before 11AM.",
+    "instantBooking": false,
+    "acceptsMinors": false,
+    "stayDuration": "flexible",
+    "hourlyPricing": [],
+    "fixedCheckInTime": "14:00",
+    "fixedCheckOutTime": "12:00",
+    "latitude": null,
+    "longitude": null,
+    "images": [
+      "/uploads/units/unit-1773129318920-833118148.jpg"
+    ],
+    "rating": 0,
+    "reviews": 0,
+    "available": true,
+    "moderationStatus": "approved",
+    "createdAt": "2026-03-10T07:55:18.862Z",
+    "updatedAt": "2026-03-10T07:58:15.555Z"
   }
 ]

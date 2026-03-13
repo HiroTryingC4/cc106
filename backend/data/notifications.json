@@ -138,5 +138,15 @@
     "link": "/admin/units",
     "read": false,
     "createdAt": "2026-03-09T16:47:13.684Z"
+  },
+  {
+    "id": "15",
+    "userId": "1",
+    "type": "info",
+    "title": "New Unit Submitted",
+    "message": "Host RiemarLigad@gmail.com has created a new unit: \"A\"",
+    "link": "/admin/units",
+    "read": false,
+    "createdAt": "2026-03-10T07:55:18.885Z"
   }
 ]
